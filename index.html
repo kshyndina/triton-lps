@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Triton landing pages — index</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { padding: 80px 40px; }
+  .page-list { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+  .page-list h1 { font-size: 56px; margin-bottom: 24px; }
+  .lp-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px 32px;
+    background: var(--soft-white);
+    border-radius: 16px;
+    border: 1px solid rgba(23, 23, 23, 0.1);
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .lp-link:hover { border-color: var(--primary); transform: translateY(-2px); }
+  .lp-link h2 { font-family: var(--font-header); font-weight: 700; font-size: 22px; color: var(--foreground); }
+  .lp-link p { font-size: 14px; color: rgba(23,23,23,0.7); }
+  .lp-link span { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--primary); }
+  .ref { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(23,23,23,0.1); }
+  .ref h3 { font-family: var(--font-header); font-size: 14px; color: rgba(23,23,23,0.6); margin-bottom: 12px; }
+  .ref a { display: inline-block; margin-right: 16px; font-size: 13px; color: rgba(23,23,23,0.6); }
+</style>
+</head>
+<body>
+<div class="page-list">
+  <h1 class="h1 h1--left">Triton <span class="h-grad">landing pages</span></h1>
+  <a href="lp1.html" class="lp-link">
+    <span>LP 1 · $25 promo</span>
+    <h2>The full Triton stack for $25</h2>
+    <p>Event-tied "show ALL" promo. Live tracker hero, 12-product grid, audience categories, 5-step qualifier wizard, FAQ.</p>
+  </a>
+  <a href="lp2.html" class="lp-link">
+    <span>LP 2 · Hydrant</span>
+    <h2>Query the full Solana ledger, faster than ever</h2>
+    <p>Historical data product. Vertical accordion with preview, before/after, 6-card why, cross-sell scroller, $125 pricing, FAQ.</p>
+  </a>
+  <a href="lp3.html" class="lp-link">
+    <span>LP 3 · Steamboat</span>
+    <h2>Indexed account reads, on every Triton plan</h2>
+    <p>Account reads. Before/after, 4-tab capabilities, asymmetric bento, stats, cross-sell, pricing, FAQ.</p>
+  </a>
+  <a href="lp4.html" class="lp-link">
+    <span>LP 4 · Streaming Suite</span>
+    <h2>Full suite of Solana streaming, built on Yellowstone</h2>
+    <p>5 streaming products. 5-tab capabilities, before/after, bento, cross-sell, pricing, FAQ.</p>
+  </a>
+  <div class="ref">
+    <h3>Reference (earlier wireframe iterations)</h3>
+    <a href="reference/page1-reference.html">page1 ref</a>
+    <a href="reference/page2-reference.html">page2 ref</a>
+    <a href="reference/page3-reference.html">page3 ref</a>
+  </div>
+</div>
+</body>
+</html>

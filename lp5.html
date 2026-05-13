@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LP5 — Component lab — audience categories — Triton One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* ============ Page-5 lab styles (audience component options) ============ */
+  .lab-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(122, 75, 160, 0.12);
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .lab-meta {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: rgba(23, 23, 23, 0.6);
+    margin-top: 8px;
+  }
+
+  /* ============ Option A: horizontal tabs ============ */
+  .audA-tabs {
+    display: inline-flex;
+    padding: 6px;
+    background: var(--soft-white);
+    border-radius: 999px;
+    gap: 4px;
+    border: 1px solid rgba(23, 23, 23, 0.05);
+  }
+  .audA-tab {
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(23, 23, 23, 0.7);
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.15s, color 0.15s;
+  }
+  .audA-tab:hover { color: var(--foreground); }
+  .audA-tab--active { background: var(--foreground); color: var(--soft-white); }
+  .audA-panel {
+    margin-top: 24px;
+    padding: 28px 32px;
+    background: rgba(247, 247, 247, 0.6);
+    border: 1px solid rgba(23, 23, 23, 0.06);
+    border-radius: 20px;
+    display: none;
+    align-items: center;
+    gap: 32px;
+  }
+  .audA-panel--active { display: flex; }
+  .audA-text { flex: 0 0 280px; }
+  .audA-text h3 {
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--foreground);
+    margin-bottom: 6px;
+  }
+  .audA-text p { font-size: 13px; line-height: 1.5; color: rgba(23,23,23,0.7); }
+  .audA-logos {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .audA-logos img { height: 26px; opacity: 0.85; }
+
+  /* ============ Option B: compact accordion (vertical) ============ */
+  .audB { display: flex; flex-direction: column; gap: 8px; max-width: 880px; margin: 0 auto; width: 100%; }
+  .audB-row {
+    border-radius: 14px;
+    background: rgba(247, 247, 247, 0.55);
+    border: 1px solid rgba(23, 23, 23, 0.05);
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .audB-row:hover { background: rgba(247, 247, 247, 0.85); }
+  .audB-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+  }
+  .audB-title {
+    flex: 1;
+    font-family: var(--font-header);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--foreground);
+  }
+  .audB-chip {
+    width: 24px; height: 24px; border-radius: 999px;
+    background: rgba(122, 75, 160, 0.1);
+    color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .audB-body { display: none; padding: 0 18px 16px 18px; }
+  .audB-row--open .audB-body { display: block; }
+  .audB-desc { font-size: 13px; color: rgba(23,23,23,0.7); margin-bottom: 12px; }
+  .audB-logos { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .audB-logos img { height: 24px; opacity: 0.85; }
+
+  /* ============ Option C: 4-card grid (compact, hover for desc) ============ */
+  .audC {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .audC-card {
+    background: var(--soft-white);
+    border: 1px solid rgba(23, 23, 23, 0.05);
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.2s;
+  }
+  .audC-card:hover {
+    border-color: rgba(122, 75, 160, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(23, 23, 23, 0.05);
+  }
+  .audC-title {
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--foreground);
+  }
+  .audC-desc {
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(23, 23, 23, 0.6);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+  }
+  .audC-card:hover .audC-desc { max-height: 80px; opacity: 1; }
+  .audC-logos { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .audC-logos img { height: 22px; opacity: 0.85; }
+
+  /* ============ Option D: chip selector + animated logo ribbon ============ */
+  .audD { max-width: 1000px; margin: 0 auto; width: 100%; }
+  .audD-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .audD-chip {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--soft-white);
+    border: 1px solid rgba(23, 23, 23, 0.1);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(23, 23, 23, 0.7);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .audD-chip:hover { border-color: var(--primary); color: var(--primary); }
+  .audD-chip--active {
+    background: var(--primary);
+    color: var(--soft-white);
+    border-color: var(--primary);
+  }
+  .audD-ribbon {
+    background: var(--soft-white);
+    border: 1px solid rgba(23, 23, 23, 0.05);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 80px;
+  }
+  .audD-ribbon-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: rgba(23, 23, 23, 0.65);
+    flex: 0 0 260px;
+    line-height: 1.45;
+  }
+  .audD-ribbon-logos {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    transition: opacity 0.25s ease;
+  }
+  .audD-ribbon-logos img { height: 26px; opacity: 0.85; }
+
+  /* Spacing between options */
+  .opt-block { display: flex; flex-direction: column; gap: 24px; align-items: stretch; }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo"><img src="assets/icons/logomark.svg" alt="Triton" style="width:40px; height:40px"></a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-ctas">
+      <a class="btn btn-outline btn-sm" href="lp1.html">← Back to LPs</a>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="body-wrap">
+
+      <!-- Page intro -->
+      <section class="section section--hero">
+        <div class="section-inner">
+          <div class="section-head">
+            <span class="lab-label">Component lab</span>
+            <h1 class="h1">Audience categories — <span class="h-grad">four options</span></h1>
+            <p class="lead">Lorem ipsum dolor sit amet. Same data ("Triton powers the teams defining Solana"), four different ways to render it. Pick the one that feels right.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION A ============ -->
+      <section class="section section--no-top">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option A · Horizontal tabs</span>
+            <p class="lab-meta">Pill row up top, one panel below. Compact. Familiar pattern (matches capability tabs elsewhere on the site).</p>
+          </div>
+          <div class="opt-block">
+            <div class="audA-tabs">
+              <button class="audA-tab audA-tab--active" data-audA-tab="trading">Trading &amp; market makers</button>
+              <button class="audA-tab" data-audA-tab="dex">DEXs &amp; DeFi</button>
+              <button class="audA-tab" data-audA-tab="wallet">Wallets &amp; custodians</button>
+              <button class="audA-tab" data-audA-tab="indexer">Indexers &amp; analytics</button>
+            </div>
+
+            <div class="audA-panel audA-panel--active" data-audA-panel="trading">
+              <div class="audA-text">
+                <h3>Trading and market makers</h3>
+                <p>Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
+              </div>
+              <div class="audA-logos">
+                <img src="assets/logos/logo-jito-labs.svg" alt="Jito Labs">
+                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:22px">
+                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:30px">
+                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+              </div>
+            </div>
+
+            <div class="audA-panel" data-audA-panel="dex">
+              <div class="audA-text">
+                <h3>DEXs, AMMs, and DeFi protocols</h3>
+                <p>The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.</p>
+              </div>
+              <div class="audA-logos">
+                <img src="assets/logos/logo-jupiter.svg" alt="Jupiter">
+                <img src="assets/logos/logo-raydium.svg" alt="Raydium">
+                <img src="assets/logos/logo-orca.svg" alt="Orca">
+                <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:32px">
+                <img src="assets/logos/logo-meteora.svg" alt="Meteora">
+                <img src="assets/logos/logo-kamino.svg" alt="Kamino">
+              </div>
+            </div>
+
+            <div class="audA-panel" data-audA-panel="wallet">
+              <div class="audA-text">
+                <h3>Wallets, portfolios, and custodians</h3>
+                <p>Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.</p>
+              </div>
+              <div class="audA-logos">
+                <img src="assets/logos/logo-phantom.svg" alt="Phantom">
+                <img src="assets/logos/logo-step-finance.svg" alt="Step Finance">
+                <img src="assets/logos/logo-streamflow.svg" alt="Streamflow">
+              </div>
+            </div>
+
+            <div class="audA-panel" data-audA-panel="indexer">
+              <div class="audA-text">
+                <h3>Indexers, analytics, and compliance</h3>
+                <p>100% completeness, gap-free history, persistent cursors. The data infrastructure audit reports run on.</p>
+              </div>
+              <div class="audA-logos">
+                <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:18px">
+                <img src="assets/logos/logo-pyth.svg" alt="Pyth">
+                <img src="assets/logos/logo-dialect.svg" alt="Dialect">
+                <img src="assets/logos/logo-corbits.svg" alt="Corbits">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION B ============ -->
+      <section class="section">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option B · Compact accordion</span>
+            <p class="lab-meta">Four rows collapsed by default, expand one at a time. Tightest vertical footprint. Lets users skim category titles only.</p>
+          </div>
+          <div class="audB">
+            <div class="audB-row audB-row--open">
+              <div class="audB-head">
+                <span class="audB-title">Trading &amp; market makers</span>
+                <span class="audB-chip">−</span>
+              </div>
+              <div class="audB-body">
+                <p class="audB-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
+                <div class="audB-logos">
+                  <img src="assets/logos/logo-jito-labs.svg" alt="Jito">
+                  <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:20px">
+                  <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:28px">
+                  <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                  <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+                </div>
+              </div>
+            </div>
+            <div class="audB-row">
+              <div class="audB-head">
+                <span class="audB-title">DEXs, AMMs, and DeFi protocols</span>
+                <span class="audB-chip">+</span>
+              </div>
+              <div class="audB-body">
+                <p class="audB-desc">The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.</p>
+                <div class="audB-logos">
+                  <img src="assets/logos/logo-jupiter.svg" alt="Jupiter">
+                  <img src="assets/logos/logo-raydium.svg" alt="Raydium">
+                  <img src="assets/logos/logo-orca.svg" alt="Orca">
+                  <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:30px">
+                  <img src="assets/logos/logo-meteora.svg" alt="Meteora">
+                  <img src="assets/logos/logo-kamino.svg" alt="Kamino">
+                </div>
+              </div>
+            </div>
+            <div class="audB-row">
+              <div class="audB-head">
+                <span class="audB-title">Wallets, portfolios, and custodians</span>
+                <span class="audB-chip">+</span>
+              </div>
+              <div class="audB-body">
+                <p class="audB-desc">Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.</p>
+                <div class="audB-logos">
+                  <img src="assets/logos/logo-phantom.svg" alt="Phantom">
+                  <img src="assets/logos/logo-step-finance.svg" alt="Step Finance">
+                  <img src="assets/logos/logo-streamflow.svg" alt="Streamflow">
+                </div>
+              </div>
+            </div>
+            <div class="audB-row">
+              <div class="audB-head">
+                <span class="audB-title">Indexers, analytics, and compliance</span>
+                <span class="audB-chip">+</span>
+              </div>
+              <div class="audB-body">
+                <p class="audB-desc">100% completeness, gap-free history, persistent cursors. The data infrastructure audit reports run on.</p>
+                <div class="audB-logos">
+                  <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:16px">
+                  <img src="assets/logos/logo-pyth.svg" alt="Pyth">
+                  <img src="assets/logos/logo-dialect.svg" alt="Dialect">
+                  <img src="assets/logos/logo-corbits.svg" alt="Corbits">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION C ============ -->
+      <section class="section">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option C · 2×2 card grid</span>
+            <p class="lab-meta">Four small cards in a 2×2 grid. Each card shows title + logos by default. Description reveals on hover. Everything visible at once, no clicks required.</p>
+          </div>
+          <div class="audC">
+            <div class="audC-card">
+              <div class="audC-title">Trading &amp; market makers</div>
+              <div class="audC-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</div>
+              <div class="audC-logos">
+                <img src="assets/logos/logo-jito-labs.svg" alt="Jito">
+                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:18px">
+                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:24px">
+                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+              </div>
+            </div>
+            <div class="audC-card">
+              <div class="audC-title">DEXs, AMMs &amp; DeFi</div>
+              <div class="audC-desc">The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.</div>
+              <div class="audC-logos">
+                <img src="assets/logos/logo-jupiter.svg" alt="Jupiter">
+                <img src="assets/logos/logo-raydium.svg" alt="Raydium">
+                <img src="assets/logos/logo-orca.svg" alt="Orca">
+                <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:26px">
+                <img src="assets/logos/logo-kamino.svg" alt="Kamino">
+              </div>
+            </div>
+            <div class="audC-card">
+              <div class="audC-title">Wallets, portfolios &amp; custodians</div>
+              <div class="audC-desc">Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.</div>
+              <div class="audC-logos">
+                <img src="assets/logos/logo-phantom.svg" alt="Phantom">
+                <img src="assets/logos/logo-step-finance.svg" alt="Step Finance">
+                <img src="assets/logos/logo-streamflow.svg" alt="Streamflow">
+              </div>
+            </div>
+            <div class="audC-card">
+              <div class="audC-title">Indexers, analytics &amp; compliance</div>
+              <div class="audC-desc">100% completeness, gap-free history, persistent cursors. The data infrastructure audit reports run on.</div>
+              <div class="audC-logos">
+                <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:14px">
+                <img src="assets/logos/logo-pyth.svg" alt="Pyth">
+                <img src="assets/logos/logo-dialect.svg" alt="Dialect">
+                <img src="assets/logos/logo-corbits.svg" alt="Corbits">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION D ============ -->
+      <section class="section">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option D · Filter chips + logo ribbon</span>
+            <p class="lab-meta">Four filter chips. Click one to swap the description + logos below. Smallest footprint, most playful.</p>
+          </div>
+          <div class="audD">
+            <div class="audD-chips">
+              <button class="audD-chip audD-chip--active" data-audD-chip="trading">Trading</button>
+              <button class="audD-chip" data-audD-chip="dex">DEXs &amp; DeFi</button>
+              <button class="audD-chip" data-audD-chip="wallet">Wallets</button>
+              <button class="audD-chip" data-audD-chip="indexer">Indexers &amp; analytics</button>
+            </div>
+            <div class="audD-ribbon">
+              <p class="audD-ribbon-desc" id="audD-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
+              <div class="audD-ribbon-logos" id="audD-logos">
+                <img src="assets/logos/logo-jito-labs.svg" alt="Jito">
+                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:22px">
+                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:28px">
+                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="page-gap"></div>
+
+  <footer class="footer-strip">
+    <div class="footer-strip-logo"><img src="assets/icons/logomark.svg" alt="Triton" style="width:40px; height:40px"></div>
+    <div class="footer-strip-center"><strong>Component lab.</strong> Four ways to render the same audience-categories data.</div>
+    <div class="footer-strip-ctas">
+      <a class="btn btn-link" href="lp1.html">Back to LP1</a>
+    </div>
+  </footer>
+  <div class="footer-strip-bottom">
+    <span>© Triton One 2026 · All rights reserved</span>
+    <div class="footer-strip-bottom-links"><a>Terms</a><a>Privacy</a><a>Cookies</a></div>
+  </div>
+
+</div>
+
+<script>
+// ============ OPTION A — tabs ============
+document.querySelectorAll('[data-audA-tab]').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('[data-audA-tab]').forEach(t => t.classList.remove('audA-tab--active'));
+    tab.classList.add('audA-tab--active');
+    const key = tab.dataset.audaTab;
+    document.querySelectorAll('[data-audA-panel]').forEach(p => {
+      p.classList.toggle('audA-panel--active', p.dataset.audaPanel === key);
+    });
+  });
+});
+
+// ============ OPTION B — accordion ============
+document.querySelectorAll('.audB-row').forEach((row) => {
+  row.querySelector('.audB-head').addEventListener('click', () => {
+    const isOpen = row.classList.contains('audB-row--open');
+    document.querySelectorAll('.audB-row').forEach(r => {
+      r.classList.remove('audB-row--open');
+      const chip = r.querySelector('.audB-chip');
+      if (chip) chip.textContent = '+';
+    });
+    if (!isOpen) {
+      row.classList.add('audB-row--open');
+      row.querySelector('.audB-chip').textContent = '−';
+    }
+  });
+});
+
+// ============ OPTION D — chip filter ============
+const audDData = {
+  trading: {
+    desc: "Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.",
+    logos: [
+      ['/assets/logos/logo-jito-labs.svg', 'Jito', 26],
+      ['/assets/logos/logo-wintermute.svg', 'Wintermute', 22],
+      ['/assets/logos/logo-bonk.svg', 'BONK', 28],
+      ['/assets/logos/logo-bitfinex.svg', 'Bitfinex', 26],
+      ['/assets/logos/logo-swiss-borg.svg', 'SwissBorg', 26],
+    ],
+  },
+  dex: {
+    desc: "The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.",
+    logos: [
+      ['/assets/logos/logo-jupiter.svg', 'Jupiter', 30],
+      ['/assets/logos/logo-raydium.svg', 'Raydium', 26],
+      ['/assets/logos/logo-orca.svg', 'Orca', 26],
+      ['/assets/logos/logo-drift.svg', 'Drift', 32],
+      ['/assets/logos/logo-meteora.svg', 'Meteora', 24],
+      ['/assets/logos/logo-kamino.svg', 'Kamino', 24],
+    ],
+  },
+  wallet: {
+    desc: "Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.",
+    logos: [
+      ['/assets/logos/logo-phantom.svg', 'Phantom', 28],
+      ['/assets/logos/logo-step-finance.svg', 'Step Finance', 24],
+      ['/assets/logos/logo-streamflow.svg', 'Streamflow', 24],
+    ],
+  },
+  indexer: {
+    desc: "100% completeness, gap-free history, persistent cursors. The data infrastructure audit reports run on.",
+    logos: [
+      ['/assets/logos/logo-metaplex.svg', 'Metaplex', 16],
+      ['/assets/logos/logo-pyth.svg', 'Pyth', 26],
+      ['/assets/logos/logo-dialect.svg', 'Dialect', 22],
+      ['/assets/logos/logo-corbits.svg', 'Corbits', 22],
+    ],
+  },
+};
+document.querySelectorAll('[data-audD-chip]').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('[data-audD-chip]').forEach(c => c.classList.remove('audD-chip--active'));
+    chip.classList.add('audD-chip--active');
+    const key = chip.dataset.auddChip;
+    const data = audDData[key];
+    if (!data) return;
+    const descEl = document.getElementById('audD-desc');
+    const logosEl = document.getElementById('audD-logos');
+    logosEl.style.opacity = 0;
+    setTimeout(() => {
+      descEl.textContent = data.desc;
+      logosEl.innerHTML = data.logos.map(([src, alt, h]) =>
+        `<img src="${src}" alt="${alt}" style="height:${h}px">`
+      ).join('');
+      logosEl.style.opacity = 1;
+    }, 150);
+  });
+});
+</script>
+</body>
+</html>
