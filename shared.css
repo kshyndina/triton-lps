@@ -2140,29 +2140,31 @@ img { display: block; max-width: 100%; }
 }
 .audG-wall {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 12px;
   width: 100%;
   background: rgba(247, 247, 247, 0.5);
   border: 1px solid rgba(23, 23, 23, 0.05);
   border-radius: 24px;
-  padding: 20px;
+  padding: 16px;
 }
 .audG-cell {
-  aspect-ratio: 1;
+  height: 96px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fff;
   border-radius: 12px;
-  border: 1px solid rgba(23, 23, 23, 0.04);
-  padding: 14px;
+  border: 1px solid rgba(23, 23, 23, 0.06);
+  padding: 14px 24px;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 .audG-cell img {
-  max-height: 32px;
-  max-width: 80%;
+  max-height: 42px;
+  max-width: 100%;
   width: auto;
+  height: auto;
+  object-fit: contain;
   opacity: 1;
 }
 .audG-cell:hover {
