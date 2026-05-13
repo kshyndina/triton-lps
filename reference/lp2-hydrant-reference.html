@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hydrant — Query Solana history faster, easier, and more affordably — Triton One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav class="scrollnav">
+  <div class="scrollnav-inner">
+    <a href="index.html" class="scrollnav-logo"><img src="assets/icons/logomark.svg" alt="Triton" style="width:36px; height:36px"></a>
+    <div class="scrollnav-links">
+      <a href="#what">Hydrant features</a>
+      <a href="#compare">History before / after</a>
+      <a href="#why">Why Triton</a>
+      <a href="#stack">Triton stack</a>
+      <a href="#how">Get started</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="scrollnav-spacer"></div>
+    <div class="scrollnav-ctas">
+      <a class="btn btn-outline btn-sm" data-open-contact>Contact sales</a>
+      <a class="btn btn-primary btn-sm" data-action="endpoint">Get an endpoint</a>
+    </div>
+  </div>
+</nav>
+
+<div class="app">
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo"><img src="assets/icons/logomark.svg" alt="Triton" style="width:40px; height:40px"></a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-ctas">
+      <a class="btn btn-outline btn-sm" data-open-contact>Contact sales</a>
+      <a class="btn btn-primary btn-sm" data-action="endpoint">Get an endpoint</a>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="body-wrap">
+
+      <!-- HERO with 2-col scrolling testimonial carousel -->
+      <section class="section section--hero">
+        <div class="section-inner">
+          <div class="hero-h1">
+            <div class="hero-h1-left">
+              <h1 class="h1 h1--left">Query Solana history <span class="h-grad">faster, easier, and more affordably</span></h1>
+              <p class="lead lead--left">Benchmarked against public RPC at p50, it's 5x faster on gSFA, 38x on getSignatureStatuses, and 3.3x on getTransaction.</p>
+              <div class="email-pill">
+                <input type="email" placeholder="you@team.com">
+                <button class="btn btn-primary" data-action="endpoint">Get an endpoint</button>
+              </div>
+            </div>
+
+            <!-- Testimonial scrolling carousel (2 columns, opposite directions) -->
+            <div class="testimonial-scroll-wrapper">
+              <div class="testimonial-scroll-col">
+                <div class="tscroll-up">
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">rampa</div><div class="tscroll-card-handle">@rampa_cash</div></div></div><p class="tscroll-card-body">Triton is one of the strongest performance stacks in Web3, and their best-in-class RPC layer will help us deliver a faster, more reliable experience for our users on @solana</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Corbits</div><div class="tscroll-card-handle">@corbits_dev</div></div></div><p class="tscroll-card-body">We turned up our Corbits Monad Facilitator a notch with @triton_one RPC</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Bondum</div><div class="tscroll-card-handle">@Bondum_App</div></div></div><p class="tscroll-card-body">@triton_one always showing up for the ecosystem</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">mtndao</div><div class="tscroll-card-handle">@mtndao</div></div></div><p class="tscroll-card-body">Triton is an OG in the @solana ecosystem, and every great Solana team knows their products are best-in-class when it comes to latency and reliability.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">tributary.so</div><div class="tscroll-card-handle">@tributaryso</div></div></div><p class="tscroll-card-body">If you depend on a robust and stable @solana RPC for your websocket subscriptions, you better look into @triton_one now.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">xAxios AI</div><div class="tscroll-card-handle">@xaxiosai_new</div></div></div><p class="tscroll-card-body">I've mentioned Triton One before — it's incredibly fast, offers high RPS, and is much more affordable than most alternatives.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">toly</div><div class="tscroll-card-handle">@toly</div></div></div><p class="tscroll-card-body">@triton_one already can land a tx mid block based on the current blocks progressive state</p></a>
+                  <!-- duplicated for seamless loop -->
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">rampa</div><div class="tscroll-card-handle">@rampa_cash</div></div></div><p class="tscroll-card-body">Triton is one of the strongest performance stacks in Web3, and their best-in-class RPC layer will help us deliver a faster, more reliable experience for our users on @solana</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Corbits</div><div class="tscroll-card-handle">@corbits_dev</div></div></div><p class="tscroll-card-body">We turned up our Corbits Monad Facilitator a notch with @triton_one RPC</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Bondum</div><div class="tscroll-card-handle">@Bondum_App</div></div></div><p class="tscroll-card-body">@triton_one always showing up for the ecosystem</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">mtndao</div><div class="tscroll-card-handle">@mtndao</div></div></div><p class="tscroll-card-body">Triton is an OG in the @solana ecosystem, and every great Solana team knows their products are best-in-class when it comes to latency and reliability.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">tributary.so</div><div class="tscroll-card-handle">@tributaryso</div></div></div><p class="tscroll-card-body">If you depend on a robust and stable @solana RPC for your websocket subscriptions, you better look into @triton_one now.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">xAxios AI</div><div class="tscroll-card-handle">@xaxiosai_new</div></div></div><p class="tscroll-card-body">I've mentioned Triton One before — it's incredibly fast, offers high RPS, and is much more affordable than most alternatives.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">toly</div><div class="tscroll-card-handle">@toly</div></div></div><p class="tscroll-card-body">@triton_one already can land a tx mid block based on the current blocks progressive state</p></a>
+                </div>
+              </div>
+              <div class="testimonial-scroll-col">
+                <div class="tscroll-down">
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">xAxios AI</div><div class="tscroll-card-handle">@xaxiosai_new</div></div></div><p class="tscroll-card-body">Pump Guard was built entirely thanks to @triton_one. It's incredibly fast, and the system has been running 24/7 without a single issue so far.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Bondum</div><div class="tscroll-card-handle">@Bondum_App</div></div></div><p class="tscroll-card-body">When infrastructure is done right, it disappears. All that remains is performance. That's Triton.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">mtndao</div><div class="tscroll-card-handle">@mtndao</div></div></div><p class="tscroll-card-body">Premium @solana endpoint. Top-notch support. And: zero vendor lock-in</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">elchuo160.sol</div><div class="tscroll-card-handle">@elchuo160</div></div></div><p class="tscroll-card-body">From day zero, when @triton_one believed in us before we had even 1 player, they've powered everything behind the scenes of @Gableguardians.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">italo</div><div class="tscroll-card-handle">@italoacasas</div></div></div><p class="tscroll-card-body">After seeing how smoothly the MET airdrop ran, i want to highlight that if you're planning one soon, you should seriously consider working with @triton_one.</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Rocky Chris | Titan</div><div class="tscroll-card-handle">@realRockyChung</div></div></div><p class="tscroll-card-body">Getting new dedicated nodes from @triton_one is like getting presents on Christmas day. Unwrap and play ASAP</p></a>
+                  <a class="tscroll-card"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">austbot</div><div class="tscroll-card-handle">@_austbot</div></div></div><p class="tscroll-card-body">@triton_one endpoints are so good.</p></a>
+                  <!-- duplicated for seamless loop -->
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">xAxios AI</div><div class="tscroll-card-handle">@xaxiosai_new</div></div></div><p class="tscroll-card-body">Pump Guard was built entirely thanks to @triton_one. It's incredibly fast, and the system has been running 24/7 without a single issue so far.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Bondum</div><div class="tscroll-card-handle">@Bondum_App</div></div></div><p class="tscroll-card-body">When infrastructure is done right, it disappears. All that remains is performance. That's Triton.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">mtndao</div><div class="tscroll-card-handle">@mtndao</div></div></div><p class="tscroll-card-body">Premium @solana endpoint. Top-notch support. And: zero vendor lock-in</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">elchuo160.sol</div><div class="tscroll-card-handle">@elchuo160</div></div></div><p class="tscroll-card-body">From day zero, when @triton_one believed in us before we had even 1 player, they've powered everything behind the scenes of @Gableguardians.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">italo</div><div class="tscroll-card-handle">@italoacasas</div></div></div><p class="tscroll-card-body">After seeing how smoothly the MET airdrop ran, i want to highlight that if you're planning one soon, you should seriously consider working with @triton_one.</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">Rocky Chris | Titan</div><div class="tscroll-card-handle">@realRockyChung</div></div></div><p class="tscroll-card-body">Getting new dedicated nodes from @triton_one is like getting presents on Christmas day. Unwrap and play ASAP</p></a>
+                  <a class="tscroll-card" aria-hidden="true"><div class="tscroll-card-head"><div class="tscroll-card-avatar"></div><div><div class="tscroll-card-name">austbot</div><div class="tscroll-card-handle">@_austbot</div></div></div><p class="tscroll-card-body">@triton_one endpoints are so good.</p></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- LOGO STRIP (Raydium/Meteora/Tensor 2x bigger, Step removed) -->
+      <section class="section section--tight section--no-top">
+        <div class="section-inner">
+          <div class="logo-strip">
+            <p class="logo-strip-title">Powering wallets, explorers, and analytics across Solana since 2021.</p>
+            <div class="logo-strip-row">
+              <img src="assets/logos/logo-solana.svg" alt="Solana" style="height:22px">
+              <img src="assets/logos/logo-jupiter.svg" alt="Jupiter" style="height:32px">
+              <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:16px">
+              <img src="assets/logos/logo-phantom.svg" alt="Phantom" style="height:28px">
+              <img src="assets/logos/logo-orca.svg" alt="Orca" style="height:28px">
+              <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:34px">
+              <img src="assets/logos/logo-pyth.svg" alt="Pyth" style="height:26px">
+            </div>
+            <div class="logo-strip-row">
+              <img src="assets/logos/logo-raydium.svg" alt="Raydium" style="height:52px">
+              <img src="assets/logos/logo-kamino.svg" alt="Kamino" style="height:24px">
+              <img src="assets/logos/logo-marinade.svg" alt="Marinade" style="height:22px">
+              <img src="assets/logos/logo-jito-labs.svg" alt="Jito" style="height:26px">
+              <img src="assets/logos/logo-meteora.svg" alt="Meteora" style="height:44px">
+              <img src="assets/logos/logo-tensor.svg" alt="Tensor" style="height:44px">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION HEAD: rebuilt for how devs query -->
+      <section class="section" id="what">
+        <div class="section-inner">
+          <div class="section-head">
+            <h2 class="h2">Solana history, <span class="h-grad">rebuilt for how developers query it</span></h2>
+            <p class="section-sub">Hydrant indexes the entire ledger into ClickHouse, sorted for the exact patterns wallets, explorers, and analytics tools depend on.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VERTICAL ACCORDION + PREVIEW -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="vaccord-block">
+            <div class="vaccord">
+              <div class="vaccord-item vaccord-item--open" data-preview="wallet">
+                <div class="vaccord-row">
+<span class="vaccord-q">Wallet history in one call</span>
+                  <span class="vaccord-chip">−</span>
+                </div>
+                <div class="vaccord-body">
+                  <p>getTransactionsForAddress replaces the 5-step, 100-requests loop with a single call that returns the wallet's full activity, ATAs included.</p>
+                  <ul style="display:flex; flex-direction:column; gap:8px; margin-top:12px">
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Server-side filters on slot, blockTime, signature, and status</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Up to 100 full transactions or 1,000 signatures per page</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Resumable cursor for paginated reads</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> tokenAccounts: none | balanceChanged | all controls ATA inclusion</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="vaccord-item" data-preview="cache">
+                <div class="vaccord-row">
+<span class="vaccord-q">Sub-millisecond head cache for recent data</span>
+                  <span class="vaccord-chip">+</span>
+                </div>
+                <div class="vaccord-body">
+                  <p>Recent slots live in an in-memory head cache, resolving in under a millisecond without a database round-trip.</p>
+                  <ul style="display:flex; flex-direction:column; gap:8px; margin-top:12px">
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Sub-1ms reads on the most recent slots</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> processed commitment supported by all historical methods</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Same JSON-RPC method, no client change required</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Slot range parameters to scope reads for the fastest possible response</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="vaccord-item" data-preview="perf">
+                <div class="vaccord-row">
+<span class="vaccord-q">Superior performance across the entire ledger</span>
+                  <span class="vaccord-chip">+</span>
+                </div>
+                <div class="vaccord-body">
+                  <p>We rewrote the storage layer on ClickHouse and physically sorted every table for the queries it serves, so that reads skip irrelevant rows entirely.</p>
+                  <ul style="display:flex; flex-direction:column; gap:8px; margin-top:12px">
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Purpose-built materialised views match common access patterns</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Hot address optimisation. USDC and other heavy-traffic addresses get dedicated lookup tables</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Tiered storage keeps older epochs fast and cost-efficient to serve</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Slot range parameters for narrow lookups, replacing signature-based pagination</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="vaccord-item" data-preview="affordable">
+                <div class="vaccord-row">
+<span class="vaccord-q">Affordable and easy to query across every epoch</span>
+                  <span class="vaccord-chip">+</span>
+                </div>
+                <div class="vaccord-body">
+                  <p>We bill every historical method and epoch at the same rate as a standard RPC call. Developer ergonomics are built into the query interface.</p>
+                  <ul style="display:flex; flex-direction:column; gap:8px; margin-top:12px">
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Bidirectional sorting (asc or desc) on history reads</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Pagination cursor keeps subsequent calls clean, no resending filters on every page</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> $0.08 per GB of bandwidth and $10 per million requests, every epoch, every method</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Available on every subscription, no tier gating</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="visual-dashed" data-preview-target="wallet" style="min-height:480px; display:flex; flex-direction:column; padding:32px"><span class="visual-dashed-label">Code snippet</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6; max-width:340px">getTransactionsForAddress<br>&nbsp;&nbsp;address: "wallet…",<br>&nbsp;&nbsp;tokenAccounts: "all",<br>&nbsp;&nbsp;limit: 100,<br>&nbsp;&nbsp;sort: "desc"<br>// → full wallet history, one call</div></div>
+            <div class="visual-dashed" data-preview-target="cache" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Head cache</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6">Recent slots: &lt;1ms<br>processed → confirmed → finalised</div></div>
+            <div class="visual-dashed" data-preview-target="perf" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Performance</span><div style="font-family:var(--font-mono); font-size:13px; color:#553570; margin-top:20px; line-height:1.8"><div>getTransaction: <strong>138ms p50</strong>, 3.3x faster</div><div>getSignaturesForAddress: <strong>50ms p50</strong>, 5x faster</div><div>getSignatureStatuses: <strong>49ms p50</strong>, 38x faster</div></div></div>
+            <div class="visual-dashed" data-preview-target="affordable" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Pricing</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6">$0.08 / GB bandwidth<br>$10 / million requests<br>Every epoch. Every method.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEFORE / AFTER (moved here, tight padding-top) -->
+      <section class="section section--no-top" id="compare" style="padding-top:0">
+        <div class="section-inner">
+          <div class="compare">
+            <div class="compare-card compare-card--before">
+              <span class="compare-badge">Before</span>
+              <h3 class="h3">Bigtable-era history</h3>
+              <ul class="compare-list">
+                <li><img src="assets/icons/x-circle.svg" alt=""> Backend that's slow on random access and built on inefficient signature pagination</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Premium pricing for older epochs and closed-source methods behind a paywall</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Wallet history takes thousands of round-trips on any wallet with many ATAs</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Recent and deep history return at the same slow speed</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Spinners every time a user opens their history</li>
+              </ul>
+            </div>
+            <div class="compare-card compare-card--after">
+              <span class="compare-badge">After</span>
+              <h3 class="h3">ClickHouse, sorted for how you query</h3>
+              <ul class="compare-list">
+                <li><img src="assets/icons/check-circle.svg" alt=""> ClickHouse columnar storage, physically sorted for how you query, with native cursor pagination</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Same price for every method and epoch, releasing soon under AGPL</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Single call for full wallet history, ATAs included server-side</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Recent slots return in sub-1ms from the in-memory head cache</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Tiered storage makes deep history extremely fast to fetch</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY TRITON (3 purple cards) -->
+      <section class="section" id="why">
+        <div class="section-inner">
+          <div class="section-head">
+            <h2 class="h2">Why teams build on <span class="h-grad">Triton infrastructure</span></h2>
+            <p class="section-sub">Three pillars that separate Hydrant from public RPCs and closed-source archives.</p>
+          </div>
+          <div class="why-cards">
+            <div class="why-card">
+              <div class="why-card-icon"><img src="assets/icons/products/shield-check.svg" alt=""></div>
+              <h3 class="why-card-title">Intelligent abuse prevention</h3>
+              <ul style="display:flex; flex-direction:column; gap:8px; margin-top:4px">
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Access controls, origin allowlists, and request fingerprinting</li>
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Flexible RPS and connection limits on every subscription</li>
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> No tier-gated throttling that blocks legitimate workloads</li>
+              </ul>
+            </div>
+            <div class="why-card">
+              <div class="why-card-icon"><img src="assets/icons/products/paperplane.svg" alt=""></div>
+              <h3 class="why-card-title">Direct support channel on every endpoint</h3>
+              <ul style="display:flex; flex-direction:column; gap:8px; margin-top:4px">
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Direct line to the engineering team that built Hydrant</li>
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Configuration help, query tuning, urgent fixes</li>
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Reachable 24/7 across regions</li>
+              </ul>
+            </div>
+            <div class="why-card">
+              <div class="why-card-icon"><img src="assets/icons/products/globe.svg" alt=""></div>
+              <h3 class="why-card-title">Globally distributed modular infrastructure</h3>
+              <ul style="display:flex; flex-direction:column; gap:8px; margin-top:4px">
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Spikes absorbed across independent components</li>
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> Bare-metal clusters across 20+ points of presence on three continents</li>
+                <li style="display:flex; gap:8px; align-items:flex-start; font-size:14px; line-height:1.5; color:rgba(23,23,23,0.8)"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:2px"> GeoDNS routing with automatic failover</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- $125 UNLOCKS FULL STACK (now before How, gradient on headline, distinct icons, View docs links, Get an endpoint) -->
+      <section class="section" id="stack">
+        <div class="section-inner">
+          <div class="section-head">
+            <h2 class="h2">$125 unlocks <span class="h-grad">the full Triton stack</span></h2>
+            <p class="section-sub">Stream data, query state, send protected transactions, replay history — every Triton product runs on one subscription.</p>
+          </div>
+          <div class="ultra-block">
+            <div class="ultra-card">
+              <div>
+                <h2>End-to-end Solana <span class="h-grad">RPC, streaming, and data APIs</span></h2>
+                <p>One auth, one bill, one balance across the full stack. Top up anytime. Run any combination in parallel.</p>
+              </div>
+              <a class="btn btn-outline-dark" data-action="endpoint">Get an endpoint</a>
+            </div>
+            <div class="ultra-scroller-wrap">
+              <div class="ultra-scroller">
+                <div class="ultra-scroller-inner">
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/cube.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Standard RPC</div><div class="ultra-slide-desc">Solana JSON-RPC over HTTP/3 QUIC. Every standard method delivered up to 2x faster.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/treestructure.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Steamboat</div><div class="ultra-slide-desc">Custom indexes for getProgramAccounts on shared infrastructure, over 20x faster than full-node scans.</div></div><a class="ultra-slide-link" href="lp3.html">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/arrows-clockwise.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Account Sync</div><div class="ultra-slide-desc">Streaming-backed local cache for account reads. Sub-slot updates with a one-line SDK swap.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/lightning.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Dragon's Mouth gRPC</div><div class="ultra-slide-desc">Sub-slot real-time updates via gRPC. Server-side filtering and built-in auto-reconnect with ~1k slot replay.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/globe.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Whirligig WebSockets</div><div class="ultra-slide-desc">Drop-in for native Solana WebSockets, backed by gRPC. Intra-slot account updates and stable transactionSubscribe.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/database.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Fumarole persistent streams</div><div class="ultra-slide-desc">High-availability streaming with 96h rolling cache, cursor resume, and at-least-once delivery.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/squares.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Deshred transactions</div><div class="ultra-slide-desc">Pre-execution transactions from raw shreds, ~6.3ms faster than standard gRPC (p50). The earliest intent signal.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/rewind.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Faithful streams</div><div class="ultra-slide-desc">Replay every block and transaction from genesis through the same gRPC interface as live streams.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/paperplane.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Yellowstone Jet</div><div class="ultra-slide-desc">Direct-to-leader forwarding over QUIC with leader scheduling, connection pooling, retries. SWQoS included.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/scroll.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">DAS API</div><div class="ultra-slide-desc">The fastest way to query NFT and cNFT ownership, proofs, and metadata. Globally distributed DAS clusters.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/floppy.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">ZK Compression</div><div class="ultra-slide-desc">Photon-backed reads for compressed token accounts via Triton-hosted Light Protocol indexes.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/dollar.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Priority Fees API</div><div class="ultra-slide-desc">Smart fee estimation with tail-aware percentiles (1–10,000). Land transactions reliably without overpaying.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/storefront.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Metis swap API</div><div class="ultra-slide-desc">Quotes and swap routing across 20+ DEXes with exact-out and platform-fee support.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/arrowbend.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Titan swap API</div><div class="ultra-slide-desc">Meta-aggregation across 10+ liquidity sources, streaming quotes and routes via DART live re-optimisation.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                </div>
+              </div>
+              <div class="ultra-pager">
+                <button class="ultra-pager-btn ultra-pager-prev" aria-label="Previous">‹</button>
+                <span class="ultra-pager-count">1/14</span>
+                <button class="ultra-pager-btn ultra-pager-next" aria-label="Next">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW (now after Stack, purple circles 1/2/3) -->
+      <section class="section" id="how">
+        <div class="section-inner">
+          <div class="section-head">
+            <h2 class="h2">Three steps to a <span class="h-grad">working endpoint</span></h2>
+            <p class="section-sub">Self-onboarding takes ~2 minutes. Your existing calls return faster the moment you swap your URL.</p>
+          </div>
+          <div class="bento" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr">
+            <div class="bento-card" style="grid-column:auto; grid-row:auto">
+              <div class="step-circle">1</div>
+              <h3 class="h3">Fill out the onboarding form</h3>
+              <p class="body">On customers.triton.one. Takes a minute. We provision your endpoint and credentials right after.</p>
+              <div class="visual-dashed" style="min-height:120px; margin-top:auto"><span class="visual-dashed-label">customers.triton.one</span></div>
+            </div>
+            <div class="bento-card" style="grid-column:auto; grid-row:auto">
+              <div class="step-circle">2</div>
+              <h3 class="h3">Fund your balance with $125</h3>
+              <p class="body">Pay via stablecoins. Valid for 12 months, usable across every Triton product on Mainnet. Devnet is free.</p>
+              <div class="visual-dashed" style="min-height:120px; margin-top:auto"><span class="visual-dashed-label">USDC payment</span></div>
+            </div>
+            <div class="bento-card" style="grid-column:auto; grid-row:auto">
+              <div class="step-circle">3</div>
+              <h3 class="h3">Swap your RPC URL</h3>
+              <p class="body">Replace your existing URL with your Triton endpoint and enjoy premium RPCs. No code changes needed.</p>
+              <div class="visual-dashed" style="min-height:120px; margin-top:auto"><span class="visual-dashed-label">Terminal URL swap</span></div>
+            </div>
+          </div>
+          <a class="btn btn-primary" data-action="endpoint" style="align-self:center; margin-top:8px">Get an endpoint</a>
+        </div>
+      </section>
+
+      <!-- PRICING — exact pricing-page component, Simple PAYG only -->
+      <section class="section" id="pricing">
+        <div class="section-inner">
+          <div class="section-head">
+            <h2 class="h2">Unlock <span class="h-grad">enterprise performance</span> at a developer price point</h2>
+            <p class="section-sub">Because pricing follows actual cost, we offer the best rates we can to every builder without hiding anything in bundles, CUs or overage tables.</p>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-left">
+              <div class="pricing-left-top">
+                <div>
+                  <span class="pricing-eyebrow">Minimum deposit is $125</span>
+                  <p class="pricing-price" style="margin-top:16px">$125.00</p>
+                  <p class="pricing-price-label">USD</p>
+                </div>
+                <div>
+                  <p class="pricing-shipping-title">Start shipping with:</p>
+                  <ul class="pricing-features">
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> Global bare metal node network</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> GeoDNS routing, auto-failover</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> 1-1 support from senior engineers</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> Overage billed at the base rate</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> gRPC and WebSockets streaming</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> Full access to Yellowstone suite tools</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> Turnkey access to advanced APIs</li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="20" height="20" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg> Solana, Pythnet, Sui, and Monad</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="pricing-right">
+              <div class="pricing-row">
+                <p class="pricing-row-title">Standard RPC, indexed accounts, ledger queries</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth + $10 / million calls</p>
+              </div>
+              <div class="pricing-row">
+                <p class="pricing-row-title">Streaming services, Titan Prime API</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth</p>
+              </div>
+              <div class="pricing-row">
+                <p class="pricing-row-title">Metaplex, Photon APIs</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth + $50 / million calls</p>
+              </div>
+              <div class="pricing-row">
+                <p class="pricing-row-title">Metis API</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth + $80 / million calls</p>
+              </div>
+              <div class="pricing-input-row">
+                <div class="pricing-input">
+                  <span>$</span>
+                  <input type="number" value="125" min="125" name="deposit_amount" aria-label="Deposit amount in USD (minimum $125)">
+                </div>
+                <p class="pricing-foot">Deposit is prepaid, non-refundable, and valid for 12 months.</p>
+              </div>
+              <div class="pricing-cta-row">
+                <a class="btn btn-primary" data-action="endpoint">Get started <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="18" height="18" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm29.66-93.66a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32Z"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="section-inner">
+          <div class="section-head">
+            <h2 class="h2"><span class="h-grad">Frequently</span> asked questions</h2>
+            <p class="section-sub">Six things teams ask before they switch over.</p>
+          </div>
+          <div class="faq">
+            <div class="faq-item">
+              <div class="faq-row"><span class="faq-q">Do I need to change my code?</span><span class="faq-chip">+</span></div>
+              <div class="faq-answer">No. Hydrant serves the same standard Solana JSON-RPC methods with spec-compliant responses. getTransactionsForAddress is a new method you can adopt for single-call wallet history.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-row"><span class="faq-q">Does all history cost the same?</span><span class="faq-chip">+</span></div>
+              <div class="faq-answer">Yes. Every epoch from genesis to today is priced at $0.08 per GB plus $10 per million requests. No premium tier for older data.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-row"><span class="faq-q">How far back does the data go?</span><span class="faq-chip">+</span></div>
+              <div class="faq-answer">The complete Solana ledger from genesis. Every epoch, block, and transaction. No truncation.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-row"><span class="faq-q">How fresh is recent data?</span><span class="faq-chip">+</span></div>
+              <div class="faq-answer">Sub-1ms reads on the most recent slots through the head cache. processed commitment becomes available for historical methods on the same path.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-row"><span class="faq-q">Will Hydrant be open-source?</span><span class="faq-chip">+</span></div>
+              <div class="faq-answer">Yes, under AGPL [verify: ship date]. Run, audit, and extend it yourself.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-row"><span class="faq-q">What about real-time streams or account reads?</span><span class="faq-chip">+</span></div>
+              <div class="faq-answer">Different products. Hydrant handles historical queries. For real-time, use Dragon's Mouth (gRPC), Whirligig (WebSocket), Fumarole (persistent), or Deshred (pre-execution intent). For account reads, use Steamboat. All included with your deposit.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="page-gap"></div>
+
+  <div class="footer-strip-bottom" style="margin:0 auto; padding:24px 40px 56px">
+    <span>© Triton One 2026 · All rights reserved</span>
+    <div class="footer-strip-bottom-links"><a>Terms</a><a>Privacy</a><a>Cookies</a></div>
+  </div>
+
+  <!-- CONTACT MODAL: F7F7F7 bg, new copy, no asterisks, telegram (optional) -->
+  <div class="modal" id="contact-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" data-close-contact>×</button>
+      <h2 class="h2">Tell us about your <span class="h-grad">workload</span></h2>
+      <p class="body" style="margin-top:8px">We'll get back to you with the best setup for streaming, history, and account reads.</p>
+      <form class="modal-form">
+        <div class="connect-field"><label>Name</label><input placeholder="Your name" required></div>
+        <div class="connect-field"><label>Email</label><input type="email" placeholder="you@team.com" required></div>
+        <div class="connect-field"><label>Telegram handle (optional)</label><input placeholder="@handle"></div>
+        <div class="connect-field"><label>Use case</label>
+          <select required>
+            <option value="">Select…</option>
+            <option>Wallet transaction history</option>
+            <option>Tax or compliance</option>
+            <option>Analytics or dashboards</option>
+            <option>Explorer</option>
+            <option>Backtest or audit</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="connect-field connect-field--wide"><label>What are you building?</label><textarea placeholder="We are building..." required></textarea></div>
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+<script src="app.js"></script>
+<script>
+// Auto-populate testimonial avatars with initials (Twitter avatar fallback)
+document.querySelectorAll('.tscroll-card').forEach((card) => {
+  const name = (card.querySelector('.tscroll-card-name')?.textContent || '').trim();
+  if (!name) return;
+  const initials = name.split(/\s+/).map(s => s[0] || '').join('').slice(0, 2).toUpperCase();
+  const avatar = card.querySelector('.tscroll-card-avatar');
+  if (avatar && !avatar.textContent.trim()) avatar.textContent = initials;
+});
+</script>
+</body>
+</html>
