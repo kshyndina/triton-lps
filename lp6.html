@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LP6 — Audience component lab v2 — Triton One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .lab-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(122, 75, 160, 0.12);
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .lab-meta {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: rgba(23, 23, 23, 0.6);
+    margin-top: 8px;
+    max-width: 720px;
+  }
+  .opt-block { display: flex; flex-direction: column; gap: 24px; }
+
+  /* ============================================================== */
+  /* Option E — Stacked accordion cards (Spotify/Pinterest vibe)    */
+  /* ============================================================== */
+  .audE {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    height: 360px;
+  }
+  .audE-card {
+    flex: 1;
+    background: var(--soft-white);
+    border: 1px solid rgba(23, 23, 23, 0.06);
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+  }
+  .audE-card:hover { background: rgba(247, 247, 247, 0.85); }
+  .audE-card--active {
+    flex: 4;
+    background: linear-gradient(135deg, rgba(122,75,160,0.08), rgba(138,205,234,0.08));
+    border-color: rgba(122, 75, 160, 0.2);
+  }
+  .audE-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(122, 75, 160, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .audE-card-icon img { width: 22px; height: 22px; }
+  .audE-card-title {
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--foreground);
+    line-height: 1.2;
+    /* rotate when not active for compact label */
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin-top: auto;
+    transition: writing-mode 0.3s, transform 0.3s;
+  }
+  .audE-card--active .audE-card-title {
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-top: 0;
+    font-size: 22px;
+  }
+  .audE-card-body {
+    display: none;
+    margin-top: 8px;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .audE-card--active .audE-card-body { display: flex; }
+  .audE-card-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(23, 23, 23, 0.7);
+    max-width: 460px;
+  }
+  .audE-card-logos {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .audE-card-logos img { height: 26px; opacity: 0.85; }
+
+  /* ============================================================== */
+  /* Option F — Editorial bento with bold typography               */
+  /* ============================================================== */
+  .audF {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 12px;
+    width: 100%;
+  }
+  .audF-tile {
+    border-radius: 24px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .audF-tile:hover { transform: translateY(-3px); }
+  .audF-tile-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(23, 23, 23, 0.5);
+    letter-spacing: 0.08em;
+  }
+  .audF-tile-title {
+    font-family: var(--font-header);
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    margin-top: 6px;
+  }
+  .audF-tile-title em {
+    font-style: normal;
+    background: var(--grad-headline);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .audF-tile-desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(23, 23, 23, 0.6);
+    max-width: 320px;
+    margin-top: 12px;
+  }
+  .audF-tile-logos {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .audF-tile-logos img { height: 22px; opacity: 0.85; }
+  .audF-tile--feature {
+    grid-row: span 2;
+    background: linear-gradient(180deg, rgba(122,75,160,0.12), rgba(138,205,234,0.08));
+    border: 1px solid rgba(122, 75, 160, 0.15);
+  }
+  .audF-tile--feature .audF-tile-title { font-size: 44px; }
+  .audF-tile--feature .audF-tile-logos img { height: 28px; }
+  .audF-tile--peach { background: rgba(255, 200, 69, 0.18); }
+  .audF-tile--mint { background: rgba(138, 205, 234, 0.15); }
+  .audF-tile--lilac { background: rgba(122, 75, 160, 0.1); }
+
+  /* ============================================================== */
+  /* Option G — Logo wall with category filter highlight           */
+  /* ============================================================== */
+  .audG {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  .audG-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .audG-chips-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(23, 23, 23, 0.5);
+    margin-right: 4px;
+  }
+  .audG-chip {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(247, 247, 247, 0.7);
+    border: 1px solid rgba(23, 23, 23, 0.08);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(23, 23, 23, 0.7);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .audG-chip:hover { color: var(--primary); border-color: var(--primary); }
+  .audG-chip--active {
+    background: var(--foreground);
+    color: var(--soft-white);
+    border-color: var(--foreground);
+  }
+  .audG-chip-count {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    opacity: 0.7;
+    margin-left: 4px;
+  }
+  .audG-wall {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+    width: 100%;
+    background: rgba(247, 247, 247, 0.5);
+    border: 1px solid rgba(23, 23, 23, 0.05);
+    border-radius: 24px;
+    padding: 24px;
+  }
+  .audG-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(23, 23, 23, 0.04);
+    transition: opacity 0.3s, transform 0.2s, box-shadow 0.3s;
+    padding: 14px;
+  }
+  .audG-cell img { max-height: 28px; max-width: 100%; width: auto; opacity: 1; }
+  .audG-wall--filtered .audG-cell:not(.audG-cell--match) { opacity: 0.15; }
+  .audG-wall--filtered .audG-cell--match {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(122, 75, 160, 0.15);
+    border-color: rgba(122, 75, 160, 0.25);
+  }
+
+  /* ============================================================== */
+  /* Option H — Cinematic rotator (auto-cycle, big type, marquee)  */
+  /* ============================================================== */
+  .audH {
+    width: 100%;
+    border-radius: 28px;
+    padding: 48px;
+    background: linear-gradient(135deg, rgba(122,75,160,0.1) 0%, rgba(138,205,234,0.08) 50%, rgba(255,200,69,0.08) 100%);
+    border: 1px solid rgba(122, 75, 160, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .audH-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .audH-counter {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(23, 23, 23, 0.55);
+    letter-spacing: 0.06em;
+  }
+  .audH-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .audH-dot {
+    width: 28px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(23, 23, 23, 0.12);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .audH-dot--active { background: var(--primary); }
+  .audH-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 100px;
+  }
+  .audH-title {
+    font-family: var(--font-header);
+    font-weight: 900;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--foreground);
+    transition: opacity 0.3s ease;
+  }
+  .audH-title em {
+    font-style: normal;
+    background: var(--grad-headline);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .audH-desc {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(23, 23, 23, 0.7);
+    max-width: 640px;
+    transition: opacity 0.3s ease;
+  }
+  .audH-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .audH-marquee-row {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    animation: marqueeH 30s linear infinite;
+    width: max-content;
+  }
+  .audH-marquee-row img { height: 36px; opacity: 0.85; flex-shrink: 0; }
+  @keyframes marqueeH {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .audH--fading .audH-title, .audH--fading .audH-desc { opacity: 0; }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo"><img src="assets/icons/logomark.svg" alt="Triton" style="width:40px; height:40px"></a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-ctas">
+      <a class="btn btn-outline btn-sm" href="lp5.html">← LP5 (v1 options)</a>
+      <a class="btn btn-outline btn-sm" href="lp1.html">← Back to LPs</a>
+    </div>
+  </div>
+
+  <main class="main">
+    <div class="body-wrap">
+
+      <!-- Intro -->
+      <section class="section section--hero">
+        <div class="section-inner">
+          <div class="section-head">
+            <span class="lab-label">Component lab v2</span>
+            <h1 class="h1">Audience categories — <span class="h-grad">four creative options</span></h1>
+            <p class="lead">More playful, less corporate. Same 4 categories + logos, four new ways to present them.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION E ============ -->
+      <section class="section section--no-top">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option E · Stacked accordion cards</span>
+            <p class="lab-meta">Four cards laid horizontally. At rest, each shows a small icon + a vertical category title. Click one — it expands wide, others shrink to thin spines. Spotify "stacked cards" / Pinterest "browse" vibe. Always shows all 4 categories at a glance.</p>
+          </div>
+          <div class="audE" id="audE">
+            <div class="audE-card audE-card--active" data-audE="trading">
+              <div class="audE-card-icon"><img src="assets/icons/products/lightning.svg" alt=""></div>
+              <div class="audE-card-title">Trading &amp; market makers</div>
+              <div class="audE-card-body">
+                <p class="audE-card-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
+                <div class="audE-card-logos">
+                  <img src="assets/logos/logo-jito-labs.svg" alt="Jito">
+                  <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:22px">
+                  <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:30px">
+                  <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                  <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+                </div>
+              </div>
+            </div>
+            <div class="audE-card" data-audE="dex">
+              <div class="audE-card-icon"><img src="assets/icons/products/storefront.svg" alt=""></div>
+              <div class="audE-card-title">DEXs, AMMs &amp; DeFi</div>
+              <div class="audE-card-body">
+                <p class="audE-card-desc">The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.</p>
+                <div class="audE-card-logos">
+                  <img src="assets/logos/logo-jupiter.svg" alt="Jupiter">
+                  <img src="assets/logos/logo-raydium.svg" alt="Raydium">
+                  <img src="assets/logos/logo-orca.svg" alt="Orca">
+                  <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:32px">
+                  <img src="assets/logos/logo-meteora.svg" alt="Meteora">
+                  <img src="assets/logos/logo-kamino.svg" alt="Kamino">
+                </div>
+              </div>
+            </div>
+            <div class="audE-card" data-audE="wallet">
+              <div class="audE-card-icon"><img src="assets/icons/products/cube.svg" alt=""></div>
+              <div class="audE-card-title">Wallets &amp; custodians</div>
+              <div class="audE-card-body">
+                <p class="audE-card-desc">Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.</p>
+                <div class="audE-card-logos">
+                  <img src="assets/logos/logo-phantom.svg" alt="Phantom">
+                  <img src="assets/logos/logo-step-finance.svg" alt="Step Finance">
+                  <img src="assets/logos/logo-streamflow.svg" alt="Streamflow">
+                </div>
+              </div>
+            </div>
+            <div class="audE-card" data-audE="indexer">
+              <div class="audE-card-icon"><img src="assets/icons/products/treestructure.svg" alt=""></div>
+              <div class="audE-card-title">Indexers &amp; analytics</div>
+              <div class="audE-card-body">
+                <p class="audE-card-desc">100% completeness, gap-free history, persistent cursors. The data infrastructure audit reports run on.</p>
+                <div class="audE-card-logos">
+                  <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:18px">
+                  <img src="assets/logos/logo-pyth.svg" alt="Pyth">
+                  <img src="assets/logos/logo-dialect.svg" alt="Dialect">
+                  <img src="assets/logos/logo-corbits.svg" alt="Corbits">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION F ============ -->
+      <section class="section">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option F · Editorial bento</span>
+            <p class="lab-meta">Asymmetric 4-tile grid. One feature tile (left, full height, gradient bg). Three smaller tiles right, each tinted differently (peach / mint / lilac). Big editorial typography. Logos as inline chips. No interaction needed — it's all visible at once. Magazine-cover energy.</p>
+          </div>
+          <div class="audF">
+            <div class="audF-tile audF-tile--feature">
+              <div>
+                <span class="audF-tile-num">01 · Featured</span>
+                <h3 class="audF-tile-title">Trading &amp; <em>market makers</em></h3>
+                <p class="audF-tile-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
+              </div>
+              <div class="audF-tile-logos">
+                <img src="assets/logos/logo-jito-labs.svg" alt="Jito">
+                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:22px">
+                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:30px">
+                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+              </div>
+            </div>
+            <div class="audF-tile audF-tile--mint">
+              <div>
+                <span class="audF-tile-num">02</span>
+                <h3 class="audF-tile-title">DEXs &amp; <em>DeFi</em></h3>
+              </div>
+              <div class="audF-tile-logos">
+                <img src="assets/logos/logo-jupiter.svg" alt="Jupiter">
+                <img src="assets/logos/logo-raydium.svg" alt="Raydium">
+                <img src="assets/logos/logo-orca.svg" alt="Orca">
+                <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:26px">
+                <img src="assets/logos/logo-kamino.svg" alt="Kamino">
+              </div>
+            </div>
+            <div class="audF-tile audF-tile--peach">
+              <div>
+                <span class="audF-tile-num">03</span>
+                <h3 class="audF-tile-title"><em>Wallets</em> &amp; custodians</h3>
+              </div>
+              <div class="audF-tile-logos">
+                <img src="assets/logos/logo-phantom.svg" alt="Phantom">
+                <img src="assets/logos/logo-step-finance.svg" alt="Step Finance" style="height:20px">
+                <img src="assets/logos/logo-streamflow.svg" alt="Streamflow">
+              </div>
+            </div>
+            <div class="audF-tile audF-tile--lilac" style="grid-column: 2 / span 2">
+              <div>
+                <span class="audF-tile-num">04</span>
+                <h3 class="audF-tile-title">Indexers, analytics &amp; <em>compliance</em></h3>
+              </div>
+              <div class="audF-tile-logos">
+                <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:16px">
+                <img src="assets/logos/logo-pyth.svg" alt="Pyth">
+                <img src="assets/logos/logo-dialect.svg" alt="Dialect">
+                <img src="assets/logos/logo-corbits.svg" alt="Corbits">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION G ============ -->
+      <section class="section">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option G · Logo wall + category filter</span>
+            <p class="lab-meta">Every customer logo shown in a 7-column grid. Filter chips above ("All" / category names + counts). Click a chip → matching logos brighten, others dim to 15%. Default is "All" — everyone lit. Looks like a wall of fame. Density doubles as proof.</p>
+          </div>
+          <div class="audG">
+            <div class="audG-chips">
+              <span class="audG-chips-label">Filter:</span>
+              <button class="audG-chip audG-chip--active" data-audG-chip="all">All<span class="audG-chip-count">19</span></button>
+              <button class="audG-chip" data-audG-chip="trading">Trading<span class="audG-chip-count">5</span></button>
+              <button class="audG-chip" data-audG-chip="dex">DEXs &amp; DeFi<span class="audG-chip-count">6</span></button>
+              <button class="audG-chip" data-audG-chip="wallet">Wallets<span class="audG-chip-count">3</span></button>
+              <button class="audG-chip" data-audG-chip="indexer">Indexers<span class="audG-chip-count">4</span></button>
+            </div>
+            <div class="audG-wall" id="audG-wall">
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-jito-labs.svg" alt="Jito"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-wintermute.svg" alt="Wintermute"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-bonk.svg" alt="BONK"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-jupiter.svg" alt="Jupiter"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-raydium.svg" alt="Raydium"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-orca.svg" alt="Orca"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-drift.svg" alt="Drift"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-meteora.svg" alt="Meteora"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-kamino.svg" alt="Kamino"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-phantom.svg" alt="Phantom"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-step-finance.svg" alt="Step Finance"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-streamflow.svg" alt="Streamflow"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-metaplex.svg" alt="Metaplex"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-pyth.svg" alt="Pyth"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-dialect.svg" alt="Dialect"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-corbits.svg" alt="Corbits"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-marinade.svg" alt="Marinade"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTION H ============ -->
+      <section class="section">
+        <div class="section-inner section-inner--left">
+          <div>
+            <span class="lab-label">Option H · Cinematic rotator</span>
+            <p class="lab-meta">Single category on stage at a time. Big editorial headline with gradient on one word. Description below. Customer logos auto-marquee at the bottom. 4 dots up top show position; auto-cycles every 5s (also click to jump). Most dynamic, least vertical space. Reads like a billboard.</p>
+          </div>
+          <div class="audH" id="audH">
+            <div class="audH-meta">
+              <span class="audH-counter">01 / 04 · Trading &amp; market makers</span>
+              <div class="audH-dots">
+                <span class="audH-dot audH-dot--active" data-audH-dot="0"></span>
+                <span class="audH-dot" data-audH-dot="1"></span>
+                <span class="audH-dot" data-audH-dot="2"></span>
+                <span class="audH-dot" data-audH-dot="3"></span>
+              </div>
+            </div>
+            <div class="audH-stage">
+              <h2 class="audH-title" id="audH-title">Trading &amp; <em>market makers</em></h2>
+              <p class="audH-desc" id="audH-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
+            </div>
+            <div class="audH-marquee">
+              <div class="audH-marquee-row" id="audH-marquee">
+                <img src="assets/logos/logo-jito-labs.svg" alt="Jito">
+                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:26px">
+                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:40px">
+                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
+                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
+                <!-- duplicate for seamless loop -->
+                <img src="assets/logos/logo-jito-labs.svg" alt="Jito" aria-hidden="true">
+                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:26px" aria-hidden="true">
+                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:40px" aria-hidden="true">
+                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex" aria-hidden="true">
+                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg" aria-hidden="true">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="page-gap"></div>
+  <div class="footer-strip-bottom" style="margin:0 auto; padding:24px 40px 56px">
+    <span>© Triton One 2026 · All rights reserved</span>
+    <div class="footer-strip-bottom-links"><a>Terms</a><a>Privacy</a><a>Cookies</a></div>
+  </div>
+
+</div>
+
+<script>
+// ============ OPTION E — click to expand a card ============
+document.querySelectorAll('.audE-card').forEach((card) => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.audE-card').forEach(c => c.classList.remove('audE-card--active'));
+    card.classList.add('audE-card--active');
+  });
+});
+
+// ============ OPTION G — chip filter ============
+document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('[data-audG-chip]').forEach(c => c.classList.remove('audG-chip--active'));
+    chip.classList.add('audG-chip--active');
+    const cat = chip.dataset.audgChip;
+    const wall = document.getElementById('audG-wall');
+    document.querySelectorAll('.audG-cell').forEach(cell => {
+      cell.classList.toggle('audG-cell--match', cell.dataset.audgCat === cat);
+    });
+    wall.classList.toggle('audG-wall--filtered', cat !== 'all');
+  });
+});
+
+// ============ OPTION H — cinematic rotator ============
+const audHData = [
+  {
+    counter: '01 / 04 · Trading & market makers',
+    title: 'Trading &amp; <em>market makers</em>',
+    desc: 'Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.',
+    logos: [
+      ['assets/logos/logo-jito-labs.svg', 'Jito', 36],
+      ['assets/logos/logo-wintermute.svg', 'Wintermute', 26],
+      ['assets/logos/logo-bonk.svg', 'BONK', 40],
+      ['assets/logos/logo-bitfinex.svg', 'Bitfinex', 36],
+      ['assets/logos/logo-swiss-borg.svg', 'SwissBorg', 36],
+    ],
+  },
+  {
+    counter: '02 / 04 · DEXs, AMMs & DeFi',
+    title: 'DEXs, AMMs &amp; <em>DeFi protocols</em>',
+    desc: 'The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.',
+    logos: [
+      ['assets/logos/logo-jupiter.svg', 'Jupiter', 40],
+      ['assets/logos/logo-raydium.svg', 'Raydium', 32],
+      ['assets/logos/logo-orca.svg', 'Orca', 36],
+      ['assets/logos/logo-drift.svg', 'Drift', 40],
+      ['assets/logos/logo-meteora.svg', 'Meteora', 32],
+      ['assets/logos/logo-kamino.svg', 'Kamino', 32],
+    ],
+  },
+  {
+    counter: '03 / 04 · Wallets, portfolios & custodians',
+    title: '<em>Wallets</em> &amp; custodians',
+    desc: 'Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.',
+    logos: [
+      ['assets/logos/logo-phantom.svg', 'Phantom', 40],
+      ['assets/logos/logo-step-finance.svg', 'Step Finance', 30],
+      ['assets/logos/logo-streamflow.svg', 'Streamflow', 32],
+    ],
+  },
+  {
+    counter: '04 / 04 · Indexers, analytics & compliance',
+    title: 'Indexers, analytics &amp; <em>compliance</em>',
+    desc: '100% completeness, gap-free history, persistent cursors. The data infrastructure audit reports run on.',
+    logos: [
+      ['assets/logos/logo-metaplex.svg', 'Metaplex', 20],
+      ['assets/logos/logo-pyth.svg', 'Pyth', 32],
+      ['assets/logos/logo-dialect.svg', 'Dialect', 28],
+      ['assets/logos/logo-corbits.svg', 'Corbits', 28],
+    ],
+  },
+];
+
+const audH = document.getElementById('audH');
+const audHTitle = document.getElementById('audH-title');
+const audHDesc = document.getElementById('audH-desc');
+const audHCounter = audH.querySelector('.audH-counter');
+const audHMarquee = document.getElementById('audH-marquee');
+let audHIndex = 0;
+let audHTimer = null;
+
+function renderH(idx) {
+  const d = audHData[idx];
+  if (!d) return;
+  audH.classList.add('audH--fading');
+  setTimeout(() => {
+    audHTitle.innerHTML = d.title;
+    audHDesc.textContent = d.desc;
+    audHCounter.textContent = d.counter;
+    // build marquee (duplicate for seamless loop)
+    const logoHtml = d.logos.concat(d.logos).map(([src, alt, h]) =>
+      `<img src="${src}" alt="${alt}" style="height:${h}px">`
+    ).join('');
+    audHMarquee.innerHTML = logoHtml;
+    document.querySelectorAll('[data-audH-dot]').forEach((dot, i) =>
+      dot.classList.toggle('audH-dot--active', i === idx)
+    );
+    audH.classList.remove('audH--fading');
+  }, 250);
+}
+
+function startTimer() {
+  clearInterval(audHTimer);
+  audHTimer = setInterval(() => {
+    audHIndex = (audHIndex + 1) % audHData.length;
+    renderH(audHIndex);
+  }, 5000);
+}
+
+document.querySelectorAll('[data-audH-dot]').forEach((dot) => {
+  dot.addEventListener('click', () => {
+    audHIndex = parseInt(dot.dataset.audhDot, 10);
+    renderH(audHIndex);
+    startTimer();
+  });
+});
+
+startTimer();
+</script>
+</body>
+</html>
