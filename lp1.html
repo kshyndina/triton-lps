@@ -25,7 +25,7 @@
     <div class="scrollnav-spacer"></div>
     <div class="scrollnav-ctas">
       <a class="btn btn-outline btn-sm" data-open-contact>Contact sales</a>
-      <a class="btn btn-primary btn-sm" data-action="claim">Get an endpoint</a>
+      <a class="btn btn-primary btn-sm" data-action="claim">Start building with $25</a>
     </div>
   </div>
 </nav>
@@ -37,14 +37,14 @@
     <div class="topbar-spacer"></div>
     <div class="topbar-ctas">
       <a class="btn btn-outline btn-sm" data-open-contact>Contact sales</a>
-      <a class="btn btn-primary btn-sm" data-action="claim">Get an endpoint</a>
+      <a class="btn btn-primary btn-sm" data-action="claim">Start building with $25</a>
     </div>
   </div>
 
   <main class="main">
     <div class="body-wrap">
 
-      <!-- HERO -->
+      <!-- HERO (no logos here anymore) -->
       <section class="section section--hero">
         <div class="section-inner">
           <div class="lp1-hero">
@@ -53,7 +53,7 @@
               <p class="lead lead--left">Fund your balance with $25 and access every Triton product for 12 months.</p>
               <div class="email-pill">
                 <input type="email" placeholder="you@team.com">
-                <button class="btn btn-primary" data-action="claim">Get an endpoint</button>
+                <button class="btn btn-primary" data-action="claim">Start building with $25</button>
               </div>
             </div>
             <div class="live-card">
@@ -87,35 +87,10 @@
               <p class="testimonial-quote">When infrastructure is done right, it disappears. All systems running on Triton</p>
             </div>
           </div>
-
-          <div class="partners" style="margin-top: 32px">
-            <p class="partners-title">Powering the teams defining Solana</p>
-            <div class="partners-row">
-              <img class="partner-solana" src="assets/logos/logo-solana.svg" alt="Solana">
-              <img class="partner-jupiter" src="assets/logos/logo-jupiter.svg" alt="Jupiter">
-              <img class="partner-metaplex" src="assets/logos/logo-metaplex.svg" alt="Metaplex">
-              <img class="partner-phantom" src="assets/logos/logo-phantom.svg" alt="Phantom">
-              <img class="partner-orca" src="assets/logos/logo-orca.svg" alt="Orca">
-              <img class="partner-drift" src="assets/logos/logo-drift.svg" alt="Drift">
-              <img class="partner-pyth" src="assets/logos/logo-pyth.svg" alt="Pyth">
-            </div>
-          </div>
         </div>
       </section>
 
-      <!-- STATS (updated numbers) -->
-      <section class="section section--tight">
-        <div class="section-inner">
-          <div class="stats">
-            <div><div class="stat-num h-grad">99.99%</div><div class="stat-label">Uptime across regions</div></div>
-            <div><div class="stat-num h-grad">20x</div><div class="stat-label">Faster gPA with custom indexes</div></div>
-            <div><div class="stat-num h-grad">&lt;1ms</div><div class="stat-label">Recent Solana history reads</div></div>
-            <div><div class="stat-num h-grad">10</div><div class="stat-label">Points of presence on three continents</div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CORE PRODUCT CATEGORIES (renamed) -->
+      <!-- CORE PRODUCT CATEGORIES -->
       <section class="section" id="categories">
         <div class="section-inner">
           <div class="section-head">
@@ -131,17 +106,16 @@
 
           <div class="cap-card" data-tab-panel="streaming" style="display:grid">
             <div class="cap-card-left">
-              <h3 class="h3">End-to-end real-time and historical streaming</h3>
-              <p class="body">Five streaming products built on Yellowstone, the open-source gRPC layer Triton authors. Pick one or run them in parallel on the same auth.</p>
+              <h3 class="h3">Low-latency, reliable real-time streaming</h3>
+              <p class="body">Built on Yellowstone, the open-source gRPC layer Triton authors. Pick one or run them in parallel on the same auth.</p>
               <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> Account Sync for teams that want streaming benefits with no streaming integration</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Deshred transactions, pre-execution intent 20ms faster than standard gRPC at p90</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Account Sync for teams that want streaming benefits without integrating streaming</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Deshred transactions, pre-execution intent ~20ms faster than standard gRPC at p90</li>
                 <li><img src="assets/icons/check-circle.svg" alt=""> Dragon's Mouth gRPC for sub-slot updates on accounts, transactions, slots, and blocks</li>
                 <li><img src="assets/icons/check-circle.svg" alt=""> Whirligig real-time updates, improved WebSockets backed by gRPC, stable transactionSubscribe</li>
                 <li><img src="assets/icons/check-circle.svg" alt=""> Fumarole persistent streams with 96h cursor resume and at-least-once delivery</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Old Faithful streams to replay every block and transaction since genesis through the same gRPC</li>
               </ul>
-              <a class="btn btn-primary" data-action="claim" style="align-self:flex-start; margin-top:8px">Get started with $25</a>
+              <a class="btn btn-primary" data-action="claim" style="align-self:flex-start; margin-top:8px">Start building with $25</a>
             </div>
             <div class="visual-dashed"><span class="visual-dashed-label">Streaming visual</span></div>
           </div>
@@ -151,26 +125,27 @@
               <h3 class="h3">Full Solana ledger, queryable in milliseconds</h3>
               <p class="body">Hydrant rebuilds Solana history on ClickHouse. Every standard JSON-RPC method, every epoch, same flat pricing.</p>
               <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> getTransaction in 138ms p50, 3.3x faster than public RPC</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> getSignaturesForAddress in 50ms p50, 5x faster</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> getSignatureStatuses in 49ms p50, 38x faster</li>
                 <li><img src="assets/icons/check-circle.svg" alt=""> Single-call wallet history via getTransactionsForAddress with ATAs server-side</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Sub-1ms reads on the most recent slots through the head cache</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Old Faithful streams to replay every block from genesis through the same gRPC interface as live</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Sub-1ms reads on the most recent slots through the in-memory head cache</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Bidirectional sorting and native cursor pagination for seamless resumes over large batches</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Slot range parameters scope reads to exactly the window you need for fastest response</li>
               </ul>
               <a class="btn btn-outline-dark" href="lp2.html" style="align-self:flex-start; margin-top:8px">Learn more about Hydrant</a>
             </div>
-            <div class="visual-dashed"><span class="visual-dashed-label">History visual</span></div>
+            <div class="visual-dashed"><span class="visual-dashed-label">History benchmark visual</span></div>
           </div>
 
           <div class="cap-card" data-tab-panel="accounts" style="display:none">
             <div class="cap-card-left">
-              <h3 class="h3">Indexed account reads, no premium tier</h3>
-              <p class="body">Steamboat replaces Agave's full-state scans with custom Postgres indexes on shared infrastructure. Same JSON-RPC, up to 20x faster.</p>
+              <h3 class="h3">Indexed account reads on shared infrastructure</h3>
+              <p class="body">Steamboat replaces Agave's full-state scans with custom Postgres indexes. Same per-call pricing as standard RPC whether your query hits an index or falls back to a scan.</p>
               <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> getProgramAccounts up to 20x faster than vanilla scans</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Token-account hot paths for owner, delegate, and mint</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Auto-indexed from your traffic, no manual setup, no index requests</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Same JSON-RPC interface, same per-call price as standard RPC</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Custom indexes for getProgramAccounts on shared infrastructure, no dedicated node required</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Token-account hot paths for owner, delegate, and mint indexed out of the box</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Auto-indexed from your traffic, no manual setup, no index requests to file</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Immediate startup bootstrapped from a Solana snapshot, every query resolves from day one</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Same per-call price as standard RPC, no premium for indexed reads</li>
               </ul>
               <a class="btn btn-outline-dark" href="lp3.html" style="align-self:flex-start; margin-top:8px">Learn more about Steamboat</a>
             </div>
@@ -195,7 +170,7 @@
         </div>
       </section>
 
-      <!-- WHY TRITON (6 purple cards with bullets) -->
+      <!-- WHY TRITON (6 purple cards w/ bullets, icon now in normal flow) -->
       <section class="section" id="why">
         <div class="section-inner">
           <div class="section-head">
@@ -267,13 +242,22 @@
         </div>
       </section>
 
-      <!-- WHO IS IT FOR — full logo wall + category filter (hides non-matches) -->
+      <!-- WHO IS IT FOR — stats + logo wall + filter -->
       <section class="section" id="who">
         <div class="section-inner section-inner--left">
           <div class="section-head">
             <h2 class="h2">Triton powers the teams <span class="h-grad">defining Solana</span></h2>
             <p class="section-sub">Since the start of Solana DeFi.</p>
           </div>
+
+          <!-- Stats moved here -->
+          <div class="stats" style="margin-bottom: 16px">
+            <div><div class="stat-num h-grad">99.99%</div><div class="stat-label">Uptime across regions</div></div>
+            <div><div class="stat-num h-grad">20x</div><div class="stat-label">Faster gPA with custom indexes</div></div>
+            <div><div class="stat-num h-grad">&lt;1ms</div><div class="stat-label">Recent Solana history reads</div></div>
+            <div><div class="stat-num h-grad">10</div><div class="stat-label">Points of presence on three continents</div></div>
+          </div>
+
           <div class="audG">
             <div class="audG-chips">
               <span class="audG-chips-label">Filter:</span>
@@ -356,7 +340,7 @@
         </div>
       </section>
 
-      <!-- WHAT'S INCLUDED FOR $25 (moved here, right before 3 steps) -->
+      <!-- WHAT'S INCLUDED FOR $25 -->
       <section class="section" id="stack">
         <div class="section-inner">
           <div class="section-head">
@@ -369,7 +353,7 @@
                 <h2>One subscription. All the features.</h2>
                 <p>Stream real-time and historical data at max throughput, index real-time with 4-day rolling cache and data guarantees, query accounts through custom indexes and history reliably and affordably, send protected transactions, simulate bundles, and more.</p>
               </div>
-              <a class="btn btn-outline-dark" data-action="claim">View pricing</a>
+              <a class="btn btn-outline-dark" data-action="claim">Start building with $25</a>
             </div>
             <div class="ultra-scroller-wrap">
               <div class="ultra-scroller">
@@ -381,7 +365,7 @@
                   <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/lightning.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Dragon's Mouth gRPC</div><div class="ultra-slide-desc">Sub-slot real-time updates via gRPC, built and maintained by Triton. The Solana streaming standard.</div></div><a class="ultra-slide-link">View docs →</a></div>
                   <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/globe.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Whirligig WebSockets</div><div class="ultra-slide-desc">Drop-in for native Solana WebSockets, backed by gRPC. Stable transactionSubscribe and intra-slot account updates.</div></div><a class="ultra-slide-link">View docs →</a></div>
                   <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/database.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Fumarole reliable streams</div><div class="ultra-slide-desc">Redundant streaming layer with 96h of stored data, cursor resume, and at-least-once delivery.</div></div><a class="ultra-slide-link">View docs →</a></div>
-                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/squares.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Deshred transactions</div><div class="ultra-slide-desc">Pre-execution transactions reconstructed from raw shreds, p50 around 6.3ms from shred arrival.</div></div><a class="ultra-slide-link">View docs →</a></div>
+                  <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/squares.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Deshred transactions</div><div class="ultra-slide-desc">Pre-execution transactions reconstructed from raw shreds, ~20ms faster than standard gRPC at p90.</div></div><a class="ultra-slide-link">View docs →</a></div>
                   <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/rewind.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Old Faithful streams</div><div class="ultra-slide-desc">Replay every block from genesis through the same gRPC interface as live streams.</div></div><a class="ultra-slide-link">View docs →</a></div>
                   <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/paperplane.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Yellowstone Jet</div><div class="ultra-slide-desc">Direct-to-leader forwarding over QUIC with leader scheduling, connection pooling, and retries.</div></div><a class="ultra-slide-link">View docs →</a></div>
                   <div class="ultra-slide"><div class="ultra-slide-icon"><img src="assets/icons/products/cube.svg" alt=""></div><div class="ultra-slide-body"><div class="ultra-slide-name">Jito bundles</div><div class="ultra-slide-desc">Atomic transaction bundles with MEV protection. Submit directly to block engines or via Triton's routing layer.</div></div><a class="ultra-slide-link">View docs →</a></div>
@@ -402,7 +386,7 @@
         </div>
       </section>
 
-      <!-- HOW (3 steps, immediately after What's Included) -->
+      <!-- 3 STEPS -->
       <section class="section" id="how">
         <div class="section-inner">
           <div class="section-head">
@@ -429,51 +413,39 @@
               <div class="visual-dashed" style="min-height:120px; margin-top:auto"><span class="visual-dashed-label">Terminal URL swap</span></div>
             </div>
           </div>
-          <a class="btn btn-primary" data-action="claim" style="align-self:center; margin-top:8px">Get an endpoint</a>
+          <a class="btn btn-primary" data-action="claim" style="align-self:center; margin-top:8px">Start building with $25</a>
         </div>
       </section>
 
-      <!-- BUILD YOUR STACK (wizard, split-screen with intro left + form right) -->
+      <!-- BUILD YOUR STACK — split-screen, 4 steps, suggested stack at end -->
       <section class="section" id="qualifier">
         <div class="section-inner section-inner--left">
           <div class="build-stack-split">
             <div class="build-stack-intro">
               <h2>Build your <span class="h-grad">stack</span></h2>
-              <p>Five questions, around 90 seconds. We pre-configure the right products, rate limits, and region for your workload.</p>
+              <p>Four questions, around 60 seconds. We pre-configure the right products, rate limits, and region for your workload.</p>
               <ul class="build-stack-bullets">
-                <li><img src="assets/icons/check-circle.svg" alt=""> No spam — answers route straight to senior engineering</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Answers route straight to senior engineering</li>
                 <li><img src="assets/icons/check-circle.svg" alt=""> Pre-tuned endpoint ready in under 2 minutes from submission</li>
                 <li><img src="assets/icons/check-circle.svg" alt=""> Recommendations cover streaming, history, accounts, and sending</li>
               </ul>
             </div>
-            <div class="wizard" data-final-cta="Get my endpoint" data-final-action="open-contact">
-              <span class="wizard-chip">STEP 1 OF 5</span>
+            <div class="wizard" data-final-cta="Start building with $25" data-final-action="claim">
               <div class="wizard-head">
                 <div class="wizard-progress"><div class="wizard-progress-fill"></div></div>
-                <span class="wizard-counter">Step 1 of 5</span>
+                <span class="wizard-counter">Step 1 of 4</span>
               </div>
 
               <div class="wizard-step wizard-step--active" data-required="one">
                 <h3 class="wizard-q">What are you working on?</h3>
                 <p class="wizard-help">Pick the closest match. We'll tailor the recommendation.</p>
                 <div class="wizard-options">
-                  <button class="wizard-option wizard-option--card" data-value="trading"><div class="wizard-option-icon">▲</div><div class="wizard-option-text"><span class="wizard-option-title">A trading or DeFi product</span><span class="wizard-option-sub">DEX, market maker, MEV, bot</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="wallet"><div class="wizard-option-icon">▢</div><div class="wizard-option-text"><span class="wizard-option-title">A consumer dApp or wallet</span><span class="wizard-option-sub">Social, gaming, payments, wallet</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="indexer"><div class="wizard-option-icon">≡</div><div class="wizard-option-text"><span class="wizard-option-title">An indexer or data project</span><span class="wizard-option-sub">Analytics, dashboards, pipelines</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="nft"><div class="wizard-option-icon">◇</div><div class="wizard-option-text"><span class="wizard-option-title">An NFT or collectibles app</span><span class="wizard-option-sub">Marketplace, gallery, minting</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="infra"><div class="wizard-option-icon">⊞</div><div class="wizard-option-text"><span class="wizard-option-title">Infrastructure others depend on</span><span class="wizard-option-sub">Platform, SDK, B2B infra</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="other"><div class="wizard-option-icon">?</div><div class="wizard-option-text"><span class="wizard-option-title">Something else</span><span class="wizard-option-sub">Tell us in step two</span></div></button>
-                </div>
-              </div>
-
-              <div class="wizard-step" data-required="one">
-                <h3 class="wizard-q">What's your traffic profile?</h3>
-                <p class="wizard-help">Helps us pre-size your endpoint and rate limits.</p>
-                <div class="wizard-options">
-                  <button class="wizard-option wizard-option--card" data-value="light"><div class="wizard-option-icon">·</div><div class="wizard-option-text"><span class="wizard-option-title">Light</span><span class="wizard-option-sub">Under 1M requests per day, hackathon, MVP, side project</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="steady"><div class="wizard-option-icon">··</div><div class="wizard-option-text"><span class="wizard-option-title">Steady</span><span class="wizard-option-sub">1 to 50M requests per day, live product with real users</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="heavy"><div class="wizard-option-icon">···</div><div class="wizard-option-text"><span class="wizard-option-title">Heavy</span><span class="wizard-option-sub">50M to 1B requests per day, high-volume DEX, wallet, or bot</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="prod"><div class="wizard-option-icon">····</div><div class="wizard-option-text"><span class="wizard-option-title">Production-critical</span><span class="wizard-option-sub">Over 1B requests per day, latency-sensitive, multi-region</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="trading"><div class="wizard-option-text"><span class="wizard-option-title">A trading or DeFi product</span><span class="wizard-option-sub">DEX, market maker, MEV, bot</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="wallet"><div class="wizard-option-text"><span class="wizard-option-title">A consumer dApp or wallet</span><span class="wizard-option-sub">Social, gaming, payments, wallet</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="indexer"><div class="wizard-option-text"><span class="wizard-option-title">An indexer or data project</span><span class="wizard-option-sub">Analytics, dashboards, pipelines</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="nft"><div class="wizard-option-text"><span class="wizard-option-title">An NFT or collectibles app</span><span class="wizard-option-sub">Marketplace, gallery, minting</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="infra"><div class="wizard-option-text"><span class="wizard-option-title">Infrastructure others depend on</span><span class="wizard-option-sub">Platform, SDK, B2B infra</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="other"><div class="wizard-option-text"><span class="wizard-option-title">Something else</span><span class="wizard-option-sub">Tell us in the next step</span></div></button>
                 </div>
               </div>
 
@@ -481,41 +453,36 @@
                 <h3 class="wizard-q">Do you need streaming?</h3>
                 <p class="wizard-help">We'll set up the right streaming products if so.</p>
                 <div class="wizard-options">
-                  <button class="wizard-option wizard-option--card" data-value="sub-slot"><div class="wizard-option-icon">⚡</div><div class="wizard-option-text"><span class="wizard-option-title">Yes, sub-slot latency</span><span class="wizard-option-sub">Trading, MEV, copy trading</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="reliability"><div class="wizard-option-icon">◉</div><div class="wizard-option-text"><span class="wizard-option-title">Yes, reliability over raw speed</span><span class="wizard-option-sub">Indexer, analytics, compliance</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="frontend"><div class="wizard-option-icon">◎</div><div class="wizard-option-text"><span class="wizard-option-title">Yes, frontend in browser</span><span class="wizard-option-sub">Wallet, DEX UI, explorer</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="unsure"><div class="wizard-option-icon">?</div><div class="wizard-option-text"><span class="wizard-option-title">Not sure yet</span><span class="wizard-option-sub">Skip for now</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="no-stream"><div class="wizard-option-icon">—</div><div class="wizard-option-text"><span class="wizard-option-title">No streaming</span><span class="wizard-option-sub">Standard RPC only</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="dragons-mouth"><div class="wizard-option-text"><span class="wizard-option-title">Yes, sub-slot latency</span><span class="wizard-option-sub">Trading, MEV, copy trading</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="fumarole"><div class="wizard-option-text"><span class="wizard-option-title">Yes, reliability over raw speed</span><span class="wizard-option-sub">Indexer, analytics, compliance</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="whirligig"><div class="wizard-option-text"><span class="wizard-option-title">Yes, frontend in browser</span><span class="wizard-option-sub">Wallet, DEX UI, explorer</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="standard-rpc"><div class="wizard-option-text"><span class="wizard-option-title">Not sure yet</span><span class="wizard-option-sub">Skip for now</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="standard-rpc"><div class="wizard-option-text"><span class="wizard-option-title">No streaming</span><span class="wizard-option-sub">Standard RPC only</span></div></button>
                 </div>
               </div>
 
               <div class="wizard-step" data-required="one">
                 <h3 class="wizard-q">Do you need historical data?</h3>
-                <p class="wizard-help">Hydrant is included on every plan. We'll just pre-tune the right methods.</p>
+                <p class="wizard-help">Hydrant is included on every plan. We'll pre-tune the right methods.</p>
                 <div class="wizard-options">
-                  <button class="wizard-option wizard-option--card" data-value="wallet-history"><div class="wizard-option-icon">◰</div><div class="wizard-option-text"><span class="wizard-option-title">Wallet transaction history</span><span class="wizard-option-sub">getTransactionsForAddress, getSignaturesForAddress, getTransaction</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="bulk-replay"><div class="wizard-option-icon">◱</div><div class="wizard-option-text"><span class="wizard-option-title">Bulk replay or backfill</span><span class="wizard-option-sub">Old Faithful streams</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="recent"><div class="wizard-option-icon">◲</div><div class="wizard-option-text"><span class="wizard-option-title">Recent slots only</span><span class="wizard-option-sub">Head cache</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="no-history"><div class="wizard-option-icon">—</div><div class="wizard-option-text"><span class="wizard-option-title">No history needed</span><span class="wizard-option-sub">Real-time only</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="hydrant"><div class="wizard-option-text"><span class="wizard-option-title">Wallet transaction history</span><span class="wizard-option-sub">getTransactionsForAddress, getSignaturesForAddress, getTransaction</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="old-faithful"><div class="wizard-option-text"><span class="wizard-option-title">Bulk replay or backfill</span><span class="wizard-option-sub">Old Faithful streams</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="hydrant"><div class="wizard-option-text"><span class="wizard-option-title">Recent slots only</span><span class="wizard-option-sub">Head cache</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="standard-rpc"><div class="wizard-option-text"><span class="wizard-option-title">No history needed</span><span class="wizard-option-sub">Real-time only</span></div></button>
                 </div>
               </div>
 
-              <div class="wizard-step" data-skip-validate="true">
-                <h3 class="wizard-q">Where should we send your endpoint?</h3>
-                <p class="wizard-help">Account live in under 2 minutes. We don't send marketing.</p>
-                <div class="connect-form" style="background:transparent; border:none; padding:0">
-                  <div class="connect-field"><label>Name</label><input placeholder="Your name"></div>
-                  <div class="connect-field"><label>Email</label><input placeholder="you@team.com"></div>
-                  <div class="connect-field"><label>Telegram handle (optional)</label><input placeholder="@handle"></div>
-                  <div class="connect-field"><label>Project context</label><input placeholder="We are building..."></div>
-                </div>
+              <div class="wizard-step" data-stack="true" data-skip-validate="true">
+                <h3 class="wizard-q">Your <span class="h-grad">suggested stack</span></h3>
+                <p class="wizard-help">Based on your answers. All included in the $25 deposit.</p>
+                <div class="wizard-stack" data-stack-target></div>
+                <p style="font-family:var(--font-mono); font-size:12px; color:rgba(23,23,23,0.55); margin-top:8px">Unit pricing applies as you consume. Top up anytime.</p>
               </div>
 
               <div class="wizard-footer">
                 <button class="btn btn-outline-dark wizard-back" disabled>← Back</button>
                 <div class="wizard-dots">
                   <span class="wizard-dot wizard-dot--active"></span>
-                  <span class="wizard-dot"></span>
                   <span class="wizard-dot"></span>
                   <span class="wizard-dot"></span>
                   <span class="wizard-dot"></span>
@@ -566,20 +533,6 @@
             <div class="faq-item">
               <div class="faq-row"><span class="faq-q">Can I use the balance across multiple products at once?</span><span class="faq-chip">+</span></div>
               <div class="faq-answer">Yes. One endpoint, one auth, one bill. Run Steamboat for account reads, Dragon's Mouth for streaming, Hydrant for history, and Jet for sending in parallel, all drawing from the same $25.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- FINAL CTA -->
-      <section class="section">
-        <div class="section-inner">
-          <div class="final-cta">
-            <h2>Build with engineers behind Solana's <span class="h-grad">core infrastructure</span></h2>
-            <p>Triton sponsors, builds, and open-sources the infrastructure used by the fastest DEXs, the largest wallets, and the biggest analytics teams. We give you the speed, reliability, and tooling to get and stay ahead.</p>
-            <div class="final-cta-buttons">
-              <a class="btn btn-outline-dark">View docs</a>
-              <a class="btn btn-primary" data-action="claim">Start building</a>
             </div>
           </div>
         </div>

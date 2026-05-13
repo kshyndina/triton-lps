@@ -2170,3 +2170,63 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 4px 8px rgba(23, 23, 23, 0.06);
   border-color: rgba(122, 75, 160, 0.18);
 }
+
+/* ========================================================== */
+/* v7 — LP1 polish + checkmark layout fix                     */
+/* ========================================================== */
+
+/* Belt-and-suspenders: force flex layout on every bulleted list item with an img.
+   Fixes the "checkmark on its own row above text" issue regardless of where the
+   list sits in the cascade. */
+.cap-list li,
+.compare-list li,
+.connect-bullets li,
+.plan-features li,
+.pricing-features li,
+.why-card-bullets li,
+.build-stack-bullets li {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+.cap-list li img,
+.compare-list li img,
+.connect-bullets li img,
+.plan-features li img,
+.pricing-features li img,
+.why-card-bullets li img,
+.build-stack-bullets li img {
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin-top: 2px;
+}
+
+/* Why-card icon: move from absolute-top-right to normal flow so it never overlaps wrapping titles */
+.why-card-icon {
+  position: static;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(247, 247, 247, 0.7);
+  margin-bottom: 4px;
+}
+.why-card-icon img { width: 20px; height: 20px; }
+.why-card-title { padding-right: 0; }
+
+/* Build-your-stack: wizard fits its right column */
+.build-stack-split .wizard {
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Cleaner wizard option (no chunky icon, just title + sub) */
+.wizard-option-icon { display: none; }
+.wizard-option--card { min-height: auto; padding: 14px 18px; }
+
+/* Progress bar: solid purple instead of gradient (cleaner) */
+.wizard-progress-fill {
+  background: var(--primary) !important;
+}
+
+/* Suggested stack list spacing */
+.wizard-stack-row img { display: block; }
