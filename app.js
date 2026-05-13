@@ -278,20 +278,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Logo wall + category filter (Option G — LP1 #who, LP6 lab) ----------
+  // ---------- Logo filter chips (supports multi-cat data attr + marquee or wall) ----------
+  function audGMatches(cellCats, filterCat) {
+    if (filterCat === 'all') return true;
+    return (cellCats || '').split(/\s+/).includes(filterCat);
+  }
   document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
     chip.addEventListener('click', () => {
       const root = chip.closest('.audG') || document;
       root.querySelectorAll('[data-audG-chip]').forEach((c) => c.classList.remove('audG-chip--active'));
       chip.classList.add('audG-chip--active');
       const cat = chip.dataset.audgChip;
+
+      // Legacy wall (still used by lp6)
       const wall = root.querySelector('.audG-wall');
-      root.querySelectorAll('.audG-cell').forEach((cell) => {
-        const match = cat === 'all' || cell.dataset.audgCat === cat;
-        cell.style.display = match ? '' : 'none';
-        cell.classList.toggle('audG-cell--match', match);
-      });
-      if (wall) wall.classList.toggle('audG-wall--filtered', cat !== 'all');
+      if (wall) {
+        root.querySelectorAll('.audG-cell').forEach((cell) => {
+          const match = audGMatches(cell.dataset.audgCat, cat);
+          cell.style.display = match ? '' : 'none';
+          cell.classList.toggle('audG-cell--match', match);
+        });
+        wall.classList.toggle('audG-wall--filtered', cat !== 'all');
+      }
+
+      // Marquee — rebuild content (with seamless duplication) per category
+      const marquee = root.querySelector('.audG-marquee');
+      const dataEl = root.querySelector('[data-audG-data]');
+      if (marquee && dataEl) {
+        let logos;
+        try { logos = JSON.parse(dataEl.textContent); } catch { logos = []; }
+        const filtered = logos.filter((l) => audGMatches(l.cats, cat));
+        const doubled = [...filtered, ...filtered];
+        marquee.innerHTML = doubled
+          .map((l, i) => `<img src="assets/logos/${l.src}" alt="${l.alt}" style="height:${l.h || 28}px"${i >= filtered.length ? ' aria-hidden="true"' : ''}>`)
+          .join('');
+      }
     });
+  });
+  // Bootstrap marquees on load
+  document.querySelectorAll('.audG').forEach((root) => {
+    const initial = root.querySelector('[data-audG-chip].audG-chip--active');
+    if (initial) initial.click();
   });
 });

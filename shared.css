@@ -1620,7 +1620,7 @@ img { display: block; max-width: 100%; }
   text-align: center;
 }
 
-/* ===== Why-cards purple (linear 6-up, replacing the old 6-card grid) ===== */
+/* ===== Why-cards: icon on right of title, 3 bullets below ===== */
 .why-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1631,43 +1631,39 @@ img { display: block; max-width: 100%; }
   background: rgba(122, 75, 160, 0.08);
   border: 1px solid rgba(122, 75, 160, 0.2);
   border-radius: 24px;
-  padding: 32px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  min-height: 220px;
-  position: relative;
+  gap: 14px;
   transition: background 0.2s;
 }
 .why-card:hover { background: rgba(122, 75, 160, 0.12); }
-.why-card-icon {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  background: rgba(247, 247, 247, 0.6);
+.why-card-head {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
 }
-.why-card-icon img { width: 18px; height: 18px; }
 .why-card-title {
+  flex: 1;
   font-family: var(--font-header);
   font-weight: 600;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.2;
   color: var(--foreground);
   letter-spacing: -0.01em;
-  padding-right: 56px;
 }
-.why-card-body {
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(23, 23, 23, 0.8);
+.why-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(247, 247, 247, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
+.why-card-icon img { width: 22px; height: 22px; }
 
 /* ===== Wizard: stack output (final step) ===== */
 .wizard-stack {
@@ -2126,11 +2122,11 @@ img { display: block; max-width: 100%; }
   cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.audG-chip:hover { color: var(--primary); border-color: var(--primary); }
+.audG-chip:not(.audG-chip--active):hover { color: var(--primary); border-color: var(--primary); }
 .audG-chip--active {
-  background: var(--foreground);
+  background: var(--primary);
   color: var(--soft-white);
-  border-color: var(--foreground);
+  border-color: var(--primary);
 }
 .audG-chip-count {
   font-family: var(--font-mono);
@@ -2138,36 +2134,37 @@ img { display: block; max-width: 100%; }
   opacity: 0.7;
   margin-left: 6px;
 }
-/* Continuous logo grid — single bordered card, transparent cells, like the home Partners strip */
-.audG-wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0;
+/* Marquee — infinite single-line auto-scroll of logos, no per-cell rectangles */
+.audG-marquee-wrap {
   width: 100%;
   background: rgba(247, 247, 247, 0.55);
   border: 1px solid rgba(23, 23, 23, 0.06);
   border-radius: 24px;
-  padding: 32px 40px;
+  padding: 32px 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
 }
-.audG-cell {
-  height: 72px;
+.audG-marquee {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  padding: 8px 20px;
-  transition: opacity 0.2s, transform 0.2s;
+  gap: 64px;
+  animation: audG-marquee-scroll 60s linear infinite;
+  width: max-content;
+  padding: 0 32px;
 }
-.audG-cell img {
-  max-height: 30px;
-  max-width: 100%;
+.audG-marquee img {
+  flex-shrink: 0;
   width: auto;
   height: auto;
-  object-fit: contain;
   opacity: 0.85;
+  transition: opacity 0.2s;
 }
-.audG-cell:hover img { opacity: 1; transform: scale(1.04); }
+.audG-marquee img:hover { opacity: 1; }
+@keyframes audG-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* Build-stack intro: square card filling the column */
 .build-stack-intro {
@@ -2270,3 +2267,28 @@ img { display: block; max-width: 100%; }
 
 /* Suggested stack list spacing */
 .wizard-stack-row img { display: block; }
+
+/* Compact stats inside build-stack-intro (2x2 grid, smaller numbers) */
+.stats-compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(23, 23, 23, 0.08);
+}
+.stats-compact .stat-num {
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 900;
+  font-family: var(--font-header);
+}
+.stats-compact .stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(23, 23, 23, 0.55);
+  margin-top: 6px;
+  line-height: 1.3;
+}
