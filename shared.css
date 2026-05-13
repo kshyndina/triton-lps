@@ -636,7 +636,7 @@ img { display: block; max-width: 100%; }
 .vaccord-body {
   display: none;
   margin-top: 12px;
-  padding-left: 40px;
+  padding-left: 0;
   font-size: 15px;
   color: rgba(23, 23, 23, 0.75);
   line-height: 1.55;
