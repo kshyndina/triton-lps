@@ -2019,3 +2019,79 @@ img { display: block; max-width: 100%; }
   font-size: 13px;
   color: #fff;
 }
+
+/* ========================================================== */
+/* v5 (LP1 polish — why-cards with bullets)                   */
+/* ========================================================== */
+.why-card { min-height: 280px; }
+.why-card-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+.why-card-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(23, 23, 23, 0.75);
+}
+.why-card-bullets li img { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+.why-card-body { font-size: 14px; line-height: 1.5; }
+
+/* Final CTA section (used at the very bottom of LP1) */
+.final-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.final-cta h2 {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+.final-cta p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(23, 23, 23, 0.7);
+}
+.final-cta-buttons { display: flex; gap: 12px; margin-top: 8px; }
+
+/* Build-your-stack split (wizard side-by-side intro) */
+.build-stack-split {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  width: 100%;
+  align-items: start;
+}
+.build-stack-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 16px;
+}
+.build-stack-intro h2 { font-family: var(--font-header); font-weight: 900; font-size: 40px; line-height: 1.15; letter-spacing: -0.02em; }
+.build-stack-intro p { font-size: 16px; line-height: 1.55; color: rgba(23, 23, 23, 0.7); }
+.build-stack-bullets { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.build-stack-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--foreground);
+}
+.build-stack-bullets li img { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
