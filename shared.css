@@ -2023,13 +2023,13 @@ img { display: block; max-width: 100%; }
 /* ========================================================== */
 /* v5 (LP1 polish — why-cards with bullets)                   */
 /* ========================================================== */
-.why-card { min-height: 280px; }
+.why-card { min-height: auto; }
 .why-card-bullets {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: auto;
-  padding-top: 12px;
+  margin-top: 0;
+  padding-top: 4px;
 }
 .why-card-bullets li {
   display: flex;
