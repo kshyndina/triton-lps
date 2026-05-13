@@ -2138,35 +2138,73 @@ img { display: block; max-width: 100%; }
   opacity: 0.7;
   margin-left: 6px;
 }
+/* Continuous logo grid — single bordered card, transparent cells, like the home Partners strip */
 .audG-wall {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0;
   width: 100%;
-  background: rgba(247, 247, 247, 0.5);
-  border: 1px solid rgba(23, 23, 23, 0.05);
+  background: rgba(247, 247, 247, 0.55);
+  border: 1px solid rgba(23, 23, 23, 0.06);
   border-radius: 24px;
-  padding: 16px;
+  padding: 32px 40px;
 }
 .audG-cell {
-  height: 96px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid rgba(23, 23, 23, 0.06);
-  padding: 14px 24px;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  background: transparent;
+  border: none;
+  padding: 8px 20px;
+  transition: opacity 0.2s, transform 0.2s;
 }
 .audG-cell img {
-  max-height: 42px;
+  max-height: 30px;
   max-width: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
-  opacity: 1;
+  opacity: 0.85;
 }
+.audG-cell:hover img { opacity: 1; transform: scale(1.04); }
+
+/* Build-stack intro: square card filling the column */
+.build-stack-intro {
+  background: rgba(247, 247, 247, 0.6);
+  border: 1px solid rgba(23, 23, 23, 0.06);
+  border-radius: 24px;
+  padding: 32px;
+  gap: 16px;
+  align-self: stretch;
+  justify-content: flex-start;
+}
+.build-stack-intro h2 { margin-bottom: 4px; }
+
+/* Suggested stack: 2-column grid so the wizard doesn't get huge */
+.wizard-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.wizard-stack-row { padding: 12px 14px; gap: 10px; }
+.wizard-stack-name { font-size: 14px; }
+.wizard-stack-desc { font-size: 12px; }
+.wizard-stack-price { font-size: 11px; }
+
+/* Restored wizard option icon (small Phosphor pill, primary tint) */
+.wizard-option-icon {
+  display: flex !important;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(122, 75, 160, 0.12);
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.wizard-option-icon svg { width: 18px; height: 18px; fill: currentColor; }
 .audG-cell:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(23, 23, 23, 0.06);
