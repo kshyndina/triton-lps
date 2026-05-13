@@ -248,12 +248,7 @@
     padding: 14px;
   }
   .audG-cell img { max-height: 28px; max-width: 100%; width: auto; opacity: 1; }
-  .audG-wall--filtered .audG-cell:not(.audG-cell--match) { opacity: 0.15; }
-  .audG-wall--filtered .audG-cell--match {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(122, 75, 160, 0.15);
-    border-color: rgba(122, 75, 160, 0.25);
-  }
+  .audG-wall--filtered .audG-cell:not(.audG-cell--match) { display: none; }
 
   /* ============================================================== */
   /* Option H — Cinematic rotator (auto-cycle, big type, marquee)  */
@@ -593,6 +588,7 @@
 
 </div>
 
+<script src="app.js"></script>
 <script>
 // ============ OPTION E — click to expand a card ============
 document.querySelectorAll('.audE-card').forEach((card) => {
@@ -602,19 +598,7 @@ document.querySelectorAll('.audE-card').forEach((card) => {
   });
 });
 
-// ============ OPTION G — chip filter ============
-document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('[data-audG-chip]').forEach(c => c.classList.remove('audG-chip--active'));
-    chip.classList.add('audG-chip--active');
-    const cat = chip.dataset.audgChip;
-    const wall = document.getElementById('audG-wall');
-    document.querySelectorAll('.audG-cell').forEach(cell => {
-      cell.classList.toggle('audG-cell--match', cell.dataset.audgCat === cat);
-    });
-    wall.classList.toggle('audG-wall--filtered', cat !== 'all');
-  });
-});
+// Option G chip filter is handled in app.js (shared)
 
 // ============ OPTION H — cinematic rotator ============
 const audHData = [

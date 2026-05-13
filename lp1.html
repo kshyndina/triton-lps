@@ -267,63 +267,90 @@
         </div>
       </section>
 
-      <!-- WHO IS IT FOR (audience) -->
+      <!-- WHO IS IT FOR — full logo wall + category filter (hides non-matches) -->
       <section class="section" id="who">
-        <div class="section-inner">
+        <div class="section-inner section-inner--left">
           <div class="section-head">
             <h2 class="h2">Triton powers the teams <span class="h-grad">defining Solana</span></h2>
             <p class="section-sub">Since the start of Solana DeFi.</p>
           </div>
-          <div class="audience">
-            <div class="audience-row">
-              <div class="audience-row-meta">
-                <h3 class="audience-row-title">Trading and market makers</h3>
-                <p class="audience-row-desc">Where 50ms of staleness costs money. Intra-slot streaming, direct-to-leader sends, Deshred pre-execution intent.</p>
-              </div>
-              <div class="audience-logos">
-                <img src="assets/logos/logo-jito-labs.svg" alt="Jito Labs">
-                <img src="assets/logos/logo-wintermute.svg" alt="Wintermute" style="height:22px">
-                <img src="assets/logos/logo-bonk.svg" alt="BONK" style="height:30px">
-                <img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex">
-                <img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg">
-              </div>
+          <div class="audG">
+            <div class="audG-chips">
+              <span class="audG-chips-label">Filter:</span>
+              <button class="audG-chip audG-chip--active" data-audG-chip="all">All<span class="audG-chip-count">60</span></button>
+              <button class="audG-chip" data-audG-chip="trading">Trading<span class="audG-chip-count">9</span></button>
+              <button class="audG-chip" data-audG-chip="dex">DEXs &amp; DeFi<span class="audG-chip-count">21</span></button>
+              <button class="audG-chip" data-audG-chip="wallet">Wallets<span class="audG-chip-count">10</span></button>
+              <button class="audG-chip" data-audG-chip="indexer">Indexers &amp; analytics<span class="audG-chip-count">20</span></button>
             </div>
-            <div class="audience-row">
-              <div class="audience-row-meta">
-                <h3 class="audience-row-title">DEXs, AMMs, and DeFi protocols</h3>
-                <p class="audience-row-desc">The highest-volume markets on Solana. Real-time pool state, indexed program accounts, gap-free analytics.</p>
-              </div>
-              <div class="audience-logos">
-                <img src="assets/logos/logo-jupiter.svg" alt="Jupiter">
-                <img src="assets/logos/logo-raydium.svg" alt="Raydium">
-                <img src="assets/logos/logo-orca.svg" alt="Orca">
-                <img src="assets/logos/logo-drift.svg" alt="Drift" style="height:32px">
-                <img src="assets/logos/logo-meteora.svg" alt="Meteora">
-                <img src="assets/logos/logo-kamino.svg" alt="Kamino">
-              </div>
-            </div>
-            <div class="audience-row">
-              <div class="audience-row-meta">
-                <h3 class="audience-row-title">Wallets, portfolios, and custodians</h3>
-                <p class="audience-row-desc">Balance reads in milliseconds. Full transaction history without spinners. MEV-protected sends.</p>
-              </div>
-              <div class="audience-logos">
-                <img src="assets/logos/logo-phantom.svg" alt="Phantom">
-                <img src="assets/logos/logo-step-finance.svg" alt="Step Finance">
-                <img src="assets/logos/logo-streamflow.svg" alt="Streamflow">
-              </div>
-            </div>
-            <div class="audience-row">
-              <div class="audience-row-meta">
-                <h3 class="audience-row-title">Indexers, analytics, and compliance</h3>
-                <p class="audience-row-desc">Persistent gRPC streams that track your exact position, historical replay from genesis, tailored indexes from your query traffic.</p>
-              </div>
-              <div class="audience-logos">
-                <img src="assets/logos/logo-metaplex.svg" alt="Metaplex" style="height:18px">
-                <img src="assets/logos/logo-pyth.svg" alt="Pyth">
-                <img src="assets/logos/logo-dialect.svg" alt="Dialect">
-                <img src="assets/logos/logo-corbits.svg" alt="Corbits">
-              </div>
+            <div class="audG-wall">
+              <!-- Trading & market makers (9) -->
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-binance.svg" alt="Binance"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-bitfinex.svg" alt="Bitfinex"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-bonk.svg" alt="BONK"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-bonkbot.svg" alt="BONKbot"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-cube-exchange.svg" alt="Cube Exchange"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-jito-labs.svg" alt="Jito Labs"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-shuriken.svg" alt="Shuriken"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-trojan-bot.svg" alt="Trojan Bot"></div>
+              <div class="audG-cell" data-audG-cat="trading"><img src="assets/logos/logo-wintermute.svg" alt="Wintermute"></div>
+
+              <!-- DEXs, AMMs & DeFi (21) -->
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-adrena.svg" alt="Adrena"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-alpha-fi.svg" alt="Alpha.fi"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-cetus.svg" alt="Cetus"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-circular.svg" alt="Circular"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-deBridge.svg" alt="deBridge"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-drift.svg" alt="Drift"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-flash.svg" alt="Flash"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-hubble.svg" alt="Hubble"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-jupiter.svg" alt="Jupiter"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-kamino.svg" alt="Kamino"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-marinade.svg" alt="Marinade"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-meteora.svg" alt="Meteora"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-openbook.svg" alt="OpenBook"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-orca.svg" alt="Orca"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-pancake-swap.svg" alt="PancakeSwap"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-rain-fi.svg" alt="Rain.fi"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-ranger-finance.svg" alt="Ranger Finance"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-raydium.svg" alt="Raydium"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-solend.svg" alt="Solend"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-wormhole.svg" alt="Wormhole"></div>
+              <div class="audG-cell" data-audG-cat="dex"><img src="assets/logos/logo-zeta.svg" alt="Zeta"></div>
+
+              <!-- Wallets, portfolios & custodians (10) -->
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-dialect.svg" alt="Dialect"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-moongate.svg" alt="Moongate"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-phantom.svg" alt="Phantom"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-solflare.svg" alt="Solflare"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-squads.svg" alt="Squads"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-star-atlas.svg" alt="Star Atlas"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-step-finance.svg" alt="Step Finance"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-streamflow.svg" alt="Streamflow"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-swiss-borg.svg" alt="SwissBorg"></div>
+              <div class="audG-cell" data-audG-cat="wallet"><img src="assets/logos/logo-tensor.svg" alt="Tensor"></div>
+
+              <!-- Indexers, analytics & compliance (20) -->
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-abk-labs.svg" alt="ABK Labs"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-arcium.svg" alt="Arcium"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-birdeye.svg" alt="Birdeye"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-block-logic.svg" alt="Block Logic"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-colosseum.svg" alt="Colosseum"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-corbits.svg" alt="Corbits"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-defi-tuna.svg" alt="Defi Tuna"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-double-zero.svg" alt="DoubleZero"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-ergonia.svg" alt="Ergonia"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-meta-dao.svg" alt="Meta DAO"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-metaplex.svg" alt="Metaplex"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-monkedao.svg" alt="MonkeDAO"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-mtn-dao.svg" alt="MtnDAO"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-n1.svg" alt="N1"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-pyth.svg" alt="Pyth"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-realms.svg" alt="Realms"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-redacted.svg" alt="Redacted"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-superteam-dao.svg" alt="Superteam DAO"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-switchboard.svg" alt="Switchboard"></div>
+              <div class="audG-cell" data-audG-cat="indexer"><img src="assets/logos/logo-validators-app.svg" alt="Validators.app"></div>
             </div>
           </div>
         </div>

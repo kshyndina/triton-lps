@@ -2095,3 +2095,78 @@ img { display: block; max-width: 100%; }
   color: var(--foreground);
 }
 .build-stack-bullets li img { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* ========================================================== */
+/* v6 — Logo wall + category filter (shared across LP1, LP6)  */
+/* ========================================================== */
+.audG { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+.audG-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.audG-chips-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(23, 23, 23, 0.5);
+  margin-right: 4px;
+}
+.audG-chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(247, 247, 247, 0.7);
+  border: 1px solid rgba(23, 23, 23, 0.08);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(23, 23, 23, 0.7);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.audG-chip:hover { color: var(--primary); border-color: var(--primary); }
+.audG-chip--active {
+  background: var(--foreground);
+  color: var(--soft-white);
+  border-color: var(--foreground);
+}
+.audG-chip-count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  opacity: 0.7;
+  margin-left: 6px;
+}
+.audG-wall {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+  width: 100%;
+  background: rgba(247, 247, 247, 0.5);
+  border: 1px solid rgba(23, 23, 23, 0.05);
+  border-radius: 24px;
+  padding: 20px;
+}
+.audG-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(23, 23, 23, 0.04);
+  padding: 14px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.audG-cell img {
+  max-height: 32px;
+  max-width: 80%;
+  width: auto;
+  opacity: 1;
+}
+.audG-cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(23, 23, 23, 0.06);
+  border-color: rgba(122, 75, 160, 0.18);
+}

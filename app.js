@@ -277,4 +277,21 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(`Action: ${el.dataset.action}`);
     });
   });
+
+  // ---------- Logo wall + category filter (Option G — LP1 #who, LP6 lab) ----------
+  document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const root = chip.closest('.audG') || document;
+      root.querySelectorAll('[data-audG-chip]').forEach((c) => c.classList.remove('audG-chip--active'));
+      chip.classList.add('audG-chip--active');
+      const cat = chip.dataset.audgChip;
+      const wall = root.querySelector('.audG-wall');
+      root.querySelectorAll('.audG-cell').forEach((cell) => {
+        const match = cat === 'all' || cell.dataset.audgCat === cat;
+        cell.style.display = match ? '' : 'none';
+        cell.classList.toggle('audG-cell--match', match);
+      });
+      if (wall) wall.classList.toggle('audG-wall--filtered', cat !== 'all');
+    });
+  });
 });
