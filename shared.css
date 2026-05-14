@@ -3262,6 +3262,22 @@ img { display: block; max-width: 100%; }
   box-shadow: 0px 4px 12px 0px rgba(23, 23, 23, 0.08);
 }
 
+/* Static partner row (matches triton.one Partners desktop pattern):
+   flex-wrap, justify-center, gap-12, no fade mask, no animation. */
+.partners-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px 48px;
+  width: 100%;
+}
+.partners-row img {
+  flex-shrink: 0;
+  width: auto;
+  display: block;
+}
+
 /* Hero right: 2-column scrolling testimonials (mirrors CommunitySection RIGHT side) */
 .hero-tcol {
   position: relative;
