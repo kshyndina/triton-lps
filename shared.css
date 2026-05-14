@@ -2768,3 +2768,24 @@ img { display: block; max-width: 100%; }
   width: 32px;
   height: 32px;
 }
+
+/* ========================================================== */
+/* v13 — Consultation modal style (matches triton.one/contact)  */
+/* ========================================================== */
+
+/* Form box has the soft purple tint from the live contact page */
+.consult-form {
+  background: rgba(122, 75, 160, 0.10);
+  border: 1px solid rgba(122, 75, 160, 0.25);
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 24px;
+}
+.consult-form input,
+.consult-form textarea,
+.consult-form select {
+  background: #fff;
+  border-color: rgba(23, 23, 23, 0.18);
+}
+.modal-content--consult { max-width: 760px; padding: 40px 40px 32px; }
+.modal-content--consult .h2 { font-size: 32px; line-height: 1.15; }
