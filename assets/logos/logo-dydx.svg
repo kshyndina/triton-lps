@@ -1,12 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 44" preserveAspectRatio="xMidYMid meet">
   <defs>
     <linearGradient id="dydxX" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#a8a4ff"/>
       <stop offset="100%" stop-color="#6c63ff"/>
     </linearGradient>
   </defs>
-  <g font-family="Inter, 'Helvetica Neue', Arial, system-ui, -apple-system, sans-serif" font-weight="900" font-size="56" letter-spacing="-3">
-    <text x="0" y="48" fill="#171717">dYd</text>
-    <text x="138" y="48" fill="url(#dydxX)">X</text>
-  </g>
+  <text x="80" y="34" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="38" letter-spacing="-2.2" fill="#171717">
+    dYd<tspan fill="url(#dydxX)">X</tspan>
+  </text>
 </svg>

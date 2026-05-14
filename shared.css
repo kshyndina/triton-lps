@@ -3263,8 +3263,29 @@ img { display: block; max-width: 100%; }
   box-shadow: 0px 4px 12px 0px rgba(23, 23, 23, 0.08);
 }
 
-/* Static partner row (matches triton.one Partners desktop pattern):
-   flex-wrap, justify-center, gap-12, no fade mask, no animation. */
+/* Partners card -- token-for-token from triton.one Partners.vue desktop:
+   w-full px-5 md:px-10 py-8 mx-auto border rounded-3xl border-foreground/5
+   bg-soft-white/50 shadow-[0px_4px_6px_0px_#1717170D] */
+.partners-card {
+  width: 100%;
+  background: rgba(247, 247, 247, 0.5);
+  border: 1px solid rgba(23, 23, 23, 0.05);
+  border-radius: 24px;
+  padding: 32px 20px;
+  box-shadow: 0px 4px 6px 0px rgba(23, 23, 23, 0.05);
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .partners-card { padding: 32px 40px; }
+}
+.partners-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+/* Static partner row -- flex-wrap, justify-center, gap-12 (48px) */
 .partners-row {
   display: flex;
   flex-wrap: wrap;
@@ -3278,6 +3299,27 @@ img { display: block; max-width: 100%; }
   width: auto;
   display: block;
 }
+/* 'View testimonials' link -- text-sm font-medium with duotone caret arrow */
+.partners-link-wrap { margin-top: 0; }
+.partners-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.partners-link:hover { color: var(--primary); }
+.partners-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.15s;
+}
+.partners-link:hover svg { transform: translateX(2px); }
 
 /* Hero right: 2-column scrolling testimonials (mirrors CommunitySection RIGHT side) */
 .hero-tcol {
