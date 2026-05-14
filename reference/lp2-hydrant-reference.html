@@ -199,7 +199,7 @@
                   <ul style="display:flex; flex-direction:column; gap:8px; margin-top:12px">
                     <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Bidirectional sorting (asc or desc) on history reads</li>
                     <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Pagination cursor keeps subsequent calls clean, no resending filters on every page</li>
-                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> $0.08 per GB of bandwidth and $10 per million requests, every epoch, every method</li>
+                    <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> $0.08 per GB of bandwidth and $10 per M requests, every epoch, every method</li>
                     <li style="display:flex; gap:8px; align-items:flex-start"><img src="assets/icons/check-circle.svg" alt="" style="width:18px; height:18px; flex-shrink:0; margin-top:1px"> Available on every subscription, no tier gating</li>
                   </ul>
                 </div>
@@ -208,7 +208,7 @@
             <div class="visual-dashed" data-preview-target="wallet" style="min-height:480px; display:flex; flex-direction:column; padding:32px"><span class="visual-dashed-label">Code snippet</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6; max-width:340px">getTransactionsForAddress<br>&nbsp;&nbsp;address: "wallet…",<br>&nbsp;&nbsp;tokenAccounts: "all",<br>&nbsp;&nbsp;limit: 100,<br>&nbsp;&nbsp;sort: "desc"<br>// → full wallet history, one call</div></div>
             <div class="visual-dashed" data-preview-target="cache" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Head cache</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6">Recent slots: &lt;1ms<br>processed → confirmed → finalised</div></div>
             <div class="visual-dashed" data-preview-target="perf" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Performance</span><div style="font-family:var(--font-mono); font-size:13px; color:#553570; margin-top:20px; line-height:1.8"><div>getTransaction: <strong>138ms p50</strong>, 3.3x faster</div><div>getSignaturesForAddress: <strong>50ms p50</strong>, 5x faster</div><div>getSignatureStatuses: <strong>49ms p50</strong>, 38x faster</div></div></div>
-            <div class="visual-dashed" data-preview-target="affordable" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Pricing</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6">$0.08 / GB bandwidth<br>$10 / million requests<br>Every epoch. Every method.</div></div>
+            <div class="visual-dashed" data-preview-target="affordable" style="min-height:480px; display:none; flex-direction:column; padding:32px"><span class="visual-dashed-label">Pricing</span><div style="font-family:var(--font-mono); font-size:12px; color:#553570; margin-top:20px; line-height:1.6">$0.08 / GB bandwidth<br>$10 / M requests<br>Every epoch. Every method.</div></div>
           </div>
         </div>
       </section>
@@ -390,7 +390,7 @@
             <div class="pricing-right">
               <div class="pricing-row">
                 <p class="pricing-row-title">Standard RPC, indexed accounts, ledger queries</p>
-                <p class="pricing-row-rate">$0.08 / GB bandwidth + $10 / million calls</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth + $10 / M calls</p>
               </div>
               <div class="pricing-row">
                 <p class="pricing-row-title">Streaming services, Titan Prime API</p>
@@ -398,11 +398,11 @@
               </div>
               <div class="pricing-row">
                 <p class="pricing-row-title">Metaplex, Photon APIs</p>
-                <p class="pricing-row-rate">$0.08 / GB bandwidth + $50 / million calls</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth + $50 / M calls</p>
               </div>
               <div class="pricing-row">
                 <p class="pricing-row-title">Metis API</p>
-                <p class="pricing-row-rate">$0.08 / GB bandwidth + $80 / million calls</p>
+                <p class="pricing-row-rate">$0.08 / GB bandwidth + $80 / M calls</p>
               </div>
               <div class="pricing-input-row">
                 <div class="pricing-input">
@@ -433,7 +433,7 @@
             </div>
             <div class="faq-item">
               <div class="faq-row"><span class="faq-q">Does all history cost the same?</span><span class="faq-chip">+</span></div>
-              <div class="faq-answer">Yes. Every epoch from genesis to today is priced at $0.08 per GB plus $10 per million requests. No premium tier for older data.</div>
+              <div class="faq-answer">Yes. Every epoch from genesis to today is priced at $0.08 per GB plus $10 per M requests. No premium tier for older data.</div>
             </div>
             <div class="faq-item">
               <div class="faq-row"><span class="faq-q">How far back does the data go?</span><span class="faq-chip">+</span></div>
