@@ -2925,6 +2925,7 @@ img { display: block; max-width: 100%; }
   align-items: start;
 }
 .endt-row:first-child { padding-top: 0; }
+.endt-row:last-child  { border-bottom: none; padding-bottom: 0; }
 .endt-row-head {
   display: flex;
   flex-direction: column;
@@ -3075,15 +3076,15 @@ img { display: block; max-width: 100%; }
 /* v17 — Wizard step 1 teaser overlay (blur + "take the test") */
 /* ========================================================== */
 
-/* Wizard teaser: blur the WHOLE wizard (head, step, footer) behind a
-   soft-white veil, with the CTA stack centered on top. No card chrome. */
+/* Wizard teaser: when the wizard is in teasing mode, the head/step/footer
+   keep their layout space (so the wizard keeps its natural size) but go
+   invisible, and a flat F7F7F7 panel sits over the whole thing with the
+   teaser content centered. No blur, no translucency. */
 .wizard { position: relative; }
 .wizard--teasing > .wizard-head,
 .wizard--teasing > .wizard-step,
 .wizard--teasing > .wizard-footer {
-  filter: blur(4px);
-  pointer-events: none;
-  user-select: none;
+  visibility: hidden;
 }
 
 .wizard-teaser-overlay {
@@ -3096,8 +3097,8 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   text-align: center;
   gap: 14px;
-  padding: 24px;
-  background: rgba(247, 247, 247, 0.78);
+  padding: 32px 24px;
+  background: var(--soft-white, #f7f7f7);
   border-radius: inherit;
 }
 .wizard:not(.wizard--teasing) .wizard-teaser-overlay { display: none; }
