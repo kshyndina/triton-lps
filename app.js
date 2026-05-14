@@ -320,4 +320,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const initial = root.querySelector('[data-audG-chip].audG-chip--active');
     if (initial) initial.click();
   });
+
+  // ---------- Constant-visual-speed scroll for marquees and testimonial carousels ----------
+  // Animation duration was fixed at 60s regardless of content width/height, which made
+  // sparse categories appear to scroll slower and dense ones appear to scroll faster.
+  // Compute duration from content size and a constant pixels-per-second target instead.
+  const MARQUEE_PX_PER_S = 60;
+  const TESTIMONIAL_PX_PER_S = 30;
+
+  function tuneMarquee(marquee) {
+    if (!marquee) return;
+    requestAnimationFrame(() => {
+      const halfW = marquee.scrollWidth / 2;
+      if (halfW > 0) marquee.style.animationDuration = `${halfW / MARQUEE_PX_PER_S}s`;
+    });
+  }
+  function tuneTestimonialCol(col) {
+    if (!col) return;
+    requestAnimationFrame(() => {
+      const halfH = col.scrollHeight / 2;
+      if (halfH > 0) col.style.animationDuration = `${halfH / TESTIMONIAL_PX_PER_S}s`;
+    });
+  }
+
+  // Initial tune
+  document.querySelectorAll('.audG-marquee').forEach(tuneMarquee);
+  document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.audG-marquee').forEach(tuneMarquee);
+    document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
+  });
+
+  // Re-tune marquee after chip click (content gets rebuilt)
+  document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const root = chip.closest('.audG');
+      if (root) tuneMarquee(root.querySelector('.audG-marquee'));
+    });
+  });
 });
