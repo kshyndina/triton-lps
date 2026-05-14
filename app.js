@@ -3,16 +3,18 @@
 // Product catalogue used by wizard suggested stack
 // Icons match the ones used in the What's Included scroller exactly.
 const PRODUCT_INFO = {
-  'standard-rpc': { name: 'Standard RPC', desc: 'JSON-RPC over HTTP/3 QUIC, 20+ PoPs', price: '$0.08 / GB + $10 / M calls', icon: 'cube' },
-  'steamboat':    { name: 'Steamboat', desc: 'Indexed account reads, up to 20x faster than Agave', price: '$0.08 / GB + $10 / M calls', icon: 'treestructure' },
-  'account-sync': { name: 'Account Sync', desc: 'Streaming-backed local cache, one-line SDK swap', price: '$0.08 / GB bandwidth', icon: 'arrows-clockwise' },
-  'hydrant':      { name: 'Hydrant', desc: 'Full Solana ledger in ms, ClickHouse-backed', price: '$0.08 / GB + $10 / M calls', icon: 'scroll' },
-  'dragons-mouth':{ name: "Dragon's Mouth gRPC", desc: 'Sub-slot real-time updates, the streaming standard', price: '$0.08 / GB bandwidth', icon: 'lightning' },
-  'whirligig':    { name: 'Whirligig WebSockets', desc: 'Drop-in WebSockets, intra-slot updates', price: '$0.08 / GB bandwidth', icon: 'globe' },
-  'fumarole':     { name: 'Fumarole', desc: 'Persistent streams, 96h cursor resume', price: '$0.08 / GB bandwidth', icon: 'database' },
-  'deshred':      { name: 'Deshred transactions', desc: 'Pre-execution intent, ~20ms faster at p90', price: '$0.08 / GB bandwidth', icon: 'squares' },
-  'old-faithful': { name: 'Old Faithful streams', desc: 'Replay every block from genesis', price: '$0.08 / GB bandwidth', icon: 'rewind' },
-  'jet':          { name: 'Yellowstone Jet', desc: 'Direct-to-leader sends, MEV protected', price: 'Included with subscription', icon: 'paperplane' },
+  'standard-rpc':  { name: 'Standard RPC', desc: 'JSON-RPC over HTTP/3 QUIC, 20+ PoPs', price: '$0.08 / GB + $10 / M calls', icon: 'cube' },
+  'steamboat':     { name: 'Steamboat', desc: 'Indexed account reads, up to 20x faster than Agave', price: '$0.08 / GB + $10 / M calls', icon: 'treestructure' },
+  'account-sync':  { name: 'Account Sync', desc: 'Streaming-backed local cache, one-line SDK swap', price: '$0.08 / GB bandwidth', icon: 'arrows-clockwise' },
+  'hydrant':       { name: 'Hydrant', desc: 'Full Solana ledger in ms, ClickHouse-backed', price: '$0.08 / GB + $10 / M calls', icon: 'scroll' },
+  'dragons-mouth': { name: "Dragon's Mouth gRPC", desc: 'Sub-slot real-time updates, the streaming standard', price: '$0.08 / GB bandwidth', icon: 'lightning' },
+  'whirligig':     { name: 'Whirligig WebSockets', desc: 'Drop-in WebSockets, intra-slot updates', price: '$0.08 / GB bandwidth', icon: 'globe' },
+  'fumarole':      { name: 'Fumarole', desc: 'Persistent streams, 96h cursor resume', price: '$0.08 / GB bandwidth', icon: 'database' },
+  'deshred':       { name: 'Deshred transactions', desc: 'Pre-execution intent, ~20ms faster at p90', price: '$0.08 / GB bandwidth', icon: 'squares' },
+  'old-faithful':  { name: 'Old Faithful streams', desc: 'Replay every block from genesis', price: '$0.08 / GB bandwidth', icon: 'rewind' },
+  'jet':           { name: 'Yellowstone Jet', desc: 'Direct-to-leader sends, MEV protected', price: 'Included with subscription', icon: 'paperplane' },
+  'das-api':       { name: 'DAS API', desc: 'NFT and cNFT ownership, proofs, and metadata', price: '$0.08 / GB + $10 / M calls', icon: 'image-square' },
+  'priority-fees': { name: 'Priority Fees API', desc: 'Tail-aware percentiles for reliable landing', price: 'Included with subscription', icon: 'dollar' },
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -96,8 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const stepCount = parseInt(wiz.dataset.stepCount || '0', 10) || steps.filter(s => !s.dataset.conclusion).length;
     const selections = {}; // step idx -> [values]
 
+    // Each option's data-value can be a single product key OR a space-separated bundle.
     function getSelectedValues(stepEl) {
-      return Array.from(stepEl.querySelectorAll('.wizard-option--selected')).map((o) => o.dataset.value).filter(Boolean);
+      return Array.from(stepEl.querySelectorAll('.wizard-option--selected'))
+        .flatMap((o) => (o.dataset.value || '').split(/\s+/))
+        .filter(Boolean);
     }
 
     function buildStack() {
@@ -106,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       Object.values(selections).flat().forEach((v) => {
         if (v && PRODUCT_INFO[v]) productSet.add(v);
       });
-      // Always include Standard RPC as the base
+      // Always include Standard RPC as the base of every stack
       productSet.add('standard-rpc');
       const html = Array.from(productSet).map((key) => {
         const p = PRODUCT_INFO[key];

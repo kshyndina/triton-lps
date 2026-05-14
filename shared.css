@@ -2540,20 +2540,20 @@ img { display: block; max-width: 100%; }
 .step-vertical:last-child {
   padding-bottom: 0;
 }
-/* Line connector between numbered circles */
+/* Line connector between numbered circles -- mid-transparent purple */
 .step-vertical:not(:last-child)::before {
   content: '';
   position: absolute;
-  left: 17px;            /* (circle-width 36 / 2) - (line-width 2 / 2) */
-  top: 36px;             /* start just below the circle */
+  left: 13px;            /* (circle-width 28 / 2) - (line-width 2 / 2) */
+  top: 28px;             /* start just below the circle */
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, rgba(122, 75, 160, 0.45) 0%, rgba(122, 75, 160, 0.15) 100%);
+  background: rgba(122, 75, 160, 0.2);
   z-index: 0;
 }
 .step-vertical-num {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: var(--primary);
   color: white;
@@ -2562,16 +2562,15 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 13px;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 4px rgba(247, 247, 247, 1);
 }
 .step-vertical-body {
   flex: 1;
   min-width: 0;
-  padding-top: 6px;
+  padding-top: 2px;
 }
 .step-vertical-title {
   font-family: var(--font-header);
@@ -2639,4 +2638,46 @@ img { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+/* ========================================================== */
+/* v11 — Triton-style tickmarks (20px Phosphor duotone, items-center, gap 12px) */
+/* ========================================================== */
+
+/* Triton website uses 20px duotone CheckCircle, items-center, gap-3 (12px). */
+.cap-list li,
+.compare-list li,
+.connect-bullets li,
+.plan-features li,
+.pricing-features li,
+.why-card-bullets li,
+.build-stack-bullets li {
+  display: flex !important;
+  align-items: center !important;     /* override flex-start */
+  gap: 12px !important;
+  line-height: 1.35;
+}
+.cap-list li img,
+.compare-list li img,
+.connect-bullets li img,
+.plan-features li img,
+.pricing-features li img,
+.why-card-bullets li img,
+.build-stack-bullets li img {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;                /* drop the previous +2px nudge */
+}
+
+/* Step 4 (suggested stack) headline -- not bold tabular, just a clean title */
+.wizard-step[data-stack="true"] .wizard-q {
+  font-family: var(--font-header);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+  margin: 0 0 16px 0;
 }
