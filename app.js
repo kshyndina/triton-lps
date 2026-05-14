@@ -1,19 +1,18 @@
-// Triton wireframe -- interactivity layer (v2)
+// Triton wireframe -- interactivity layer (v3)
 
 // Product catalogue used by wizard suggested stack
+// Icons match the ones used in the What's Included scroller exactly.
 const PRODUCT_INFO = {
-  'standard-rpc': { name: 'Standard RPC', desc: 'JSON-RPC across 20+ PoPs', price: '$0.08 / GB · $10 / M calls' },
-  'dragons-mouth': { name: "Dragon's Mouth gRPC", desc: 'Sub-slot streaming, source of truth', price: '$0.08 / GB bandwidth' },
-  'whirligig': { name: 'Whirligig WebSockets', desc: 'Drop-in for native Solana WebSockets', price: '$0.08 / GB bandwidth' },
-  'fumarole': { name: 'Fumarole', desc: 'Persistent streams with 4-day cursor', price: '$0.08 / GB bandwidth' },
-  'deshred': { name: 'Deshred', desc: 'Pre-execution intent, p50 ~6.3ms', price: '$0.08 / GB bandwidth' },
-  'old-faithful': { name: 'Old Faithful streams', desc: 'Replay every block from genesis', price: '$0.08 / GB bandwidth' },
-  'hydrant': { name: 'Hydrant', desc: 'Full Solana ledger in ms', price: '$0.08 / GB · $10 / M calls' },
-  'gtfa': { name: 'gTransactionsForAddress', desc: 'Single-call wallet history', price: 'Included with Hydrant' },
-  'gsfa': { name: 'getSignaturesForAddress', desc: 'Address signature scans in 50ms p50', price: 'Included with Hydrant' },
-  'gss': { name: 'getSignatureStatuses', desc: 'Batch status in 49ms p50, 38x faster', price: 'Included with Hydrant' },
-  'steamboat': { name: 'Steamboat', desc: 'Indexed account reads, up to 50x faster', price: '$0.08 / GB · $10 / M calls' },
-  'jet': { name: 'Jet', desc: 'Direct-to-leader sends, MEV protected', price: 'Included' },
+  'standard-rpc': { name: 'Standard RPC', desc: 'JSON-RPC over HTTP/3 QUIC, 20+ PoPs', price: '$0.08 / GB + $10 / M calls', icon: 'cube' },
+  'steamboat':    { name: 'Steamboat', desc: 'Indexed account reads, up to 20x faster than Agave', price: '$0.08 / GB + $10 / M calls', icon: 'treestructure' },
+  'account-sync': { name: 'Account Sync', desc: 'Streaming-backed local cache, one-line SDK swap', price: '$0.08 / GB bandwidth', icon: 'arrows-clockwise' },
+  'hydrant':      { name: 'Hydrant', desc: 'Full Solana ledger in ms, ClickHouse-backed', price: '$0.08 / GB + $10 / M calls', icon: 'scroll' },
+  'dragons-mouth':{ name: "Dragon's Mouth gRPC", desc: 'Sub-slot real-time updates, the streaming standard', price: '$0.08 / GB bandwidth', icon: 'lightning' },
+  'whirligig':    { name: 'Whirligig WebSockets', desc: 'Drop-in WebSockets, intra-slot updates', price: '$0.08 / GB bandwidth', icon: 'globe' },
+  'fumarole':     { name: 'Fumarole', desc: 'Persistent streams, 96h cursor resume', price: '$0.08 / GB bandwidth', icon: 'database' },
+  'deshred':      { name: 'Deshred transactions', desc: 'Pre-execution intent, ~20ms faster at p90', price: '$0.08 / GB bandwidth', icon: 'squares' },
+  'old-faithful': { name: 'Old Faithful streams', desc: 'Replay every block from genesis', price: '$0.08 / GB bandwidth', icon: 'rewind' },
+  'jet':          { name: 'Yellowstone Jet', desc: 'Direct-to-leader sends, MEV protected', price: 'Included with subscription', icon: 'paperplane' },
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -81,18 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Wizard (multi-step qualifier with stack output) ----------
+  // ---------- Wizard (multi-step qualifier with stack output, conclusion view) ----------
   document.querySelectorAll('.wizard').forEach((wiz) => {
-    const steps = wiz.querySelectorAll('.wizard-step');
+    const steps = Array.from(wiz.querySelectorAll('.wizard-step'));
     const dots = wiz.querySelectorAll('.wizard-dot');
     const progressFill = wiz.querySelector('.wizard-progress-fill');
     const counter = wiz.querySelector('.wizard-counter');
     const chip = wiz.querySelector('.wizard-chip');
     const backBtn = wiz.querySelector('.wizard-back');
     const nextBtn = wiz.querySelector('.wizard-next');
+    const head = wiz.querySelector('.wizard-head');
+    const footer = wiz.querySelector('.wizard-footer');
     const stackTarget = wiz.querySelector('[data-stack-target]');
     let current = 0;
-    const total = steps.length;
+    const stepCount = parseInt(wiz.dataset.stepCount || '0', 10) || steps.filter(s => !s.dataset.conclusion).length;
     const selections = {}; // step idx -> [values]
 
     function getSelectedValues(stepEl) {
@@ -105,12 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
       Object.values(selections).flat().forEach((v) => {
         if (v && PRODUCT_INFO[v]) productSet.add(v);
       });
-      // Always include base products for $25 promo context
+      // Always include Standard RPC as the base
       productSet.add('standard-rpc');
       const html = Array.from(productSet).map((key) => {
         const p = PRODUCT_INFO[key];
         return `<div class="wizard-stack-row">
-          <div class="wizard-stack-icon"><img src="assets/icons/check-circle.svg" alt=""></div>
+          <div class="wizard-stack-icon"><img src="assets/icons/products/${p.icon}.svg" alt=""></div>
           <div class="wizard-stack-meta">
             <span class="wizard-stack-name">${p.name}</span>
             <span class="wizard-stack-desc">${p.desc}</span>
@@ -124,64 +125,81 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateStep(idx) {
       const stepEl = steps[idx];
       if (!stepEl) return false;
-      // Skip validation for the suggested-stack step (no inputs)
       if (stepEl.dataset.skipValidate === 'true') return true;
       const required = stepEl.dataset.required;
-      if (required === 'one') {
+      if (required === 'one' || required === 'multi') {
         return getSelectedValues(stepEl).length >= 1;
       }
-      if (required === 'multi') {
-        return getSelectedValues(stepEl).length >= 1;
-      }
-      // form inputs
       const inputs = stepEl.querySelectorAll('input[required], select[required], textarea[required]');
       for (const inp of inputs) { if (!inp.value.trim()) return false; }
       return true;
     }
 
     function render() {
+      const stepEl = steps[current];
+      const isConclusion = stepEl && stepEl.dataset.conclusion === 'true';
+
       steps.forEach((s, i) => s.classList.toggle('wizard-step--active', i === current));
-      dots.forEach((d, i) => d.classList.toggle('wizard-dot--active', i <= current));
-      if (progressFill) progressFill.style.width = `${((current + 1) / total) * 100}%`;
-      if (counter) counter.textContent = `Step ${current + 1} of ${total}`;
-      if (chip) chip.textContent = `STEP ${current + 1} OF ${total}`;
+
+      // Progress bar/counter/dots: only count numbered steps
+      if (isConclusion) {
+        if (head) head.style.display = 'none';
+        // hide dots in footer for conclusion
+        if (footer) footer.classList.add('wizard-footer--conclusion');
+      } else {
+        if (head) head.style.display = '';
+        if (footer) footer.classList.remove('wizard-footer--conclusion');
+        dots.forEach((d, i) => d.classList.toggle('wizard-dot--active', i <= current));
+        if (progressFill) progressFill.style.width = `${((current + 1) / stepCount) * 100}%`;
+        if (counter) counter.textContent = `Step ${current + 1} of ${stepCount}`;
+        if (chip) chip.textContent = `STEP ${current + 1} OF ${stepCount}`;
+      }
+
       if (backBtn) backBtn.disabled = current === 0;
       if (nextBtn) {
-        if (current === total - 1) {
+        if (isConclusion) {
           nextBtn.textContent = wiz.dataset.finalCta || 'Start with the $25 deposit';
+        } else if (current === stepCount - 1) {
+          // Last numbered step before conclusion
+          nextBtn.textContent = 'See my stack →';
         } else {
           nextBtn.textContent = 'Next →';
         }
       }
-      if (steps[current] && steps[current].dataset.stack === 'true') buildStack();
+
+      if (isConclusion) buildStack();
+    }
+
+    function goNext() {
+      const stepEl = steps[current];
+      if (stepEl) selections[current] = getSelectedValues(stepEl);
+
+      if (!validateStep(current)) {
+        // gentle nudge: outline the step container
+        if (stepEl) {
+          stepEl.classList.add('wizard-step--error');
+          setTimeout(() => stepEl.classList.remove('wizard-step--error'), 600);
+        }
+        return;
+      }
+
+      // Conclusion CTA: trigger final action
+      if (stepEl && stepEl.dataset.conclusion === 'true') {
+        const action = wiz.dataset.finalAction;
+        if (action === 'open-contact') openContactModal();
+        return;
+      }
+
+      if (current < steps.length - 1) {
+        current++;
+        render();
+      }
     }
 
     if (backBtn) backBtn.addEventListener('click', () => {
       if (current > 0) { current--; render(); }
     });
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-      // Save selections for current step
-      const stepEl = steps[current];
-      if (stepEl) selections[current] = getSelectedValues(stepEl);
-
-      // Validate
-      if (!validateStep(current)) {
-        const help = stepEl && stepEl.querySelector('.wizard-help');
-        if (help) help.style.color = '#d34a4a';
-        return;
-      }
-      const help = stepEl && stepEl.querySelector('.wizard-help');
-      if (help) help.style.color = '';
-
-      if (current < total - 1) {
-        current++;
-        render();
-      } else {
-        // final CTA action
-        const action = wiz.dataset.finalAction;
-        if (action === 'open-contact') openContactModal();
-      }
-    });
+    if (nextBtn) nextBtn.addEventListener('click', goNext);
 
     wiz.querySelectorAll('.wizard-option').forEach((opt) => {
       opt.addEventListener('click', () => {
@@ -192,6 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           stepEl.querySelectorAll('.wizard-option').forEach((o) => o.classList.remove('wizard-option--selected'));
           opt.classList.add('wizard-option--selected');
+          // Auto-advance for single-choice steps with data-auto-advance
+          if (stepEl.dataset.autoAdvance === 'true') {
+            setTimeout(goNext, 180);
+          }
         }
       });
     });
@@ -215,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (next) next.disabled = index >= slides.length - 1;
       const slide = slides[index];
       if (slide) {
-        // calculate target so the slide is positioned with edge mask room (16px padding)
         const left = slide.offsetLeft - inner.offsetLeft;
         scroller.scrollTo({ left, behavior: 'smooth' });
       }
@@ -225,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   });
 
-  // ---------- Contact modal (only X / Esc close, NOT backdrop) ----------
+  // ---------- Contact modal ----------
   function openContactModal() {
     const modal = document.querySelector('#contact-modal');
     if (modal) modal.classList.add('modal--open');
@@ -245,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-close-contact]').forEach((el) => {
     el.addEventListener('click', () => closeContactModal());
   });
-  // NOTE: backdrop click no longer closes the modal (per spec)
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeContactModal(); });
 
   // ---------- Modal form submit -> success state ----------
@@ -278,84 +298,135 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Logo filter chips (supports multi-cat data attr + marquee or wall) ----------
+  // ---------- Constant pixel-per-second marquee tuner (image-load-aware) ----------
+  const MARQUEE_PX_PER_S = 60;
+  const TESTIMONIAL_PX_PER_S = 30;
+
+  function waitForImages(el) {
+    const imgs = Array.from(el.querySelectorAll('img'));
+    if (!imgs.length) return Promise.resolve();
+    return Promise.all(imgs.map((img) => {
+      if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+      return new Promise((res) => {
+        img.addEventListener('load', () => res(), { once: true });
+        img.addEventListener('error', () => res(), { once: true });
+      });
+    }));
+  }
+
+  function tuneMarquee(marquee) {
+    if (!marquee) return;
+    marquee.style.animationDuration = '0s';
+    waitForImages(marquee).then(() => {
+      requestAnimationFrame(() => {
+        const halfW = marquee.scrollWidth / 2;
+        if (halfW > 0) {
+          marquee.style.animationDuration = `${halfW / MARQUEE_PX_PER_S}s`;
+        }
+      });
+    });
+  }
+
+  function tuneTestimonialCol(col) {
+    if (!col) return;
+    col.style.animationDuration = '0s';
+    waitForImages(col).then(() => {
+      requestAnimationFrame(() => {
+        const halfH = col.scrollHeight / 2;
+        if (halfH > 0) {
+          col.style.animationDuration = `${halfH / TESTIMONIAL_PX_PER_S}s`;
+        }
+      });
+    });
+  }
+
+  // ---------- Logo filter chips + 2-row marquee builder ----------
   function audGMatches(cellCats, filterCat) {
     if (filterCat === 'all') return true;
     return (cellCats || '').split(/\s+/).includes(filterCat);
   }
-  document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const root = chip.closest('.audG') || document;
+
+  function buildRowMarquee(rowEl, logos, dir) {
+    if (!rowEl) return;
+    // Duplicate logos so half-translation creates an infinite loop
+    const doubled = [...logos, ...logos];
+    rowEl.innerHTML = doubled
+      .map((l, i) => `<img src="assets/logos/${l.src}" alt="${l.alt}" style="height:${l.h || 28}px"${i >= logos.length ? ' aria-hidden="true"' : ''}>`)
+      .join('');
+    rowEl.classList.remove('audG-marquee--left', 'audG-marquee--right');
+    rowEl.classList.add(dir === 'right' ? 'audG-marquee--right' : 'audG-marquee--left');
+    tuneMarquee(rowEl);
+  }
+
+  function applyFilter(root, cat) {
+    // Legacy wall (lp6 etc.)
+    const wall = root.querySelector('.audG-wall');
+    if (wall) {
+      root.querySelectorAll('.audG-cell').forEach((cell) => {
+        const match = audGMatches(cell.dataset.audgCat, cat);
+        cell.style.display = match ? '' : 'none';
+        cell.classList.toggle('audG-cell--match', match);
+      });
+      wall.classList.toggle('audG-wall--filtered', cat !== 'all');
+    }
+
+    // 2-row marquee (lp1)
+    const rows = root.querySelector('.audG-marquee-rows');
+    const dataEl = root.querySelector('[data-audG-data]');
+    if (rows && dataEl) {
+      let logos;
+      try { logos = JSON.parse(dataEl.textContent); } catch { logos = []; }
+      const filtered = logos.filter((l) => audGMatches(l.cats, cat));
+      // Split into 2 rows: alternating distribution keeps both rows balanced even on sparse categories
+      const top = filtered.filter((_, i) => i % 2 === 0);
+      const bot = filtered.filter((_, i) => i % 2 === 1);
+      buildRowMarquee(rows.querySelector('[data-row="top"]'), top.length ? top : filtered, 'left');
+      buildRowMarquee(rows.querySelector('[data-row="bottom"]'), bot.length ? bot : filtered, 'right');
+      return;
+    }
+
+    // Legacy single-row marquee fallback
+    const marquee = root.querySelector('.audG-marquee');
+    if (marquee && dataEl) {
+      let logos;
+      try { logos = JSON.parse(dataEl.textContent); } catch { logos = []; }
+      const filtered = logos.filter((l) => audGMatches(l.cats, cat));
+      const doubled = [...filtered, ...filtered];
+      marquee.innerHTML = doubled
+        .map((l, i) => `<img src="assets/logos/${l.src}" alt="${l.alt}" style="height:${l.h || 28}px"${i >= filtered.length ? ' aria-hidden="true"' : ''}>`)
+        .join('');
+      tuneMarquee(marquee);
+    }
+  }
+
+  document.querySelectorAll('[data-audG-chip]').forEach((chipEl) => {
+    chipEl.addEventListener('click', () => {
+      const root = chipEl.closest('.audG') || document;
       root.querySelectorAll('[data-audG-chip]').forEach((c) => c.classList.remove('audG-chip--active'));
-      chip.classList.add('audG-chip--active');
-      const cat = chip.dataset.audgChip;
-
-      // Legacy wall (still used by lp6)
-      const wall = root.querySelector('.audG-wall');
-      if (wall) {
-        root.querySelectorAll('.audG-cell').forEach((cell) => {
-          const match = audGMatches(cell.dataset.audgCat, cat);
-          cell.style.display = match ? '' : 'none';
-          cell.classList.toggle('audG-cell--match', match);
-        });
-        wall.classList.toggle('audG-wall--filtered', cat !== 'all');
-      }
-
-      // Marquee — rebuild content (with seamless duplication) per category
-      const marquee = root.querySelector('.audG-marquee');
-      const dataEl = root.querySelector('[data-audG-data]');
-      if (marquee && dataEl) {
-        let logos;
-        try { logos = JSON.parse(dataEl.textContent); } catch { logos = []; }
-        const filtered = logos.filter((l) => audGMatches(l.cats, cat));
-        const doubled = [...filtered, ...filtered];
-        marquee.innerHTML = doubled
-          .map((l, i) => `<img src="assets/logos/${l.src}" alt="${l.alt}" style="height:${l.h || 28}px"${i >= filtered.length ? ' aria-hidden="true"' : ''}>`)
-          .join('');
-      }
+      chipEl.classList.add('audG-chip--active');
+      const cat = chipEl.dataset.audgChip;
+      applyFilter(root, cat);
     });
   });
-  // Bootstrap marquees on load
+
+  // Bootstrap marquees
   document.querySelectorAll('.audG').forEach((root) => {
     const initial = root.querySelector('[data-audG-chip].audG-chip--active');
-    if (initial) initial.click();
+    if (initial) {
+      applyFilter(root, initial.dataset.audgChip);
+    }
   });
 
-  // ---------- Constant-visual-speed scroll for marquees and testimonial carousels ----------
-  // Animation duration was fixed at 60s regardless of content width/height, which made
-  // sparse categories appear to scroll slower and dense ones appear to scroll faster.
-  // Compute duration from content size and a constant pixels-per-second target instead.
-  const MARQUEE_PX_PER_S = 60;
-  const TESTIMONIAL_PX_PER_S = 30;
-
-  function tuneMarquee(marquee) {
-    if (!marquee) return;
-    requestAnimationFrame(() => {
-      const halfW = marquee.scrollWidth / 2;
-      if (halfW > 0) marquee.style.animationDuration = `${halfW / MARQUEE_PX_PER_S}s`;
-    });
-  }
-  function tuneTestimonialCol(col) {
-    if (!col) return;
-    requestAnimationFrame(() => {
-      const halfH = col.scrollHeight / 2;
-      if (halfH > 0) col.style.animationDuration = `${halfH / TESTIMONIAL_PX_PER_S}s`;
-    });
-  }
-
-  // Initial tune
-  document.querySelectorAll('.audG-marquee').forEach(tuneMarquee);
+  // Tune testimonial columns
   document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
-  window.addEventListener('resize', () => {
-    document.querySelectorAll('.audG-marquee').forEach(tuneMarquee);
-    document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
-  });
 
-  // Re-tune marquee after chip click (content gets rebuilt)
-  document.querySelectorAll('[data-audG-chip]').forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const root = chip.closest('.audG');
-      if (root) tuneMarquee(root.querySelector('.audG-marquee'));
-    });
+  // Resize retune
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.querySelectorAll('.audG-marquee').forEach(tuneMarquee);
+      document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
+    }, 200);
   });
 });

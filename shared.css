@@ -2306,3 +2306,199 @@ img { display: block; max-width: 100%; }
   margin-top: 6px;
   line-height: 1.3;
 }
+
+/* ========================================================== */
+/* v8 — Round 6 polish (LP1 wizard + audience 2-row marquee)  */
+/* ========================================================== */
+
+/* Wizard option: icon LEFT of title (single row, no stacked sub) */
+.wizard-option--card {
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 14px 18px !important;
+  min-height: 56px !important;
+}
+.wizard-option-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px;
+  background: rgba(122, 75, 160, 0.12);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wizard-option-icon img { width: 18px; height: 18px; display: block; }
+.wizard-option-icon svg { width: 18px; height: 18px; fill: #7a4ba0; }
+.wizard-option-text { display: block !important; }
+.wizard-option-title { font-size: 15px; font-weight: 500; }
+.wizard-option-sub { display: none !important; }
+
+/* Hide wizard-help (subheadlines on each step) */
+.wizard-help { display: none !important; }
+
+/* Hide chip if any leftover */
+.wizard-chip { display: none; }
+
+/* Build-stack intro: no card background — plain stacked content with divider before stats */
+.build-stack-intro {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  align-self: auto;
+}
+.build-stack-intro .stats-compact {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(23, 23, 23, 0.12);
+}
+
+/* Logos: gentle "remove white/gray background" trick (multiply blends light bg with parent) */
+.audG-marquee img,
+.tscroll-card-avatar img {
+  mix-blend-mode: multiply;
+}
+
+/* 2-row marquee */
+.audG-marquee-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  background: rgba(247, 247, 247, 0.55);
+  border: 1px solid rgba(23, 23, 23, 0.06);
+  border-radius: 24px;
+  padding: 32px 0;
+  mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+}
+.audG-marquee {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  padding: 0 32px;
+  will-change: transform;
+}
+.audG-marquee--left { animation: audG-marq-left 60s linear infinite; }
+.audG-marquee--right { animation: audG-marq-right 60s linear infinite; }
+@keyframes audG-marq-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes audG-marq-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Conclusion step (last wizard step): no progress dot for it, "Your suggested stack" reads like a finale */
+.wizard-conclusion {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+.wizard-step--active.wizard-conclusion { display: flex; }
+.wizard-conclusion-title {
+  font-family: var(--font-header);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--foreground);
+  margin-bottom: 4px;
+}
+
+/* ========================================================== */
+/* v9 — Marquee animation fix + wizard conclusion polish      */
+/* ========================================================== */
+
+/* Stop the base .audG-marquee from running its own 60s scroll
+   when it's living inside the 2-row container -- modifiers take over. */
+.audG-marquee-rows .audG-marquee {
+  animation: none;
+}
+.audG-marquee-rows .audG-marquee.audG-marquee--left {
+  animation: audG-marq-left 60s linear infinite;
+}
+.audG-marquee-rows .audG-marquee.audG-marquee--right {
+  animation: audG-marq-right 60s linear infinite;
+}
+
+/* Hide step dots on conclusion view */
+.wizard-footer--conclusion .wizard-dots { visibility: hidden; }
+.wizard-footer--conclusion .wizard-back { visibility: hidden; }
+
+/* Multi-select check indicator */
+.wizard-option--multi {
+  position: relative;
+  padding-right: 44px !important;
+}
+.wizard-option-check {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(23, 23, 23, 0.25);
+  background: white;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+.wizard-option--multi.wizard-option--selected .wizard-option-check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.wizard-option--multi.wizard-option--selected .wizard-option-check::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Suggested-stack icon: match What's Included style (purple-tinted square) */
+.wizard-stack-icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 8px;
+  background: rgba(122, 75, 160, 0.12);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wizard-stack-icon img {
+  width: 20px !important;
+  height: 20px !important;
+  display: block;
+}
+
+/* Wizard error shake (subtle) */
+.wizard-step--error .wizard-options {
+  animation: wizardShake 0.4s ease;
+}
+@keyframes wizardShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+/* 2-row marquee: stronger transparent-bg trick */
+.audG-marquee-rows {
+  background: white;
+}
+.audG-marquee-rows .audG-marquee img {
+  mix-blend-mode: multiply;
+  filter: contrast(1.05);
+}
+
+/* Conclusion view: no progress bar */
+.wizard-conclusion-title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
