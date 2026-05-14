@@ -303,17 +303,12 @@
         </div>
       </section>
 
-      <!-- THREE STEPS TO A WORKING ENDPOINT (merged with wizard) -->
+      <!-- THREE STEPS TO A WORKING ENDPOINT (compact — left column carries H2 + steps, no stats) -->
       <section class="section" id="how">
         <div class="section-inner section-inner--left">
-          <div class="section-head">
-            <h2 class="h2">Three steps to a <span class="h-grad">working endpoint</span></h2>
-            <p class="section-sub">Not sure which products fit your workload? Tell us what you're building, and we'll show you the recommended stack with pricing.</p>
-          </div>
-
           <div class="build-stack-split">
             <div class="get-started-left">
-              <p class="get-started-lead">Once you know what you need, self-onboarding takes ~2 minutes:</p>
+              <h2 class="h2 h1--left" style="margin:0">Three steps to a <span class="h-grad">working endpoint</span></h2>
               <ol class="steps-vertical">
                 <li class="step-vertical">
                   <div class="step-vertical-num">1</div>
@@ -336,15 +331,6 @@
                   </div>
                 </li>
               </ol>
-
-              <div class="stats-2x3">
-                <div><div class="stat-num">99.99%</div><div class="stat-label">Uptime across regions</div></div>
-                <div><div class="stat-num">99%</div><div class="stat-label">Customer retention since 2021</div></div>
-                <div><div class="stat-num">2x</div><div class="stat-label">Faster RPC and WebSockets via HTTP/3 QUIC</div></div>
-                <div><div class="stat-num">10+</div><div class="stat-label">PoPs across three continents</div></div>
-                <div><div class="stat-num">20x</div><div class="stat-label">Faster gPA with custom indexes</div></div>
-                <div><div class="stat-num">&lt;1ms</div><div class="stat-label">Recent Solana history reads</div></div>
-              </div>
             </div>
 
             <div class="wizard" data-final-cta="Start building with $25" data-final-action="claim" data-step-count="4">
@@ -353,14 +339,22 @@
                 <span class="wizard-counter">Step 1 of 4</span>
               </div>
 
-              <!-- Step 1 — single-choice with AUTO-ADVANCE; values are space-separated product bundles -->
-              <div class="wizard-step wizard-step--active" data-required="one" data-auto-advance="true">
+              <!-- Step 1 — blurred behind a "take the test" teaser. Click to reveal real options. -->
+              <div class="wizard-step wizard-step--active wizard-step--teaser" data-required="one" data-auto-advance="true">
                 <h3 class="wizard-q">What are you working on?</h3>
-                <div class="wizard-options">
-                  <button class="wizard-option wizard-option--card" data-value="deshred dragons-mouth jet priority-fees"><div class="wizard-option-icon"><img src="assets/icons/products/chart-line-up.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">HFT, copy-trading, market making</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="standard-rpc das-api"><div class="wizard-option-icon"><img src="assets/icons/products/wallet.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Wallet, NFTs, RWA, consumer app</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="dragons-mouth standard-rpc jet"><div class="wizard-option-icon"><img src="assets/icons/products/lightning.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">DeFi, gaming, agentic AI</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="fumarole old-faithful"><div class="wizard-option-icon"><img src="assets/icons/products/database.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Indexing, analytics, DePIN, custodian</span></div></button>
+                <div class="wizard-options wizard-options--blurred">
+                  <button class="wizard-option wizard-option--card" data-value="deshred dragons-mouth jet priority-fees" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/chart-line-up.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">HFT, copy-trading, market making</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="standard-rpc das-api" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/wallet.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Wallet, NFTs, RWA, consumer app</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="dragons-mouth standard-rpc jet" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/lightning.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">DeFi, gaming, agentic AI</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="fumarole old-faithful" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/database.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Indexing, analytics, DePIN, custodian</span></div></button>
+                </div>
+                <div class="wizard-teaser" data-wizard-teaser>
+                  <div class="wizard-teaser-icon"><img src="assets/icons/products/clock.svg" alt=""></div>
+                  <div class="wizard-teaser-body">
+                    <div class="wizard-teaser-label">Not sure where to start?</div>
+                    <div class="wizard-teaser-sub">Take a 10-second test and we'll recommend your stack.</div>
+                  </div>
+                  <button class="btn btn-primary btn-sm wizard-teaser-cta" type="button">Take the test →</button>
                 </div>
               </div>
 

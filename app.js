@@ -212,6 +212,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // "Take the test" teaser: dismiss the blur + overlay, hand control back to the user
+    wiz.querySelectorAll('.wizard-teaser-cta').forEach((cta) => {
+      cta.addEventListener('click', () => {
+        const stepEl = cta.closest('.wizard-step');
+        if (!stepEl) return;
+        stepEl.classList.remove('wizard-step--teaser');
+        stepEl.classList.add('wizard-step--revealed');
+        // Restore tabindex on options for keyboard users
+        stepEl.querySelectorAll('.wizard-option[tabindex="-1"]').forEach((o) => o.removeAttribute('tabindex'));
+      });
+    });
+
     render();
   });
 

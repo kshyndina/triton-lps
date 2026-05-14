@@ -2997,28 +2997,29 @@ img { display: block; max-width: 100%; }
 /* quote at full opacity.                                      */
 /* ========================================================== */
 
+/* Figma 120:1106 format, scaled to match the live site's testimonial card scale */
 .testimonial--case {
   background: rgba(247, 247, 247, 0.5);
   border: 1px solid rgba(23, 23, 23, 0.05);
-  border-radius: 24px;
-  padding: 33px;
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 0;
   box-shadow: none !important;
-  width: 420px;
+  width: 320px;
 }
 .testimonial--case:hover { box-shadow: none !important; }
 
-/* 64px rounded-square avatar (was 32px round circle) */
+/* 40px rounded-square avatar (scaled from Figma's 64px) */
 .testimonial--case .testimonial-avatar--sq {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   background: rgba(122, 75, 160, 0.10);
   overflow: hidden;
   flex-shrink: 0;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   display: block;
 }
 .testimonial--case .testimonial-avatar--sq img {
@@ -3026,19 +3027,18 @@ img { display: block; max-width: 100%; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 16px;
-  mix-blend-mode: normal;        /* override the global multiply trick */
+  border-radius: 10px;
+  mix-blend-mode: normal;
 }
 
-/* Name + handle on a single line below the avatar */
+/* Name + handle on a single line below the avatar (scaled to 14/15px) */
 .testimonial--case .testimonial-byline {
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   font-family: var(--font-header);
-  font-size: 20px;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
+  font-size: 15px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--foreground);
-  white-space: normal;
 }
 .testimonial--case .testimonial-byline .testimonial-name {
   font-weight: 600;
@@ -3054,22 +3054,96 @@ img { display: block; max-width: 100%; }
   font-size: inherit;
   color: rgba(23, 23, 23, 0.5);
   display: inline;
-  margin-left: 6px;
+  margin-left: 4px;
   white-space: normal;
   overflow: visible;
 }
 
-/* Quote: Work Sans 18px, full-opacity foreground, line-height 1.625 */
+/* Quote: Work Sans 14px, full-opacity, line-height 1.55 (in tune w/ live site) */
 .testimonial--case .testimonial-quote {
-  font-family: var(--font-body);    /* Work Sans, NOT mono */
+  font-family: var(--font-body);
   font-weight: 400;
-  font-size: 18px;
-  line-height: 1.625;
+  font-size: 14px;
+  line-height: 1.55;
   color: var(--foreground);
   margin: 0;
 }
 
-/* When the marquee wrapper sets a fixed width, override to Figma width */
-.testimonials-marquee .testimonial--case {
-  width: 420px;
+.testimonials-marquee .testimonial--case { width: 320px; }
+
+/* ========================================================== */
+/* v17 — Wizard step 1 teaser overlay (blur + "take the test") */
+/* ========================================================== */
+
+.wizard-step--teaser { position: relative; }
+.wizard-step--teaser .wizard-q { filter: blur(4px); user-select: none; }
+.wizard-options--blurred {
+  filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+}
+/* When the teaser is dismissed -- restore */
+.wizard-step--revealed .wizard-q,
+.wizard-step--revealed .wizard-options--blurred {
+  filter: none;
+  pointer-events: auto;
+  user-select: auto;
+}
+.wizard-step--revealed .wizard-teaser { display: none; }
+
+.wizard-teaser {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(122, 75, 160, 0.25);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 8px 24px rgba(23, 23, 23, 0.08);
+  z-index: 2;
+}
+.wizard-teaser-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(122, 75, 160, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wizard-teaser-icon img { width: 20px; height: 20px; display: block; }
+.wizard-teaser-body { flex: 1; min-width: 0; }
+.wizard-teaser-label {
+  font-family: var(--font-header);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--foreground);
+}
+.wizard-teaser-sub {
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(23, 23, 23, 0.65);
+  margin-top: 2px;
+}
+.wizard-teaser-cta { flex-shrink: 0; }
+
+/* Get-started left column: tighter spacing now that intro lead and
+   stats grid are gone */
+.get-started-left {
+  gap: 32px;
+}
+.get-started-left .h2 {
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
