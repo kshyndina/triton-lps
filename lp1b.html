@@ -428,28 +428,29 @@
               </ol>
             </div>
 
-            <div class="wizard" data-final-cta="Start building with $25" data-final-action="claim" data-step-count="4">
+            <div class="wizard wizard--teasing" data-final-cta="Start building with $25" data-final-action="claim" data-step-count="4">
+
+              <!-- Teaser overlay: covers the WHOLE wizard (progress, step, footer) -->
+              <div class="wizard-teaser-overlay" data-wizard-teaser>
+                <div class="wizard-teaser-icon"><img src="assets/icons/products/clock.svg" alt=""></div>
+                <div class="wizard-teaser-label">Not sure where to start?</div>
+                <div class="wizard-teaser-sub">Take a 10-second test and we'll recommend your stack.</div>
+                <button class="btn btn-primary wizard-teaser-cta" type="button">Take the test →</button>
+              </div>
+
               <div class="wizard-head">
                 <div class="wizard-progress"><div class="wizard-progress-fill"></div></div>
                 <span class="wizard-counter">Step 1 of 4</span>
               </div>
 
-              <!-- Step 1 — blurred behind a "take the test" teaser. Click to reveal real options. -->
-              <div class="wizard-step wizard-step--active wizard-step--teaser" data-required="one" data-auto-advance="true">
+              <!-- Step 1 — single-choice, auto-advance -->
+              <div class="wizard-step wizard-step--active" data-required="one" data-auto-advance="true">
                 <h3 class="wizard-q">What are you working on?</h3>
-                <div class="wizard-options wizard-options--blurred">
-                  <button class="wizard-option wizard-option--card" data-value="deshred dragons-mouth jet priority-fees" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/chart-line-up.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">HFT, copy-trading, market making</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="standard-rpc das-api" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/wallet.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Wallet, NFTs, RWA, consumer app</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="dragons-mouth standard-rpc jet" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/lightning.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">DeFi, gaming, agentic AI</span></div></button>
-                  <button class="wizard-option wizard-option--card" data-value="fumarole old-faithful" tabindex="-1"><div class="wizard-option-icon"><img src="assets/icons/products/database.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Indexing, analytics, DePIN, custodian</span></div></button>
-                </div>
-                <div class="wizard-teaser" data-wizard-teaser>
-                  <div class="wizard-teaser-icon"><img src="assets/icons/products/clock.svg" alt=""></div>
-                  <div class="wizard-teaser-body">
-                    <div class="wizard-teaser-label">Not sure where to start?</div>
-                    <div class="wizard-teaser-sub">Take a 10-second test and we'll recommend your stack.</div>
-                  </div>
-                  <button class="btn btn-primary btn-sm wizard-teaser-cta" type="button">Take the test →</button>
+                <div class="wizard-options">
+                  <button class="wizard-option wizard-option--card" data-value="deshred dragons-mouth jet priority-fees"><div class="wizard-option-icon"><img src="assets/icons/products/chart-line-up.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">HFT, copy-trading, market making</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="standard-rpc das-api"><div class="wizard-option-icon"><img src="assets/icons/products/wallet.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Wallet, NFTs, RWA, consumer app</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="dragons-mouth standard-rpc jet"><div class="wizard-option-icon"><img src="assets/icons/products/lightning.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">DeFi, gaming, agentic AI</span></div></button>
+                  <button class="wizard-option wizard-option--card" data-value="fumarole old-faithful"><div class="wizard-option-icon"><img src="assets/icons/products/database.svg" alt=""></div><div class="wizard-option-text"><span class="wizard-option-title">Indexing, analytics, DePIN, custodian</span></div></button>
                 </div>
               </div>
 

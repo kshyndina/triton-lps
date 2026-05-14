@@ -3075,67 +3075,60 @@ img { display: block; max-width: 100%; }
 /* v17 — Wizard step 1 teaser overlay (blur + "take the test") */
 /* ========================================================== */
 
-.wizard-step--teaser { position: relative; }
-.wizard-step--teaser .wizard-q { filter: blur(4px); user-select: none; }
-.wizard-options--blurred {
+/* Wizard teaser: blur the WHOLE wizard (head, step, footer) behind a
+   soft-white veil, with the CTA stack centered on top. No card chrome. */
+.wizard { position: relative; }
+.wizard--teasing > .wizard-head,
+.wizard--teasing > .wizard-step,
+.wizard--teasing > .wizard-footer {
   filter: blur(4px);
   pointer-events: none;
   user-select: none;
 }
-/* When the teaser is dismissed -- restore */
-.wizard-step--revealed .wizard-q,
-.wizard-step--revealed .wizard-options--blurred {
-  filter: none;
-  pointer-events: auto;
-  user-select: auto;
-}
-.wizard-step--revealed .wizard-teaser { display: none; }
 
-.wizard-teaser {
+.wizard-teaser-overlay {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0 16px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(122, 75, 160, 0.25);
-  border-radius: 16px;
-  padding: 16px 18px;
+  inset: 0;
+  z-index: 10;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 14px;
-  box-shadow: 0 8px 24px rgba(23, 23, 23, 0.08);
-  z-index: 2;
+  padding: 24px;
+  background: rgba(247, 247, 247, 0.78);
+  border-radius: inherit;
 }
+.wizard:not(.wizard--teasing) .wizard-teaser-overlay { display: none; }
+
 .wizard-teaser-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: rgba(122, 75, 160, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
-.wizard-teaser-icon img { width: 20px; height: 20px; display: block; }
-.wizard-teaser-body { flex: 1; min-width: 0; }
+.wizard-teaser-icon img { width: 22px; height: 22px; display: block; }
+
 .wizard-teaser-label {
   font-family: var(--font-header);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.2;
+  letter-spacing: -0.01em;
   color: var(--foreground);
 }
 .wizard-teaser-sub {
-  font-size: 13px;
-  line-height: 1.35;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
   color: rgba(23, 23, 23, 0.65);
-  margin-top: 2px;
+  max-width: 320px;
 }
-.wizard-teaser-cta { flex-shrink: 0; }
+.wizard-teaser-cta { margin-top: 8px; }
 
 /* Get-started left column: tighter spacing now that intro lead and
    stats grid are gone */
