@@ -3,7 +3,7 @@
 // Product catalogue used by wizard suggested stack
 // Icons match the ones used in the What's Included scroller exactly.
 const PRODUCT_INFO = {
-  'standard-rpc':  { name: 'Standard RPC', desc: 'JSON-RPC over HTTP/3 QUIC, 20+ PoPs', price: '$0.08 / GB + $10 / M calls', icon: 'cube' },
+  'standard-rpc':  { name: 'Standard RPC', desc: 'JSON-RPC over HTTP/3 QUIC, 10+ PoPs', price: '$0.08 / GB + $10 / M calls', icon: 'cube' },
   'steamboat':     { name: 'Steamboat', desc: 'Indexed account reads, up to 20x faster than Agave', price: '$0.08 / GB + $10 / M calls', icon: 'treestructure' },
   'account-sync':  { name: 'Account Sync', desc: 'Streaming-backed local cache, one-line SDK swap', price: '$0.08 / GB bandwidth', icon: 'arrows-clockwise' },
   'hydrant':       { name: 'Hydrant', desc: 'Full Solana ledger in ms, ClickHouse-backed', price: '$0.08 / GB + $10 / M calls', icon: 'scroll' },
