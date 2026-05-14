@@ -3147,3 +3147,122 @@ img { display: block; max-width: 100%; }
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
+
+/* ========================================================== */
+/* v18 — endt-row paragraph copy + #community section          */
+/*       Mirrors triton.one CommunitySection layout            */
+/* ========================================================== */
+
+/* Paragraph description in Access component rows (replaces bullets) */
+.endt-row-desc {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--foreground);
+  margin: 0;
+  min-width: 0;
+}
+
+/* Community section (mirrors triton.one homepage CommunitySection) */
+.community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.community-left {
+  padding-right: 40px;
+}
+.community-title {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin: 0 0 36px 0;
+}
+@media (min-width: 768px) {
+  .community-title { font-size: 48px; }
+}
+.community-desc {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--foreground);
+  margin: 0 0 40px 0;
+  max-width: 560px;
+}
+.community-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--foreground);
+  transition: color 0.15s;
+  text-decoration: none;
+}
+.community-link:hover { color: var(--primary); }
+.community-link svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.15s;
+}
+.community-link:hover svg { transform: translateX(2px); }
+
+/* Right column: 2 vertical scrolling columns with top/bottom fade mask */
+.community-right { width: 100%; }
+.community-fade-mask {
+  position: relative;
+  overflow: hidden;
+  max-height: 540px;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%, #000 85%, transparent 100%);
+}
+.community-cols {
+  display: flex;
+  gap: 24px;
+}
+.community-col {
+  flex: 1;
+  min-width: 0;
+}
+.community-col-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  will-change: transform;
+}
+.community-col-inner--up   { animation: community-scroll-up   40s linear infinite; }
+.community-col-inner--down { animation: community-scroll-down 50s linear infinite; }
+.community-fade-mask:hover .community-col-inner { animation-play-state: paused; }
+@keyframes community-scroll-up {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes community-scroll-down {
+  0%   { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* Use the LIVE TestimonialCard style (white, p-4, mono quote at 0.7).
+   The .testimonial base style is already set up for this; ensure the
+   case-study modifier doesn't leak in here. */
+.community-cols .testimonial {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0px 2px 4px 0px rgba(23, 23, 23, 0.04);
+}
+.community-cols .testimonial:hover {
+  box-shadow: 0px 4px 12px 0px rgba(23, 23, 23, 0.08);
+}
