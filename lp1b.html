@@ -158,31 +158,39 @@
                   <h3 class="endt-row-title">End-to-end streaming suite</h3>
                   <div class="endt-row-tag">$0.08 / GB bandwidth</div>
                 </div>
-                <p class="endt-row-desc">Ultra-low latency real-time data via gRPC and improved WebSockets, pre-execution transactions for traders, persistent streams with a 4-day cache for indexer auto-backfills, and a streaming-backed account cache that drops into existing polling code with one-line SDK swap.</p>
+                <p class="endt-row-desc">Real-time data via gRPC and improved WebSockets, pre-execution transactions for traders, and persistent streams with a 4-day cache for auto-backfills.</p>
               </div>
 
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">Full Solana ledger, queryable in milliseconds</h3>
+                  <h3 class="endt-row-title">Full Solana ledger access</h3>
                   <div class="endt-row-tag">$0.08 / GB bandwidth + $10 / M calls</div>
                 </div>
-                <p class="endt-row-desc">Bidirectional sorting and cursor pagination across large batches, in-memory head cache for sub-millisecond reads on recent history, getTransactionsForAddress for a wallet's full history with ATAs, and Old Faithful for genesis-onward replay of blocks and transactions.</p>
+                <p class="endt-row-desc">Cursor pagination across large batches, in-memory head cache for sub-millisecond reads on recent history, gTFA for a wallet's history with ATAs, and Faithful streams for historical replay of blocks and transactions.</p>
               </div>
 
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">Indexed account reads on shared infrastructure</h3>
+                  <h3 class="endt-row-title">Indexed account reads</h3>
                   <div class="endt-row-tag">$0.08 / GB bandwidth + $10 / M calls</div>
                 </div>
-                <p class="endt-row-desc">Custom getProgramAccounts indexes on shared infrastructure, that get auto-created from your query traffic, adapting to your app's logic. You get lightning-fast gPA reads plus dedicated hot paths for token queries by owner, delegate, or mint.</p>
+                <p class="endt-row-desc">Custom getProgramAccounts indexes on shared infrastructure, auto-created from your query traffic. You get lightning-fast gPA reads plus dedicated hot paths for token queries by owner, delegate, or mint.</p>
               </div>
 
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">Protected direct-to-leader sending by default</h3>
+                  <h3 class="endt-row-title">Transaction sending</h3>
                   <div class="endt-row-tag">$0.08 / GB bandwidth + $10 / M calls</div>
                 </div>
-                <p class="endt-row-desc">Direct-to-leader forwarding over QUIC with stake-weighted routing on request at no extra charge, Yellowstone Shield for on-chain MEV policies, percentile-aware fee estimation via the Priority Fees API, and Jito bundle simulation for testing atomic transactions.</p>
+                <p class="endt-row-desc">Direct-to-leader forwarding over QUIC with SWQoS no extra charge, Shield for MEV protection, percentile-aware fee estimation, and Jito bundle simulation for testing atomic transactions.</p>
+              </div>
+
+              <div class="endt-row">
+                <div class="endt-row-head">
+                  <h3 class="endt-row-title">Advanced APIs</h3>
+                  <div class="endt-row-tag">Varies by service</div>
+                </div>
+                <p class="endt-row-desc">Metaplex DAS for NFT and cNFT ownership and metadata, Photon for compressed accounts via Light Protocol, Metis and Titan for swap routing with quote streaming over WebSockets, and Jito bundle simulation for atomic transactions.</p>
               </div>
             </div>
 
