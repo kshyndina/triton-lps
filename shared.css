@@ -2445,40 +2445,8 @@ img { display: block; max-width: 100%; }
 .wizard-footer--conclusion .wizard-dots { visibility: hidden; }
 .wizard-footer--conclusion .wizard-back { visibility: hidden; }
 
-/* Multi-select check indicator -- 10px box (30% smaller than 14px) */
-.wizard-option--multi {
-  position: relative;
-  padding-right: 32px !important;
-}
-.wizard-option-check {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  margin-top: -5px;            /* manual centre, no transform conflict with ::after */
-  border-radius: 3px;
-  border: 1px solid rgba(23, 23, 23, 0.25);
-  background: white;
-  transition: all 0.15s ease;
-  flex-shrink: 0;
-  box-sizing: border-box;
-}
-.wizard-option--multi.wizard-option--selected .wizard-option-check {
-  background: var(--primary);
-  border-color: var(--primary);
-}
-.wizard-option--multi.wizard-option--selected .wizard-option-check::after {
-  content: '';
-  position: absolute;
-  left: 2.5px;
-  top: 0.5px;
-  width: 2.5px;
-  height: 5px;
-  border: solid white;
-  border-width: 0 1.2px 1.2px 0;
-  transform: rotate(45deg);
-}
+/* Multi-select: no check indicator, just the existing purple outline on selected */
+.wizard-option-check { display: none !important; }
 
 /* Suggested-stack icon: match What's Included style (purple-tinted square) */
 .wizard-stack-icon {
