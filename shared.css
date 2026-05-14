@@ -2789,3 +2789,75 @@ img { display: block; max-width: 100%; }
 }
 .modal-content--consult { max-width: 760px; padding: 40px 40px 32px; }
 .modal-content--consult .h2 { font-size: 32px; line-height: 1.15; }
+
+/* ========================================================== */
+/* v14 — Underline-tab variant for #categories                 */
+/* No backgrounds. Tabs sit on a hairline, active tab gets a    */
+/* thicker purple underline that sits over the hairline.        */
+/* ========================================================== */
+
+.tabs-pill--line {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  gap: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.12);
+  margin-bottom: 32px;
+}
+.tabs-pill--line .tab {
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 0;
+  position: relative;
+  color: rgba(23, 23, 23, 0.55);
+  font-weight: 500;
+  background: transparent !important;
+  /* Push the active underline through the row hairline */
+  margin-bottom: -1px;
+}
+.tabs-pill--line .tab::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.18s ease;
+}
+.tabs-pill--line .tab:hover {
+  color: rgba(23, 23, 23, 0.85);
+  background: transparent !important;
+}
+.tabs-pill--line .tab--active {
+  color: var(--primary);
+  background: transparent !important;
+}
+.tabs-pill--line .tab--active::after {
+  background: var(--primary);
+  height: 2px;
+}
+
+/* Bare capability card -- no background, no rounded corners, no padding */
+.cap-card--bare {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  gap: 56px;
+}
+.cap-card--bare .visual-dashed {
+  border-color: rgba(122, 75, 160, 0.25);
+  background: transparent;
+}
+@media (max-width: 880px) {
+  .tabs-pill--line {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .tabs-pill--line::-webkit-scrollbar { display: none; }
+  .tabs-pill--line .tab { flex-shrink: 0; }
+}
