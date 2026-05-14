@@ -2701,3 +2701,52 @@ img { display: block; max-width: 100%; }
   -webkit-background-clip: initial;
           background-clip: initial;
 }
+
+/* ========================================================== */
+/* v12 — Scrollable testimonial marquee (hero, with side fade) */
+/* ========================================================== */
+
+.testimonials-marquee-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* Side-gradient fade like the logo marquee */
+  mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%);
+}
+
+.testimonials-marquee {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  align-items: stretch;
+  will-change: transform;
+  animation: testimonials-marq 60s linear infinite;
+}
+.testimonials-marquee-wrap:hover .testimonials-marquee {
+  animation-play-state: paused;
+}
+@keyframes testimonials-marq {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Each card has a fixed width so the marquee math is stable */
+.testimonials-marquee .testimonial {
+  width: 360px;
+  flex-shrink: 0;
+  min-height: auto;
+}
+
+/* Card refinements to match the live website's TestimonialCard.vue */
+.testimonial {
+  box-shadow: 0px 2px 4px 0px rgba(23, 23, 23, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+.testimonial:hover {
+  box-shadow: 0px 4px 12px 0px rgba(23, 23, 23, 0.08);
+}
+.testimonial-avatar {
+  width: 32px;
+  height: 32px;
+}

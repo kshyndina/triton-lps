@@ -411,8 +411,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Tune testimonial columns
+  // Tune vertical testimonial columns (legacy, lp2/lp6)
   document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
+
+  // Horizontal testimonial marquee (hero on LP1): duplicate cards for a
+  // seamless loop, then tune speed based on measured width.
+  function setupTestimonialMarquee(marquee) {
+    if (!marquee || marquee.dataset.tmarqInit === '1') return;
+    marquee.dataset.tmarqInit = '1';
+    const cards = Array.from(marquee.children);
+    // Clone the whole set once so translateX(-50%) creates a perfect loop
+    cards.forEach((c) => {
+      const clone = c.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      marquee.appendChild(clone);
+    });
+    tuneMarquee(marquee);
+  }
+  document.querySelectorAll('.testimonials-marquee').forEach(setupTestimonialMarquee);
 
   // Resize retune
   let resizeTimer = null;
@@ -420,6 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       document.querySelectorAll('.audG-marquee').forEach(tuneMarquee);
+      document.querySelectorAll('.testimonials-marquee').forEach(tuneMarquee);
       document.querySelectorAll('.tscroll-up, .tscroll-down').forEach(tuneTestimonialCol);
     }, 200);
   });
