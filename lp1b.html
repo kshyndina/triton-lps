@@ -104,78 +104,77 @@
         </div>
       </section>
 
-      <!-- CORE PRODUCT CATEGORIES -->
+      <!-- CORE PRODUCT CATEGORIES — Figma access component (left header card + right list) -->
       <section class="section" id="categories">
         <div class="section-inner">
-          <div class="section-head">
-            <h2 class="h2">Premium infrastructure <span class="h-grad">for every Solana use case</span></h2>
-            <p class="section-sub">Real-time data for traders, indexed reads for wallets, full history for analytics, direct-to-leader sends for DEXs. All on one balance.</p>
-          </div>
-          <div class="tabs-pill tabs-pill--line">
-            <button class="tab tab--active" data-tab="streaming">Streaming</button>
-            <button class="tab" data-tab="history">History</button>
-            <button class="tab" data-tab="accounts">Accounts</button>
-            <button class="tab" data-tab="send">Send transactions</button>
-          </div>
+          <div class="endt-grid">
 
-          <div class="cap-card cap-card--bare" data-tab-panel="streaming" style="display:grid">
-            <div class="cap-card-left">
-              <h3 class="h3">End-to-end streaming suite</h3>
-              <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> Account Sync to resolve account queries locally from a cache backed by gRPC streaming, no changes to your polling code</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Deshred transactions for pre-execution intent, around 20ms faster than standard gRPC at p90</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Dragon's Mouth gRPC for sub-slot updates on accounts, transactions, slots, and blocks, with auto-reconnect and around 1,000-slot backfill</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Whirligig improved WebSockets for real-time updates with transactionSubscribe and blockSubscribe</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Fumarole persistent streams with 96h cursor resume and at-least-once delivery guarantee</li>
-              </ul>
-              <a class="btn btn-primary" data-action="claim" style="align-self:flex-start; margin-top:8px">Start building with $25</a>
-            </div>
-            <div class="visual-dashed"><span class="visual-dashed-label">Streaming visual</span></div>
-          </div>
+            <aside class="endt-header">
+              <div class="endt-header-copy">
+                <h2 class="endt-header-title">Premium infrastructure for every Solana use case</h2>
+                <p class="endt-header-desc">Real-time data for traders, indexed reads for wallets, full history for analytics, direct-to-leader sends for DEXs. All on one balance.</p>
+                <a class="btn btn-outline-dark btn-sm" data-action="claim" style="align-self:flex-start; margin-top:8px">View pricing →</a>
+              </div>
+            </aside>
 
-          <div class="cap-card cap-card--bare" data-tab-panel="history" style="display:none">
-            <div class="cap-card-left">
-              <h3 class="h3">Full Solana ledger, queryable in milliseconds</h3>
-              <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> Single-call wallet history via getTransactionsForAddress with ATAs included</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Sub-millisecond reads on the most recent slots from the in-memory head cache</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Bidirectional sorting and native cursor pagination, resumes across large batches without resending filters</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Slot range parameters scope reads to exactly the window you need for fastest response</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Old Faithful streams to replay every block and transaction from genesis through the same gRPC interface</li>
-              </ul>
-              <a class="btn btn-primary" data-action="claim" style="align-self:flex-start; margin-top:8px">Start building with $25</a>
-            </div>
-            <div class="visual-dashed"><span class="visual-dashed-label">History benchmark visual</span></div>
-          </div>
+            <div class="endt-list">
+              <div class="endt-row">
+                <div class="endt-row-head">
+                  <h3 class="endt-row-title">End-to-end streaming suite</h3>
+                  <div class="endt-row-tag">Streaming</div>
+                </div>
+                <ul class="endt-row-bullets">
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Account Sync resolves account queries from a cache backed by gRPC streaming, no changes to your polling code</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Deshred transactions for pre-execution intent, ~20ms faster than standard gRPC at p90</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Dragon's Mouth gRPC for sub-slot updates with auto-reconnect and ~1,000-slot backfill</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Whirligig improved WebSockets, with transactionSubscribe and blockSubscribe</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Fumarole persistent streams with 96h cursor resume and at-least-once delivery</li>
+                </ul>
+              </div>
 
-          <div class="cap-card cap-card--bare" data-tab-panel="accounts" style="display:none">
-            <div class="cap-card-left">
-              <h3 class="h3">Indexed account reads on shared infrastructure</h3>
-              <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> Custom indexes for getProgramAccounts, auto-created from your query traffic</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Token hot paths for fast queries on owner, delegate, or mint filters</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Bootstrapped from a complete Solana snapshot on startup, so every query returns a valid response</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Database stack that adapts to your app without forcing your queries into pre-existing indexes</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Drastically reduced time-out and rate-limit hits compared to Agave full-state scans</li>
-              </ul>
-              <a class="btn btn-primary" data-action="claim" style="align-self:flex-start; margin-top:8px">Start building with $25</a>
-            </div>
-            <div class="visual-dashed"><span class="visual-dashed-label">Accounts visual</span></div>
-          </div>
+              <div class="endt-row">
+                <div class="endt-row-head">
+                  <h3 class="endt-row-title">Full Solana ledger, queryable in milliseconds</h3>
+                  <div class="endt-row-tag">History</div>
+                </div>
+                <ul class="endt-row-bullets">
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Single-call wallet history via getTransactionsForAddress with ATAs included</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Sub-millisecond reads on the most recent slots from the in-memory head cache</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Bidirectional sorting and native cursor pagination across large batches</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Slot range parameters scope reads to the exact window you need</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Old Faithful streams to replay every block from genesis on the same gRPC interface</li>
+                </ul>
+              </div>
 
-          <div class="cap-card cap-card--bare" data-tab-panel="send" style="display:none">
-            <div class="cap-card-left">
-              <h3 class="h3">Protected direct-to-leader sending by default</h3>
-              <ul class="cap-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> Leader scheduling, connection pooling, and retries handled by the engine</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Stake-weighted routing included on request, no extra charge</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Yellowstone Shield defines who processes your transaction via on-chain policies, no added latency</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Priority Fees API with tail-aware percentiles for accurate fee estimation, no overpaying</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Jito bundle simulation for testing atomic transactions before submitting</li>
-              </ul>
-              <a class="btn btn-primary" data-action="claim" style="align-self:flex-start; margin-top:8px">Start building with $25</a>
+              <div class="endt-row">
+                <div class="endt-row-head">
+                  <h3 class="endt-row-title">Indexed account reads on shared infrastructure</h3>
+                  <div class="endt-row-tag">Accounts</div>
+                </div>
+                <ul class="endt-row-bullets">
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Custom indexes for getProgramAccounts, auto-created from your query traffic</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Token hot paths for fast queries on owner, delegate, or mint filters</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Bootstrapped from a complete Solana snapshot, every query resolves from day one</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Database stack adapts to your app, no manual index requests</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Drastically fewer time-outs and rate-limit hits than Agave full-state scans</li>
+                </ul>
+              </div>
+
+              <div class="endt-row">
+                <div class="endt-row-head">
+                  <h3 class="endt-row-title">Protected direct-to-leader sending by default</h3>
+                  <div class="endt-row-tag">Send transactions</div>
+                </div>
+                <ul class="endt-row-bullets">
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Leader scheduling, connection pooling, and retries handled by the engine</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Stake-weighted routing included on request, no extra charge</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Yellowstone Shield defines who processes your transaction via on-chain policies</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Priority Fees API with tail-aware percentiles for accurate fee estimation</li>
+                  <li><img src="assets/icons/check-circle.svg" alt=""> Jito bundle simulation for testing atomic transactions before submitting</li>
+                </ul>
+              </div>
             </div>
-            <div class="visual-dashed"><span class="visual-dashed-label">Send visual</span></div>
+
           </div>
 
           <!-- WHY-CARDS inlined into #categories — same section padding, no extra section header -->

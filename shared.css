@@ -2861,3 +2861,131 @@ img { display: block; max-width: 100%; }
   .tabs-pill--line::-webkit-scrollbar { display: none; }
   .tabs-pill--line .tab { flex-shrink: 0; }
 }
+
+/* ========================================================== */
+/* v15 — "Access" 2-col list component (Figma 4506:10505)      */
+/* Left: section header card with gradient. Right: list rows. */
+/* ========================================================== */
+
+.endt-grid {
+  display: grid;
+  grid-template-columns: 397px 1fr;
+  gap: 20px;
+  width: 100%;
+  align-items: start;
+}
+
+/* Left -- section header card */
+.endt-header {
+  background:
+    linear-gradient(189.78deg, rgba(255, 200, 69, 0.20) 6%, rgba(122, 75, 160, 0.30) 94%),
+    #f7f7f7;
+  border: 1px solid rgba(23, 23, 23, 0.10);
+  border-radius: 24px;
+  padding: 112px 32px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.endt-header-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.endt-header-title {
+  font-family: var(--font-header);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin: 0;
+}
+.endt-header-desc {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* Right -- list of rows */
+.endt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 40px;
+}
+.endt-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.4fr);
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.2);
+  align-items: start;
+}
+.endt-row:first-child { padding-top: 0; }
+.endt-row-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.endt-row-title {
+  font-family: var(--font-header);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin: 0;
+}
+.endt-row-tag {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(23, 23, 23, 0.55);
+}
+.endt-row-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.endt-row-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+.endt-row-bullets li img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 980px) {
+  .endt-grid {
+    grid-template-columns: 1fr;
+  }
+  .endt-header {
+    padding: 48px 28px 28px;
+  }
+  .endt-list {
+    padding-left: 0;
+  }
+  .endt-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
