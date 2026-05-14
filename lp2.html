@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=2026-05-14-15">
+<link rel="stylesheet" href="shared.css?v=2026-05-14-16">
 </head>
 <body>
 
@@ -127,15 +127,15 @@
         </div>
       </section>
 
-      <!-- FEATURES: Access component (left header card + right list) + why-cards inlined below -->
+      <!-- FEATURES: Hydrant accordion copy in Access layout + why-cards inlined below -->
       <section class="section" id="what">
         <div class="section-inner">
           <div class="endt-grid">
 
             <aside class="endt-header">
               <div class="endt-header-copy">
-                <h2 class="endt-header-title">Premium infrastructure for every Solana use case</h2>
-                <p class="endt-header-desc">Real-time data for traders, indexed reads for wallets, full history for analytics, direct-to-leader sends for DEXs. All on one balance.</p>
+                <h2 class="endt-header-title">Solana history, rebuilt for how developers query it</h2>
+                <p class="endt-header-desc">Hydrant indexes the entire ledger into ClickHouse, sorted for the exact patterns wallets, explorers, and analytics tools depend on.</p>
                 <a class="btn btn-outline-dark btn-sm" href="#pricing" style="align-self:flex-start; margin-top:8px">View pricing →</a>
               </div>
             </aside>
@@ -143,42 +143,34 @@
             <div class="endt-list">
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">End-to-end streaming suite</h3>
-                  <div class="endt-row-tag">$0.08 / GB bandwidth</div>
+                  <h3 class="endt-row-title">Wallet history in one call</h3>
+                  <div class="endt-row-tag">Single-call API</div>
                 </div>
-                <p class="endt-row-desc">Real-time data via gRPC and improved WebSockets, pre-execution transactions for traders, and persistent streams with a 4-day cache for auto-backfills.</p>
+                <p class="endt-row-desc">getTransactionsForAddress replaces the 5-step, 100-request loop with a single call that returns the wallet's full activity, ATAs included. Server-side filters on slot, blockTime, signature, and status, with up to 100 transactions or 1,000 signatures per page and a resumable cursor.</p>
               </div>
 
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">Full Solana ledger access</h3>
-                  <div class="endt-row-tag">$0.08 / GB bandwidth + $10 / M calls</div>
+                  <h3 class="endt-row-title">Sub-millisecond head cache for recent data</h3>
+                  <div class="endt-row-tag">&lt;1ms reads</div>
                 </div>
-                <p class="endt-row-desc">Cursor pagination across large batches, in-memory head cache for sub-millisecond reads on recent history, gTFA for a wallet's history with ATAs, and Faithful streams for historical replay of blocks and transactions.</p>
+                <p class="endt-row-desc">Recent slots resolve from an in-memory head cache without a database round-trip. processed commitment supported across all historical methods, same JSON-RPC interface, no client change required. Slot range parameters scope reads for the fastest possible response.</p>
               </div>
 
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">Indexed account reads</h3>
-                  <div class="endt-row-tag">$0.08 / GB bandwidth + $10 / M calls</div>
+                  <h3 class="endt-row-title">Superior performance across the entire ledger</h3>
+                  <div class="endt-row-tag">Up to 38x faster at p50</div>
                 </div>
-                <p class="endt-row-desc">Custom getProgramAccounts indexes on shared infrastructure, auto-created from your query traffic. You get lightning-fast gPA reads plus dedicated hot paths for token queries by owner, delegate, or mint.</p>
+                <p class="endt-row-desc">ClickHouse rewrite of the storage layer, with every table physically sorted for the queries it serves so reads skip irrelevant rows. Purpose-built materialised views, hot-address optimisation for heavy-traffic addresses like USDC, and tiered storage that keeps older epochs fast and cost-efficient.</p>
               </div>
 
               <div class="endt-row">
                 <div class="endt-row-head">
-                  <h3 class="endt-row-title">Transaction sending</h3>
-                  <div class="endt-row-tag">$0.08 / GB bandwidth + $10 / M calls</div>
+                  <h3 class="endt-row-title">Affordable across every epoch</h3>
+                  <div class="endt-row-tag">$0.08 / GB + $10 / M calls</div>
                 </div>
-                <p class="endt-row-desc">Direct-to-leader forwarding over QUIC with SWQoS no extra charge, Shield for MEV protection, percentile-aware fee estimation, and Jito bundle simulation for testing atomic transactions.</p>
-              </div>
-
-              <div class="endt-row">
-                <div class="endt-row-head">
-                  <h3 class="endt-row-title">Advanced APIs</h3>
-                  <div class="endt-row-tag">Varies by service</div>
-                </div>
-                <p class="endt-row-desc">Metaplex DAS for NFT and cNFT ownership and metadata, Photon for compressed accounts via Light Protocol, Metis and Titan for swap routing with quote streaming over WebSockets, and Jito bundle simulation for atomic transactions.</p>
+                <p class="endt-row-desc">Every historical method and every epoch bills at the same rate as a standard RPC call. Bidirectional sorting on history reads, pagination cursor keeps subsequent calls clean without resending filters, and the same flat price applies on every subscription with no tier gating.</p>
               </div>
             </div>
 
