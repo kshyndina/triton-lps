@@ -3257,12 +3257,35 @@ img { display: block; max-width: 100%; }
 /* Use the LIVE TestimonialCard style (white, p-4, mono quote at 0.7).
    The .testimonial base style is already set up for this; ensure the
    case-study modifier doesn't leak in here. */
-.community-cols .testimonial {
+.community-cols .testimonial,
+.hero-tcol .testimonial {
   background: #fff;
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0px 2px 4px 0px rgba(23, 23, 23, 0.04);
 }
-.community-cols .testimonial:hover {
+.community-cols .testimonial:hover,
+.hero-tcol .testimonial:hover {
   box-shadow: 0px 4px 12px 0px rgba(23, 23, 23, 0.08);
+}
+
+/* Hero right: single scrolling testimonial column (replaces live-card) */
+.hero-tcol {
+  position: relative;
+  overflow: hidden;
+  max-height: 460px;
+  width: 100%;
+  align-self: stretch;
+}
+.hero-tcol .community-col-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  will-change: transform;
+}
+.hero-tcol .community-col-inner--up {
+  animation: community-scroll-up 36s linear infinite;
+}
+.hero-tcol:hover .community-col-inner {
+  animation-play-state: paused;
 }
