@@ -2989,3 +2989,87 @@ img { display: block; max-width: 100%; }
     gap: 12px;
   }
 }
+
+/* ========================================================== */
+/* v16 — Testimonial card: Figma 120:1106 case-study format    */
+/* Translucent soft-white bg, 64px rounded-square avatar at    */
+/* top, Inter-style name + dimmed handle inline, Work Sans 18  */
+/* quote at full opacity.                                      */
+/* ========================================================== */
+
+.testimonial--case {
+  background: rgba(247, 247, 247, 0.5);
+  border: 1px solid rgba(23, 23, 23, 0.05);
+  border-radius: 24px;
+  padding: 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: none !important;
+  width: 420px;
+}
+.testimonial--case:hover { box-shadow: none !important; }
+
+/* 64px rounded-square avatar (was 32px round circle) */
+.testimonial--case .testimonial-avatar--sq {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(122, 75, 160, 0.10);
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: 24px;
+  display: block;
+}
+.testimonial--case .testimonial-avatar--sq img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  mix-blend-mode: normal;        /* override the global multiply trick */
+}
+
+/* Name + handle on a single line below the avatar */
+.testimonial--case .testimonial-byline {
+  margin: 0 0 12px 0;
+  font-family: var(--font-header);
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  white-space: normal;
+}
+.testimonial--case .testimonial-byline .testimonial-name {
+  font-weight: 600;
+  font-size: inherit;
+  color: var(--foreground);
+  display: inline;
+  white-space: normal;
+  overflow: visible;
+  margin: 0;
+}
+.testimonial--case .testimonial-byline .testimonial-handle {
+  font-weight: 400;
+  font-size: inherit;
+  color: rgba(23, 23, 23, 0.5);
+  display: inline;
+  margin-left: 6px;
+  white-space: normal;
+  overflow: visible;
+}
+
+/* Quote: Work Sans 18px, full-opacity foreground, line-height 1.625 */
+.testimonial--case .testimonial-quote {
+  font-family: var(--font-body);    /* Work Sans, NOT mono */
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.625;
+  color: var(--foreground);
+  margin: 0;
+}
+
+/* When the marquee wrapper sets a fixed width, override to Figma width */
+.testimonials-marquee .testimonial--case {
+  width: 420px;
+}
