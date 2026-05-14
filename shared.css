@@ -1763,7 +1763,7 @@ img { display: block; max-width: 100%; }
   gap: 16px;
 }
 .tscroll-up { animation: tscroll-up 60s linear infinite; }
-.tscroll-down { animation: tscroll-down 75s linear infinite; }
+.tscroll-down { animation: tscroll-down 60s linear infinite; }
 @keyframes tscroll-up {
   0% { transform: translateY(0); }
   100% { transform: translateY(-50%); }
@@ -2184,10 +2184,24 @@ img { display: block; max-width: 100%; }
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
-.wizard-stack-row { padding: 12px 14px; gap: 10px; }
-.wizard-stack-name { font-size: 14px; }
-.wizard-stack-desc { font-size: 12px; }
-.wizard-stack-price { font-size: 11px; }
+/* Stack row: icon + meta on row 1, price on row 2 (full width) */
+.wizard-stack-row {
+  padding: 14px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.wizard-stack-meta { min-width: 0; }
+.wizard-stack-name { font-size: 14px; line-height: 1.2; }
+.wizard-stack-desc { font-size: 12px; line-height: 1.35; }
+.wizard-stack-price {
+  width: 100%;
+  text-align: left;
+  padding-top: 6px;
+  margin-top: 4px;
+  border-top: 1px dashed rgba(122, 75, 160, 0.3);
+  font-size: 12px;
+  white-space: nowrap;
+}
 
 /* Restored wizard option icon (small Phosphor pill, primary tint) */
 .wizard-option-icon {

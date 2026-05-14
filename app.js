@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const html = Array.from(productSet).map((key) => {
         const p = PRODUCT_INFO[key];
         return `<div class="wizard-stack-row">
-          <div class="wizard-stack-icon"><img src="/assets/icons/check-circle.svg" alt=""></div>
+          <div class="wizard-stack-icon"><img src="assets/icons/check-circle.svg" alt=""></div>
           <div class="wizard-stack-meta">
             <span class="wizard-stack-name">${p.name}</span>
             <span class="wizard-stack-desc">${p.desc}</span>
