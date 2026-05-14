@@ -137,37 +137,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function render() {
       const stepEl = steps[current];
-      const isConclusion = stepEl && stepEl.dataset.conclusion === 'true';
+      const isStackStep = stepEl && stepEl.dataset.stack === 'true';
 
       steps.forEach((s, i) => s.classList.toggle('wizard-step--active', i === current));
 
-      // Progress bar/counter/dots: only count numbered steps
-      if (isConclusion) {
-        if (head) head.style.display = 'none';
-        // hide dots in footer for conclusion
-        if (footer) footer.classList.add('wizard-footer--conclusion');
-      } else {
-        if (head) head.style.display = '';
-        if (footer) footer.classList.remove('wizard-footer--conclusion');
-        dots.forEach((d, i) => d.classList.toggle('wizard-dot--active', i <= current));
-        if (progressFill) progressFill.style.width = `${((current + 1) / stepCount) * 100}%`;
-        if (counter) counter.textContent = `Step ${current + 1} of ${stepCount}`;
-        if (chip) chip.textContent = `STEP ${current + 1} OF ${stepCount}`;
-      }
+      dots.forEach((d, i) => d.classList.toggle('wizard-dot--active', i <= current));
+      if (progressFill) progressFill.style.width = `${((current + 1) / stepCount) * 100}%`;
+      if (counter) counter.textContent = `Step ${current + 1} of ${stepCount}`;
+      if (chip) chip.textContent = `STEP ${current + 1} OF ${stepCount}`;
 
       if (backBtn) backBtn.disabled = current === 0;
       if (nextBtn) {
-        if (isConclusion) {
+        if (current === steps.length - 1) {
+          // Last step (suggested stack) — final CTA
           nextBtn.textContent = wiz.dataset.finalCta || 'Start with the $25 deposit';
-        } else if (current === stepCount - 1) {
-          // Last numbered step before conclusion
+        } else if (current === steps.length - 2) {
+          // Second-to-last step — Next goes to the suggested stack
           nextBtn.textContent = 'See my stack →';
         } else {
           nextBtn.textContent = 'Next →';
         }
       }
 
-      if (isConclusion) buildStack();
+      if (isStackStep) buildStack();
     }
 
     function goNext() {
@@ -175,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (stepEl) selections[current] = getSelectedValues(stepEl);
 
       if (!validateStep(current)) {
-        // gentle nudge: outline the step container
         if (stepEl) {
           stepEl.classList.add('wizard-step--error');
           setTimeout(() => stepEl.classList.remove('wizard-step--error'), 600);
@@ -183,17 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Conclusion CTA: trigger final action
-      if (stepEl && stepEl.dataset.conclusion === 'true') {
+      // On last step, trigger final action
+      if (current === steps.length - 1) {
         const action = wiz.dataset.finalAction;
         if (action === 'open-contact') openContactModal();
         return;
       }
 
-      if (current < steps.length - 1) {
-        current++;
-        render();
-      }
+      current++;
+      render();
     }
 
     if (backBtn) backBtn.addEventListener('click', () => {

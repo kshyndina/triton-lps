@@ -2502,3 +2502,141 @@ img { display: block; max-width: 100%; }
   font-size: 28px;
   margin-bottom: 8px;
 }
+
+/* ========================================================== */
+/* v10 — Get started: vertical 1-2-3 + 2x3 stats LEFT of form */
+/* ========================================================== */
+
+.get-started-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-self: start;
+}
+
+.get-started-lead {
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(23, 23, 23, 0.75);
+  margin: 0;
+}
+
+/* Vertical 1-2-3 with line connector on the LEFT */
+.steps-vertical {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.step-vertical {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 28px;
+  position: relative;
+}
+.step-vertical:last-child {
+  padding-bottom: 0;
+}
+/* Line connector between numbered circles */
+.step-vertical:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 17px;            /* (circle-width 36 / 2) - (line-width 2 / 2) */
+  top: 36px;             /* start just below the circle */
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(122, 75, 160, 0.45) 0%, rgba(122, 75, 160, 0.15) 100%);
+  z-index: 0;
+}
+.step-vertical-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 4px rgba(247, 247, 247, 1);
+}
+.step-vertical-body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 6px;
+}
+.step-vertical-title {
+  font-family: var(--font-header);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--foreground);
+  margin-bottom: 4px;
+}
+.step-vertical-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(23, 23, 23, 0.65);
+}
+
+/* 2x3 stats grid below vertical steps */
+.stats-2x3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(23, 23, 23, 0.12);
+}
+.stats-2x3 .stat-num {
+  font-family: var(--font-header);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stats-2x3 .stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(23, 23, 23, 0.55);
+  margin-top: 6px;
+  line-height: 1.35;
+}
+
+/* Suggested stack view tweaks (step 4) */
+.wizard-q-sub {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(23, 23, 23, 0.65);
+  margin: 0 0 16px 0;
+}
+.wizard-stack-foot {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(23, 23, 23, 0.55);
+  margin-top: 12px;
+}
+
+/* Make the build-stack-split column widths comfortable */
+.build-stack-split {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .build-stack-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
