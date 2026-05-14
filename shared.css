@@ -1571,13 +1571,17 @@ img { display: block; max-width: 100%; }
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: #fff;
+  background: rgba(122, 75, 160, 0.10);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.ultra-slide-icon img { width: 24px; height: 24px; }
+.ultra-slide-icon img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
 .ultra-slide-body {
   display: flex;
   flex-direction: column;
