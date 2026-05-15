@@ -2577,6 +2577,84 @@ img { display: block; max-width: 100%; }
   color: rgba(23, 23, 23, 0.65);
 }
 
+/* Horizontal milestone line -- 3 numbered circles on a thin purple track */
+.steps-line {
+  list-style: none;
+  margin: 0 0 48px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  position: relative;
+}
+.step-line {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  padding-right: 24px;
+}
+.step-line:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 13px;             /* centre of 28px circle */
+  left: 28px;            /* right edge of circle */
+  right: 0;
+  height: 2px;
+  background: rgba(122, 75, 160, 0.2);
+  z-index: 0;
+}
+.step-line-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.step-line-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.step-line-title {
+  font-family: var(--font-header);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--foreground);
+}
+.step-line-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(23, 23, 23, 0.65);
+}
+@media (max-width: 720px) {
+  .steps-line {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .step-line { padding-right: 0; padding-bottom: 24px; }
+  .step-line:not(:last-child)::after {
+    top: 28px;
+    left: 13px;
+    right: auto;
+    bottom: 0;
+    height: auto;
+    width: 2px;
+  }
+}
+
 /* 2x3 stats grid below vertical steps */
 .stats-2x3 {
   display: grid;

@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=2026-05-14-17">
+<link rel="stylesheet" href="shared.css?v=2026-05-15-1">
 </head>
 <body>
 
@@ -331,24 +331,30 @@
             <p class="section-sub">Because pricing follows actual cost, we offer the best rates we can to every builder without hiding anything in bundles, CUs or overage tables.</p>
           </div>
 
-          <!-- HOW (3 steps, horizontal, Steamboat-style step-num, no image boxes) -->
-          <div class="bento" id="how" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; gap:16px; margin-bottom:48px">
-            <div class="bento-card" style="grid-column:auto; grid-row:auto">
-              <div class="step-num">01</div>
-              <h3 class="h3">Fill out the onboarding form</h3>
-              <p class="body">On customers.triton.one. Takes a minute. We provision your endpoint and credentials right after.</p>
-            </div>
-            <div class="bento-card" style="grid-column:auto; grid-row:auto">
-              <div class="step-num">02</div>
-              <h3 class="h3">Fund your balance with $125</h3>
-              <p class="body">Pay via stablecoins. Valid for 12 months, usable across every Triton product on Mainnet. Devnet is free.</p>
-            </div>
-            <div class="bento-card" style="grid-column:auto; grid-row:auto">
-              <div class="step-num">03</div>
-              <h3 class="h3">Swap your RPC URL</h3>
-              <p class="body">Replace your existing URL with your Triton endpoint. No code changes needed.</p>
-            </div>
-          </div>
+          <!-- HOW: 3 milestones along a horizontal line (no card chrome) -->
+          <ol class="steps-line" id="how">
+            <li class="step-line">
+              <div class="step-line-num">1</div>
+              <div class="step-line-body">
+                <div class="step-line-title">Fill out the onboarding form on customers.triton.one</div>
+                <div class="step-line-desc">Takes a minute. We provision your endpoint and credentials right after.</div>
+              </div>
+            </li>
+            <li class="step-line">
+              <div class="step-line-num">2</div>
+              <div class="step-line-body">
+                <div class="step-line-title">Fund your balance with $125 in stablecoins</div>
+                <div class="step-line-desc">Valid for 12 months and usable across every Triton product on Mainnet. Devnet is free.</div>
+              </div>
+            </li>
+            <li class="step-line">
+              <div class="step-line-num">3</div>
+              <div class="step-line-body">
+                <div class="step-line-title">Swap your RPC URL with your Triton endpoint</div>
+                <div class="step-line-desc">No code changes needed.</div>
+              </div>
+            </li>
+          </ol>
           <div class="pricing-card">
             <div class="pricing-left">
               <div class="pricing-left-top">
