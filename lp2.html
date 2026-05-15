@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Work+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="shared.css?v=2026-05-15-2">
+<link rel="stylesheet" href="shared.css?v=2026-05-15-3">
 </head>
 <body>
 
@@ -122,6 +122,36 @@
               <img src="assets/logos/logo-jito-labs.svg" alt="Jito" style="height:26px">
               <img src="assets/logos/logo-meteora.svg" alt="Meteora" style="height:44px">
               <img src="assets/logos/logo-tensor.svg" alt="Tensor" style="height:44px">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEFORE / AFTER (moved above features) -->
+      <section class="section" id="compare">
+        <div class="section-inner">
+          <div class="compare">
+            <div class="compare-card compare-card--before">
+              <span class="compare-badge">Before</span>
+              <h3 class="h3">Bigtable-era history</h3>
+              <ul class="compare-list">
+                <li><img src="assets/icons/x-circle.svg" alt=""> Backend that's slow on random access and built on inefficient signature pagination</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Premium pricing for older epochs and closed-source methods behind a paywall</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Wallet history takes thousands of round-trips on any wallet with many ATAs</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Recent and deep history return at the same slow speed</li>
+                <li><img src="assets/icons/x-circle.svg" alt=""> Spinners every time a user opens their history</li>
+              </ul>
+            </div>
+            <div class="compare-card compare-card--after">
+              <span class="compare-badge">After</span>
+              <h3 class="h3">ClickHouse, sorted for how you query</h3>
+              <ul class="compare-list">
+                <li><img src="assets/icons/check-circle.svg" alt=""> ClickHouse columnar storage, physically sorted for how you query, with native cursor pagination</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Same price for every method and epoch, releasing soon under AGPL</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Single call for full wallet history, ATAs included server-side</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Recent slots return in sub-1ms from the in-memory head cache</li>
+                <li><img src="assets/icons/check-circle.svg" alt=""> Tiered storage makes deep history extremely fast to fetch</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -246,36 +276,6 @@
             </div>
           </div>
 
-        </div>
-      </section>
-
-      <!-- BEFORE / AFTER (moved here, tight padding-top) -->
-      <section class="section section--no-top" id="compare" style="padding-top:0">
-        <div class="section-inner">
-          <div class="compare">
-            <div class="compare-card compare-card--before">
-              <span class="compare-badge">Before</span>
-              <h3 class="h3">Bigtable-era history</h3>
-              <ul class="compare-list">
-                <li><img src="assets/icons/x-circle.svg" alt=""> Backend that's slow on random access and built on inefficient signature pagination</li>
-                <li><img src="assets/icons/x-circle.svg" alt=""> Premium pricing for older epochs and closed-source methods behind a paywall</li>
-                <li><img src="assets/icons/x-circle.svg" alt=""> Wallet history takes thousands of round-trips on any wallet with many ATAs</li>
-                <li><img src="assets/icons/x-circle.svg" alt=""> Recent and deep history return at the same slow speed</li>
-                <li><img src="assets/icons/x-circle.svg" alt=""> Spinners every time a user opens their history</li>
-              </ul>
-            </div>
-            <div class="compare-card compare-card--after">
-              <span class="compare-badge">After</span>
-              <h3 class="h3">ClickHouse, sorted for how you query</h3>
-              <ul class="compare-list">
-                <li><img src="assets/icons/check-circle.svg" alt=""> ClickHouse columnar storage, physically sorted for how you query, with native cursor pagination</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Same price for every method and epoch, releasing soon under AGPL</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Single call for full wallet history, ATAs included server-side</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Recent slots return in sub-1ms from the in-memory head cache</li>
-                <li><img src="assets/icons/check-circle.svg" alt=""> Tiered storage makes deep history extremely fast to fetch</li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 
