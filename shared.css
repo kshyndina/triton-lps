@@ -2577,33 +2577,39 @@ img { display: block; max-width: 100%; }
   color: rgba(23, 23, 23, 0.65);
 }
 
-/* Horizontal milestone line -- 3 numbered circles on a thin purple track */
+/* Horizontal milestone timeline -- continuous line through 3 centred circles */
 .steps-line {
   list-style: none;
   margin: 0 0 48px 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
+  gap: 0;
   width: 100%;
   position: relative;
+}
+/* One continuous track from the centre of circle 1 to the centre of circle 3.
+   Each cell is 1/3 wide, so the centre of cell 1 sits at 1/6 from the left
+   and the centre of cell 3 sits at 5/6 (= 1/6 from the right). */
+.steps-line::before {
+  content: '';
+  position: absolute;
+  top: 13px;                          /* centre of the 28px circle */
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 2px;
+  background: rgba(122, 75, 160, 0.25);
+  z-index: 0;
 }
 .step-line {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 14px;
+  padding: 0 16px;
   position: relative;
-  padding-right: 24px;
-}
-.step-line:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 13px;             /* centre of 28px circle */
-  left: 28px;            /* right edge of circle */
-  right: 0;
-  height: 2px;
-  background: rgba(122, 75, 160, 0.2);
-  z-index: 0;
+  z-index: 1;
 }
 .step-line-num {
   width: 28px;
@@ -2625,6 +2631,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 6px;
+  max-width: 260px;
 }
 .step-line-title {
   font-family: var(--font-header);
@@ -2644,15 +2651,9 @@ img { display: block; max-width: 100%; }
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .step-line { padding-right: 0; padding-bottom: 24px; }
-  .step-line:not(:last-child)::after {
-    top: 28px;
-    left: 13px;
-    right: auto;
-    bottom: 0;
-    height: auto;
-    width: 2px;
-  }
+  /* Hide the horizontal track and use a vertical one between rows */
+  .steps-line::before { display: none; }
+  .step-line { padding: 0; }
 }
 
 /* 2x3 stats grid below vertical steps */
